@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TileList xmlns:mx="http://www.adobe.com/2006/mxml" 
+	allowMultipleSelection="false"
+	itemRenderer="com.brandqq.app.card.components.CardTempRender" 
+	creationComplete="init()" borderStyle="none" backgroundColor="0x666666" 
+	doubleClickEnabled="true" rowHeight="245" columnWidth="345" 
+	direction="horizontal" rollOverColor="#FFF0B5" 
+	selectionColor="#FF9900" selectionDuration="300" 
+	useRollOver="false" columnCount="3">
+	
+	<mx:Script>
+		<![CDATA[
+			private function init():void
+			{
+				
+			}
+		]]>
+	</mx:Script>
+	
+</mx:TileList>

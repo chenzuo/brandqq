@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BQIPDAPI - 互联网推广诊断工具API - BrandQQ APIs</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<a href="/"><img src="/skin/logo_s.gif" alt="返回brandQQ首页" style="border:none" /></a>
+
+<div class="idx"><a href="./">返回</a></div>
+
+<h1>BQIPDAPI.js文件说明</h1>
+
+<h3>AjaxRequest function(reqUrl,callback)</h3>
+<p>初始化一个异步请求，完成时自动调度由参数callback指定的函数</p>
+<p>参数：</p>
+<blockquote>
+<pre>
+reqUrl：请求的代理程序URL
+callback：异步回调的函数
+</pre>
+</blockquote>
+
+<h3>AjaxRequest.Get()</h3>
+<p>以GET方式发送一个异步请求。</p>
+<p>参数：无</p>
+
+
+<h3>BQIPDQuery function(u,k,cb)</h3>
+<p>表示一个查询</p>
+<p>参数：</p>
+<blockquote>
+<pre>
+u:待查询的域名
+k:查询关键字
+cb:callback函数，形式：function(BQIPDResult result)
+</pre>
+</blockquote>
+
+<h3>BQIPDQuery.Run()</h3>
+<p>执行异步查询，完成时将查询结果(BQIPDResult对象)返回给callback函数。</p>
+<p>参数：无</p>
+
+<h3>BQIPDResult function(response)</h3>
+<p>表示一个查询的结果</p>
+<p>参数：</p>
+<blockquote>
+<pre>
+response:服务器响应的XML
+</pre>
+</blockquote>
+
+<h3>BQIPDResult.xml</h3>
+<p>服务器响应的XML对象。</p>
+
+<h3>BQIPDResult.getGenaral()</h3>
+<p>获取查询结果的总体部分。</p>
+<p>参数：无</p>
+<p>返回值：{score:分值,description:评价描述}</p>
+<p>示例：</p>
+<blockquote>
+<pre>
+	var obj=someResult.getGenaral();
+	alert(obj.score);
+	alert(obj.description);
+</pre>
+</blockquote>
+
+<h3>BQIPDResult.getPagerank()</h3>
+<p>获取查询结果的Pagerank部分。</p>
+<p>参数：无</p>
+<p>返回值：{score:分值,description:评价描述}</p>
+
+<h3>BQIPDResult.getRecords()</h3>
+<p>获取查询结果的搜索引擎收录部分。</p>
+<p>参数：无</p>
+<p>返回值：{score:分值,description:评价描述}</p>
+
+
+<h3>BQIPDResult.getKeyword()</h3>
+<p>获取查询结果的关键字排名部分。</p>
+<p>参数：无</p>
+<p>返回值：{score:分值,description:评价描述}</p>
+
+<h3>BQIPDResult.getAlexa()</h3>
+<p>获取查询结果的Alexa排名部分。</p>
+<p>参数：无</p>
+<p>返回值：{score:分值,description:评价描述}</p>
+
+
+<h3>BQIPDResult.getLinkIn()</h3>
+<p>获取查询结果的反向链接部分。</p>
+<p>参数：无</p>
+<p>返回值：{score:分值,description:评价描述}</
+
+</body>
+</html>

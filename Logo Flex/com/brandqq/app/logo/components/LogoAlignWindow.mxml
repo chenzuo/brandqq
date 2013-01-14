@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="horizontal" 
+	title="对齐和分布" showCloseButton="true" backgroundAlpha="1.0"
+	close="{PopUpManager.removePopUp(this)}" backgroundColor="#ffffff" alpha="1.0" borderColor="#0080c0">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			import com.brandqq.app.logo.components.LogoAlignWindowEvent;
+			
+			
+			private function onButtonClick(value:String):void
+			{
+				this.dispatchEvent(new LogoAlignWindowEvent(value,MatchToCanvasButton.selected));
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Metadata>
+		[Event(name="onChange",type="com.brandqq.app.logo.components.LogoAlignWindowEvent")]
+	</mx:Metadata>
+	
+	<mx:VBox width="100%">
+		<mx:Label text="对齐" fontWeight="bold" color="#808080"/>
+		<mx:HBox>
+			<mx:Button styleName="alignLeft" width="20" height="20" click="{onButtonClick('alignLeft')}"/>
+			<mx:Button styleName="alignCenter" width="20" height="20" click="{onButtonClick('alignCenter')}"/>
+			<mx:Button styleName="alignRight" width="20" height="20" click="{onButtonClick('alignRight')}"/>
+			<mx:Button styleName="alignTop" width="20" height="20" click="{onButtonClick('alignTop')}"/>
+			<mx:Button styleName="alignMid" width="20" height="20" click="{onButtonClick('alignMid')}"/>
+			<mx:Button styleName="alignBottom" width="20" height="20" click="{onButtonClick('alignBottom')}"/>
+		</mx:HBox>
+		<mx:Label text="分布" fontWeight="bold" color="#808080"/>
+		<mx:HBox>
+			<mx:Button styleName="distLeft" width="20" height="20" click="{onButtonClick('distLeft')}"/>
+			<mx:Button styleName="distCenter" width="20" height="20" click="{onButtonClick('distCenter')}"/>
+			<mx:Button styleName="distRight" width="20" height="20" click="{onButtonClick('distRight')}"/>
+			<mx:Button styleName="distTop" width="20" height="20" click="{onButtonClick('distTop')}"/>
+			<mx:Button styleName="distMid" width="20" height="20" click="{onButtonClick('distMid')}"/>
+			<mx:Button styleName="distBottom" width="20" height="20" click="{onButtonClick('distBottom')}"/>
+		</mx:HBox>
+		<mx:Label text="匹配大小" fontWeight="bold" color="#808080"/>
+		<mx:HBox>
+			<mx:Button styleName="matchWidth" width="20" height="20" click="{onButtonClick('matchWidth')}"/>
+			<mx:Button styleName="matchHeight" width="20" height="20" click="{onButtonClick('matchHeight')}"/>
+			<mx:Button styleName="matchSize" width="20" height="20" click="{onButtonClick('matchSize')}"/>
+		</mx:HBox>
+	</mx:VBox>
+	<mx:VRule height="100%"/>
+	<mx:VBox width="100%" horizontalAlign="center">
+		<mx:Label text="相对于画布" color="#808080"/>
+		<mx:Button toggle="true" styleName="matchToCanvas" id="MatchToCanvasButton" width="20" height="20"/>
+	</mx:VBox>
+</mx:TitleWindow>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--logo Imitation Show configuration-->
+<LogoImSh>
+  <Style id="01" name="google" font="Catull Bold" size="36"  image="google.gif" colors="0.102.204,255.0.0,255.204.0,0.153.0" upperCase="first">
+    <![CDATA[全球第一搜索引擎(注：该样式不支持自定义颜色！)]]>
+  </Style>
+  <Style id="02" name="ibm" font="MeninBlue" size="50" image="ibm.gif" colors="0.0.0" upperCase="all">
+    <![CDATA[蓝色巨人IBM]]>
+  </Style>
+  <Style id="03" name="yahoo" font="Yahoo!©" image="yahoo.gif" size="40" colors="255.0.0" upperCase="all">
+    <![CDATA[Yahoo！]]>
+  </Style>
+
+  <Style id="04" name="shrek" font="Shrek" image="shrek.gif" size="40" colors="0.153.0" upperCase="first">
+    <![CDATA[怪物史莱克！]]>
+  </Style>
+  <Style id="05" name="harry potter" font="Parry Hotter" size="36" image="harrypotter.gif" colors="0.0.0" upperCase="first">
+    <![CDATA[哈利波特！]]>
+  </Style>
+  <Style id="06" name="counter strike" font="Facelift" size="36" image="cs.gif" colors="0.0.0" upperCase="none">
+    <![CDATA[著名的竞技对抗游戏CS！]]>
+  </Style>
+  <!--Style id="07" name="007 goldeneye" font="007 GoldenEye" size="36" image="007.gif" colors="0.0.0" upperCase="all">
+    <![CDATA[家喻户晓的邦德！007]]>
+  </Style-->
+
+  <Style id="08" name="hyundai" font="Hyundai" size="36" image="hyundai.gif" colors="0.51.153" upperCase="all">
+    <![CDATA[韩国现代]]>
+  </Style>
+  <Style id="09" name="honda" font="Millhouse" size="22" image="honda.gif" colors="255.0.0" upperCase="all">
+    <![CDATA[本田]]>
+  </Style>
+  <Style id="10" name="suzuki" font="Usuzi" size="36" image="suzuki.gif" colors="255.0.0" upperCase="all">
+    <![CDATA[suzuki]]>
+  </Style>
+  <Style id="11" name="dodge" font="dodger" size="36" image="dodge.gif" colors="0.0.0" upperCase="all">
+    <![CDATA[道奇汽车！]]>
+  </Style>
+  <Style id="12" name="ferrari" font="Ferro Rosso" size="36" image="ferrari.gif" colors="255.0.0" upperCase="first">
+    <![CDATA[最牛的最贵的跑车：法拉利]]>
+  </Style>
+
+  <Style id="13" name="pepsi" font="Denmark" size="36" image="pepsi.gif" colors="0.51.255" upperCase="all">
+    <![CDATA[百事可乐！]]>
+  </Style>
+  <Style id="14" name="marlboro" font="MarlboroWide" size="40" image="marlboro.gif" colors="0.0.0" upperCase="first">
+    <![CDATA[万宝路香烟]]>
+  </Style>
+  <Style id="15" name="disney" font="Walt Disney Script" size="42" image="disney.gif" colors="255.0.0" upperCase="first">
+    <![CDATA[米老鼠的娘家，迪士尼]]>
+  </Style>
+  <Style id="16" name="converse" font="Coverse Allstars" size="40" image="converse.gif" colors="0.0.0" upperCase="first">
+    <![CDATA[著名休闲类服装品牌]]>
+  </Style>
+  <Style id="17" name="puma" font="My Puma" image="puma.gif" size="40" colors="0.0.0" upperCase="all">
+    <![CDATA[著名休闲类服装品牌（彪马）]]>
+  </Style>
+
+  <Style id="18" name="play station" font="Zrnic" size="40" image="playstation.gif" colors="0.0.0" upperCase="first">
+    <![CDATA[游戏玩家应该都知道它！]]>
+  </Style>
+  <Style id="19" name="walkman" font="TAPEMAN" size="40" image="walkman.gif" colors="0.0.0" upperCase="all">
+    <![CDATA[漫步者随身听]]>
+  </Style>
+  <Style id="20" name="swatch" font="Swatch it" size="40" image="swatch.gif" colors="0.0.0" upperCase="none">
+    <![CDATA[swatch]]>
+  </Style>
+  <Style id="21" name="star wars" font="Star Jedi" size="40" image="starwars.gif" colors="0.0.0" upperCase="all">
+    <![CDATA[相信都看过星球大战吧]]>
+  </Style>
+
+  <Style id="22" name="cnn" font="CNN" size="40" image="cnn.gif" colors="255.0.0" upperCase="all">
+    <![CDATA[CNN]]>
+  </Style>
+  <Style id="23" name="nec" font="NEC" size="40" image="nec.gif" colors="0.102.255" upperCase="all">
+    <![CDATA[NEC]]>
+  </Style>
+  <Style id="24" name="playboy" font="Playtoy" size="40" image="playboy.gif" colors="0.0.0" upperCase="all">
+    <![CDATA[风靡全球的花花公子！]]>
+  </Style>
+</LogoImSh>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="100%" height="100%" 
+	title="请选一个图形在Logo中使用">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.brandqq.lib.events.DataLoadEvent;
+			import com.brandqq.IO.XmlReader;
+			import com.brandqq.Resources.Requests;
+			
+			public function loadData(cate:String):void
+			{
+				if(__cate==cate)
+				{
+					return;
+				}
+				
+				__reader=new XmlReader(Requests.logoSymbolListRequest(cate));
+				__reader.addEventListener(DataLoadEvent.ON_OPEN,onLoadEvent);
+				__reader.addEventListener(DataLoadEvent.ON_LOADING,onLoadEvent);
+				__reader.addEventListener(DataLoadEvent.ON_LOADED,onLoadEvent);
+				__reader.read();
+			}
+			
+			private function onLoadEvent(e:DataLoadEvent):void
+			{
+				switch(e.type)
+				{
+					case DataLoadEvent.ON_OPEN:
+						title="开始下载数据...";
+						break;
+					case DataLoadEvent.ON_LOADING:
+						title="正在下载数据..."+e.loadedBytes;
+						break;
+					case DataLoadEvent.ON_LOADED:
+						title="请选一个图形在Logo中使用";
+						DataList.dataProvider=__reader.getData().Symbol;
+						break;
+				}
+			}
+						
+			private var __cate:String;
+			private var __reader:XmlReader;
+		]]>
+	</mx:Script>
+	
+	<mx:TileList width="100%" height="100%" 
+		itemRenderer="com.brandqq.app.logo.components.SymbolThumbnailRender" 
+		id="DataList" doubleClickEnabled="true">
+	</mx:TileList>
+	
+</mx:Panel>

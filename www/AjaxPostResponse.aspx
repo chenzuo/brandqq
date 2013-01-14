@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" EnableViewState="false" Inherits="BrandQQ.WebControls.AjaxPost" %>

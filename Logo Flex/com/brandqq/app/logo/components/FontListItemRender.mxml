@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Image xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100" height="22" 
+	horizontalAlign="center" 
+	verticalAlign="middle" source="{Requests.systemFontsImageRequest(data.@code)}" toolTip="{data.@name}">
+	<mx:Script>
+		<![CDATA[
+			import com.brandqq.Resources.Requests;
+		]]>
+	</mx:Script>
+</mx:Image>

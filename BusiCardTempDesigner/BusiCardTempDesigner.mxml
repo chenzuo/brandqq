@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" creationComplete="initApp()" horizontalAlign="center" minWidth="800" minHeight="600">
+	<mx:Style>
+		Application
+		{
+			fontFamily:"宋体";
+			fontSize:12px;
+			paddingTop:5;
+			paddingLeft:5;
+			paddingRight:5;
+			paddingBottom:5;
+		}
+		Panel
+		{
+			paddingTop:5;
+			paddingLeft:5;
+			paddingRight:5;
+			paddingBottom:5;
+		}
+		ComboBox,Button
+		{
+			cornerRadius:0;
+		}
+		.textObj
+		{
+			backgroundAlpha:0;
+			borderStyle:"solid";
+			borderThickness:0.5;
+			fontSharpness:-100;
+		}
+	</mx:Style>
+	
+	<mx:Script source="BusiCardTempDesigner.as"/>
+	<mx:Script source="Actions.as"/>
+	
+		<mx:TabNavigator id="CardFaces"
+			change="{
+				CardFaces.selectedIndex==0?
+				CardBGcolor.selectedColor=FrontFace.getStyle('backgroundColor'):
+				CardBGcolor.selectedColor=BackFace.getStyle('backgroundColor')
+			}" width="100%" height="100%">
+			<mx:HBox width="100%" height="100%" label="正面" 
+				horizontalAlign="center" verticalAlign="middle" 
+				backgroundColor="0x333333">
+				<mx:Canvas id="FrontFace"
+						width="{Number(CardSize.selectedItem.w)/25.4*DPI}"
+						height="{Number(CardSize.selectedItem.h)/25.4*DPI}" 
+						backgroundColor="0xFFFFFF" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+					<mx:UIComponent id="FrontFaceSymbolsLayer" x="0" y="0" width="100%" height="100%" />
+				</mx:Canvas>
+				</mx:HBox>
+			<mx:HBox label="背面" width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" backgroundColor="0x333333">
+				<mx:Canvas id="BackFace"
+					width="{Number(CardSize.selectedItem.w)/25.4*DPI}"
+					height="{Number(CardSize.selectedItem.h)/25.4*DPI}"
+					backgroundColor="0xFFFFFF" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+					<mx:UIComponent id="BackFaceSymbolsLayer" x="0" y="0" width="100%" height="100%" />
+				</mx:Canvas>
+			</mx:HBox>
+		</mx:TabNavigator>
+
+		<mx:Panel id="PropertyPanel" layout="horizontal" title="模板属性" 
+			height="200" horizontalScrollPolicy="off" 
+			verticalScrollPolicy="off" width="100%" doubleClickEnabled="true">
+			<mx:VBox height="100%" width="330">
+				<mx:HBox width="100%" verticalAlign="middle">
+					<mx:Label text="GUID："/>
+					<mx:TextInput id="CardGuid" width="100%" editable="false" text="{StringUtil.newGuid}"/>
+				</mx:HBox>
+				<mx:HBox width="100%" verticalAlign="middle">
+					<mx:Label text="标题："/>
+					<mx:TextInput id="CardName" width="100%"/>
+				</mx:HBox>
+				<mx:HBox width="100%" verticalAlign="middle">
+					<mx:Label text="规格："/>
+					<mx:ComboBox id="CardSize" width="100%">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="90mm×54mm" w="90" h="54"/>
+								<mx:Object label="90mm×50mm" w="90" h="50"/>
+								<mx:Object label="90mm×45mm" w="90" h="45"/>
+								<mx:Object label="54mm×90mm(竖版)" w="54" h="90"/>
+								<mx:Object label="50mm×90mm(竖版)" w="50" h="90"/>
+								<mx:Object label="45mm×90mm(竖版)" w="45" h="90"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+					<mx:Label text="风格："/>
+					<mx:ComboBox width="100%" id="TempStyle" labelField="@name"></mx:ComboBox>
+				</mx:HBox>
+				<mx:HBox width="100%" verticalAlign="middle">
+					<mx:Label text="背景颜色："/>
+					<mx:ColorPicker id="CardBGcolor" selectedColor="0xFFFFFF" 
+						change="{
+								CardFaces.selectedIndex==0?
+								FrontFace.setStyle('backgroundColor',CardBGcolor.selectedColor):
+								BackFace.setStyle('backgroundColor',CardBGcolor.selectedColor)
+								}"/>
+					<mx:Label text="{ColorUtil.getRGBString(CardBGcolor.selectedColor)}" id="CardBGColorLabel"/>
+				</mx:HBox>
+			</mx:VBox>
+			<mx:VRule height="100%"/>
+			<mx:VBox height="100%" width="100%">
+				<mx:Label text="当前对象" fontWeight="bold"/>
+				<mx:HBox width="100%" verticalAlign="middle">
+					<mx:CheckBox label="锁定比例" id="LockWH"/>
+					<mx:Label text="宽度："/>
+					<mx:NumericStepper id="ObjWidth" value="{currentObject_width}" 
+						change="onObjectSizeChangeEvent(event)" minimum="1" maximum="{Number(CardSize.selectedItem.w)/25.4*DPI}" width="100%"/>
+					<mx:Label text="高度："/>
+					<mx:NumericStepper id="ObjHeight" value="{currentObject_height}" 
+						change="onObjectSizeChangeEvent(event)" minimum="1" maximum="{Number(CardSize.selectedItem.h)/25.4*DPI}" width="100%"/>
+					<mx:Label text="X："/>
+					<mx:NumericStepper id="ObjX" value="{currentObject_x}" 
+						change="onObjectSizeChangeEvent(event)" minimum="0" maximum="{Number(CardSize.selectedItem.w)/25.4*DPI}" width="100%"/>
+					<mx:Label text="Y："/>
+					<mx:NumericStepper id="ObjY" value="{currentObject_y}" 
+						change="onObjectSizeChangeEvent(event)" minimum="0" maximum="{Number(CardSize.selectedItem.h)/25.4*DPI}" width="100%"/>
+					<mx:Label text="颜色："/>
+					<mx:ColorPicker change="onObjColorChangeEvent(event)" selectedColor="{currentObject_color}"/>
+				</mx:HBox>
+				<mx:HBox width="100%" verticalAlign="middle">
+					<mx:Label text="字体："/>
+					<mx:ComboBox id="FontName" selectedIndex="{FontName.data.indexOf(currentObject_fontName)}"
+						change="{if(currentObject is TextInput)
+									{
+										TextInput(currentObject).setStyle('fontFamily',FontName.selectedItem.label);
+									}
+								}" width="100%">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="Arial" />
+								<mx:Object label="Arial Black" />
+								<mx:Object label="Tahoma" />
+								<mx:Object label="Times New Roman" />
+								<mx:Object label="宋体" />
+								<mx:Object label="黑体" />
+								<mx:Object label="楷体" />
+								<mx:Object label="幼圆" />
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+					<mx:Label text="字号："/>
+					<mx:NumericStepper id="FontSize" minimum="6" maximum="18" stepSize="1" value="{currentObject_fontSize}"
+						change="{if(currentObject is TextInput)
+									{
+										TextInput(currentObject).setStyle('fontSize',FontSize.value);
+									}
+								}" width="100%"/>
+					<mx:Label text="对齐："/>
+					<mx:ComboBox width="100%" id="FontALign" selectedIndex="{currentObject_textAlign}"
+						change="{if(currentObject is TextInput)
+									{
+										TextInput(currentObject).setStyle('textAlign',FontALign.selectedItem.data);
+									}
+								}">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="左" data="left" />
+								<mx:Object label="中" data="center"/>
+								<mx:Object label="右" data="right"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+					<mx:Button id="FontWeight" label="B" width="22" toggle="true" 
+						selected="{currentObject_isBold}" 
+						click="{if(currentObject is TextInput){TextInput(currentObject).setStyle('fontWeight',(FontWeight.selected?'bold':'normal'))}}"/>
+					<mx:Button id="FontStyle" label="I" width="22" fontStyle="italic" toggle="true"
+						selected="{currentObject_isItalic}"
+						click="{if(currentObject is TextInput){TextInput(currentObject).setStyle('fontStyle',(FontStyle.selected?'italic':'normal'))}}"/>
+				</mx:HBox>
+				<mx:HBox width="100%">
+					<mx:PopUpMenuButton id="TransformMenu" itemClick="onTransformMenuClick(event)">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="变形..."/>
+								<mx:Object label="旋转90度"/>
+								<mx:Object label="水平翻转"/>
+								<mx:Object label="垂直翻转"/>
+								<mx:Object label="取消变形"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:PopUpMenuButton>
+					
+					<mx:PopUpMenuButton id="AlignMenu" itemClick="onAlignMenuClick(event)">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="对齐..."/>
+								<mx:Object label="水平居中"/>
+								<mx:Object label="垂直居中"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:PopUpMenuButton>
+					
+					<mx:Button click="fixCurrentObject(1)" icon="{EMBED_Snap_H}" labelPlacement="right" label="水平紧贴"/>
+					<mx:Button click="fixCurrentObject(2)" icon="{EMBED_Snap_V}" labelPlacement="right" label="垂直紧贴"/>
+					<mx:Button click="{currentObject.parent.removeChild(currentObject)}" icon="{EMBED_Delete}" labelPlacement="right" label="删除"/>
+					
+					<mx:Button label="克隆" click="cloneCurrentObject()"/>
+				</mx:HBox>
+			</mx:VBox>
+			<mx:ControlBar x="127" y="433" horizontalAlign="right">
+				<mx:Button id="OpenCardButton" label="打开模板..." click="openCard()"/>
+				
+				<mx:Spacer width="100%"/>
+				<mx:Button label="导入背景..." click="importSymbol()"/>
+				<mx:Button label="添加文本框" click="addNewTextObject()"/>
+				<mx:Button label="添加Logo占位" click="addLogoSign()"/>
+				<mx:Button label="保存模板..." 
+					fillColors="[#ff8040, #f8ba47]" fillAlphas="[1.0, 1.0]"
+					 click="saveCard(event)"/>
+			</mx:ControlBar>
+		</mx:Panel>
+	
+</mx:Application>

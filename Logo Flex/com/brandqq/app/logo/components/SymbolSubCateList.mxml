@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="horizontal" 
+	width="100%" height="100%" 
+	title="请选择子分类" 
+	styleName="active" creationComplete="init()" showCloseButton="true" close="onCloseEvent()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Button;
+			private function init():void
+			{
+				
+			}
+			
+			private function onCloseEvent():void
+			{
+				this.width=0;
+				this.visible=false;
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:TileList width="100%" height="100%" itemRenderer="com.brandqq.app.logo.components.SymbolThumbnailRender" id="DataList" columnCount="2">
+	</mx:TileList>
+	
+</mx:TitleWindow>

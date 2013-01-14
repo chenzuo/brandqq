@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+code:行业编码 6位
+btype:生意模式 1=B2B,2=B2C
+name:行业名称
+-->
+
+<Industries>
+  <Industry code="100000" name="消费品" btype="2">
+    <Industry code="100100" name="日化" btype="2" />
+    <Industry code="100200" name="食品饮料" btype="2" />
+    <Industry code="100300" name="医药保健" btype="2" />
+    <Industry code="100400" name="家电" btype="2" />
+    <Industry code="100500" name="电脑数码与消费电子" btype="2" />
+    <Industry code="100600" name="交通工具(乘用车、摩托车、自行车等)" btype="2" />
+    <Industry code="100700" name="服装" btype="2" />
+    <Industry code="100800" name="家居装修装饰品" btype="2" />
+    <Industry code="100900" name="办公用品" btype="2" />
+    <Industry code="101000" name="饰品礼品" btype="2" />
+    <Industry code="101100" name="玩具" btype="2" />
+    <Industry code="101200" name="运动/休闲/户外装备器械" btype="2" />
+    <Industry code="101300" name="房地产" btype="2" />
+    <Industry code="101400" name="其他" btype="2" />
+  </Industry>
+
+  <Industry code="110000" name="工业品" btype="1">
+    <Industry code="110100" name="IT/通信设备" btype="1" />
+    <Industry code="110200" name="机械设备" btype="1" />
+    <Industry code="110300" name="电子元器件" btype="1" />
+    <Industry code="110400" name="五金工具" btype="1" />
+    <Industry code="110500" name="电工电气" btype="1" />
+    <Industry code="110600" name="灯具照明" btype="1" />
+    <Industry code="110700" name="汽车(商用车及汽车配件)" btype="1" />
+    <Industry code="110800" name="交通运输工具(不含汽车)" btype="1" />
+    <Industry code="110900" name="安防设备" btype="1" />
+    <Industry code="111000" name="包装(纸质、玻璃、金属、塑料等)" btype="1" />
+    <Industry code="111100" name="仪器仪表" btype="1" />
+    <Industry code="111200" name="印刷" btype="1" />
+    <Industry code="111300" name="环保设备设施" btype="1" />
+    <Industry code="111400" name="纸(工业、包装)" btype="1" />
+    <Industry code="111500" name="其他" btype="1" />
+  </Industry>
+
+  <Industry code="120000" name="原材料" btype="1">
+    <Industry code="120100" name="化工原料" btype="1"/>
+    <Industry code="120200" name="冶金矿产(钢材、有色、矿产)" btype="1" />
+    <Industry code="120300" name="橡胶塑料" btype="1" />
+    <Industry code="120400" name="纺织皮革" btype="1" />
+    <Industry code="120500" name="精细化学品(胶粘剂、涂料、颜料)" btype="1" />
+    <Industry code="120600" name="农业" btype="1" />
+    <Industry code="120700" name="医药医用材料" btype="1" />
+    <Industry code="120800" name="建筑建材" btype="1" />
+    <Industry code="120900" name="能源(石油、天然气、煤炭)" btype="1" />
+    <Industry code="121000" name="再生材料废料" btype="1" />
+    <Industry code="121100" name="其他" btype="1" />
+  </Industry>
+
+  <Industry code="130000" name="服务业" btype="2">
+    <Industry code="130100" name="金融(银行、证券、保险、期货等)" btype="2"/>
+    <Industry code="130200" name="电信" btype="2"/>
+    <Industry code="130300" name="餐饮业" btype="2"/>
+    <Industry code="130400" name="旅游业(旅行社、景点等)" btype="2"/>
+    <Industry code="130500" name="宾馆酒店" btype="2"/>
+    <Industry code="130600" name="娱乐服务业" btype="2"/>
+    <Industry code="130700" name="批发、零售业" btype="2"/>
+    <Industry code="130800" name="交通运输服务(航空、铁路、公路等)" btype="2"/>
+    <Industry code="130900" name="仓储物流" btype="1"/>
+    <Industry code="131000" name="专业服务(咨询、律师、广告等)" btype="1"/>
+    <Industry code="131100" name="教育培训(学校等)" btype="2"/>
+    <Industry code="131200" name="传播文化(出版、声像、广播影视)" btype="2"/>
+    <Industry code="131300" name="公共事业(水、电、煤)" btype="2"/>
+    <Industry code="131400" name="卫生保健服务(医院等)" btype="2"/>
+    <Industry code="131500" name="其他" btype="2"/>
+  </Industry>
+</Industries>

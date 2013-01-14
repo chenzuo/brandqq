@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BC guid="" uid="">
+  <!--正面-->
+  <Front>
+    <!--
+    模板背景元素
+    color R(0-255)G(0-255)B(0-255)A(0-100)
+    -->
+    <BG color="">
+      <!--
+      表示背景中的一个图形(可选)
+      id 图形索引值
+      rect 图形相对于名片画布的矩形范围
+      depth 深度
+      -->
+      <Symbol id="" rect="" depth="" edit="">
+        
+      </Symbol>
+    </BG>
+
+    <!--Logo的放置位置-->
+    <Logo rect="" />
+
+    <!--文字集合-->
+    <Texts>
+      <Text font="" size="" style="" rect="" gap="" depth="">
+        <!--
+        文字串中的一个单字
+        id 索引值
+        size 单字矩形的宽度和高度
+        -->
+        <Char id="" size=""><![CDATA[]]></Char>
+      </Text>
+    </Texts>
+
+  </Front>
+
+  <!--背面-->
+  <Back>
+    <!--
+    模板背景元素
+    color R(0-255)G(0-255)B(0-255)A(0-100)
+    -->
+    <BG color="">
+      <!--
+      表示背景中的一个图形(可选)
+      id 图形索引值
+      rect 图形相对于名片画布的矩形范围
+      depth 深度
+      -->
+      <Symbol id="" rect="" depth="" edit="" />
+    </BG>
+
+    <!--Logo的放置位置-->
+    <Logo rect="" />
+
+    <!--文字集合-->
+    <Texts>
+      <Text font="" size="" style="" rect="" gap="" depth="">
+        <!--
+        文字串中的一个单字
+        id 索引值
+        size 单字矩形的宽度和高度
+        -->
+        <Char id="" size=""><![CDATA[]]></Char>
+      </Text>
+    </Texts>
+  </Back>
+
+  <!--Logo-->
+  <Logo>
+    <!--图形集合-->
+    <Symbols>
+      <!--
+      表示一个图形
+      id 索引值
+      code 代码
+      rect 相对于画布的矩形范围
+      depth 深度
+      -->
+      <Symbol id="" code="" rect="" depth="" />
+    </Symbols>
+
+    <!--文字集合-->
+    <Texts>
+      <!--
+      表示一个文字串
+      id 索引值
+      rect 相对于画布的矩形范围
+      gap 文字水平间距(px)
+      depth 深度
+      -->
+      <Text font="" size="" style="" rect="" gap="" depth="">
+        <!--
+        文字串中的一个单字
+        id 索引值
+        size 单字矩形的宽度和高度
+        -->
+        <Char id="" size=""><![CDATA[]]></Char>
+      </Text>
+    </Texts>
+  </Logo>
+
+  <!--轮廓集合-->
+  <Glyphs>
+    <!--
+    表示一个图形或文字的轮廓
+    当type=1时，表示一个图形轮廓；当type=2时表示一个单字轮廓
+    id 相关的图形或单字索引值
+    type 表示轮廓是图形还是单字
+    fc 轮廓的填充颜色
+    b 标记轮廓有无线条
+    bc 线条颜色
+    rect 轮廓相对于父级的矩形区域
+    -->
+    <Glyph id="" type="" fc="" b="" bc="" rect="">
+      <!--
+      表示轮廓的一个线段
+      t 线段类型。0-起点，1-直线，2-曲线
+      p 点坐标。
+        t=0或1 表示起点或直线终点
+        t=2&&Glyph.type=1  表示(图形)二次贝塞尔曲线的控制点和终点
+        t=2&&Glyph.type=2  表示(文字)三次贝塞尔曲线的两个控制点和两个端点
+      -->
+      <S t="" p="" />
+    </Glyph>
+  </Glyphs>
+</BC>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ApplicationControlBar xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" 
+	cornerRadius="0" dock="true" creationComplete="init()">
+	
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.core.IFlexDisplayObject;
+			import mx.core.Application;
+			import mx.containers.Panel;
+			import mx.managers.PopUpManager;
+			import mx.events.CloseEvent;
+			import flash.display.DisplayObject;
+			
+			import com.brandqq.user.User;
+			
+			private function init():void
+			{
+				
+			}
+			
+			private function onUserStatusButtonClick(e:MouseEvent):void
+			{
+				var pop:IFlexDisplayObject;
+				if(User.loginStatus)
+				{
+					//显示用户信息
+					pop=PopUpManager.createPopUp(DisplayObject(Application.application),UserInfoWindow,false);
+					PopUpManager.centerPopUp(pop);
+				}
+				else
+				{
+					//显示登录窗口
+					pop=PopUpManager.createPopUp(DisplayObject(Application.application),UserLoginWindow,true);
+					PopUpManager.centerPopUp(pop);
+					Panel(pop).addEventListener(CloseEvent.CLOSE,function(e:CloseEvent):void
+					{
+						refresh();
+						Panel(pop).removeEventListener(CloseEvent.CLOSE,this);
+					});
+				}
+			}
+			
+			public function refresh():void
+			{
+				if(User.loginStatus)
+				{
+					UserStatusButton.styleName="userStatusButtonActive";
+					UserStatusButton.label=User.nameLabel;
+				}
+				else
+				{
+					UserStatusButton.styleName="userStatusButtonUnActive";
+					UserStatusButton.label="登录";
+				}
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Image source="@Embed(source='../../../../../SystemSkin.swf',symbol='Logo_Logo')"/>
+	<mx:Spacer width="100%"/>
+	<mx:Button label="登录" id="UserStatusButton" styleName="userStatusButtonUnActive" 
+		click="onUserStatusButtonClick(event)"/>
+	
+</mx:ApplicationControlBar>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="vertical" 
+	title="请登录" styleName="userWindow"
+	titleIcon="@Embed(source='../../../../../SystemSkin.swf',symbol='UserIcon_Active')"
+	close="onClose()" creationComplete="init()" verticalAlign="middle" 
+	showCloseButton="true">
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			import mx.events.CloseEvent;
+			
+			import com.brandqq.user.User;
+			import com.brandqq.IO.XmlReader;
+			import com.brandqq.Resources.Requests;
+			import com.brandqq.lib.util.StringUtil;
+			import com.brandqq.lib.events.DataLoadEvent;
+			
+			private function init():void
+			{
+				LoginButton.addEventListener(MouseEvent.CLICK,onLoginButtonClick);
+			}
+			
+			private function onClose():void
+			{
+				this.dispatchEvent(new CloseEvent(CloseEvent.CLOSE));
+				PopUpManager.removePopUp(this);
+			}
+			
+			private function onLoginButtonClick(e:MouseEvent):void
+			{
+				if(!StringUtil.isEmail(Email.text))
+				{
+					LoginMessage.text="邮件地址不正确！";
+					return;
+				}
+				
+				if(Password.text.length<6)
+				{
+					LoginMessage.text="密码至少6个字符！";
+					return;
+				}
+				
+				var __xmlReader:XmlReader=new XmlReader(Requests.userLoginRequest(Email.text,Password.text));
+				__xmlReader.addEventListener(DataLoadEvent.ON_OPEN,function(e:DataLoadEvent):void
+						{
+							LoginMessage.text="正在登录......";
+							this.showCloseButton=false;
+							LoginButton.enabled=false;
+						}
+					);
+				__xmlReader.addEventListener(DataLoadEvent.ON_LOADED,function(e:DataLoadEvent):void
+						{
+							User.initCurrent(__xmlReader.getData());
+							if(User.loginStatus)
+							{
+								onClose();
+							}
+							else
+							{
+								LoginMessage.text="邮件或者密码错误，登录失败！";
+								this.showCloseButton=true;
+								LoginButton.enabled=true;
+							}
+						}
+					);
+				__xmlReader.addEventListener(DataLoadEvent.ON_ERROR,function(e:DataLoadEvent):void
+						{
+							LoginMessage.text="登录过程出现错误，请重试！";
+							this.showCloseButton=true;
+							LoginButton.enabled=true;
+						}
+					);
+				__xmlReader.read();
+			}
+			
+		]]>
+	</mx:Script>
+	<mx:HBox width="100%" verticalAlign="middle">
+		<mx:Label text="电子邮件："/>
+		<mx:TextInput width="200" maxChars="50" id="Email"/>
+	</mx:HBox>
+	<mx:HBox width="100%" verticalAlign="middle">
+		<mx:Label text="登录密码："/>
+		<mx:TextInput width="200" displayAsPassword="true" maxChars="20" id="Password"/>
+	</mx:HBox>
+	<mx:Label id="LoginMessage"/>
+	<mx:ControlBar>
+		<mx:LinkButton label="创建新用户"/>
+		<mx:LinkButton label="忘记密码？"/>
+		<mx:Spacer width="100%"/>
+		<mx:Button label="登录" id="LoginButton"/>
+	</mx:ControlBar>
+</mx:TitleWindow>

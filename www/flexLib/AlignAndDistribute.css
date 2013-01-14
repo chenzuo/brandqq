@@ -1,0 +1,119 @@
+/* CSS file */
+Button.alignLeft
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_LEFT_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_LEFT_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_LEFT_Down");
+}
+
+Button.alignCenter
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_CENTER_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_CENTER_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_CENTER_Down");	
+}
+
+Button.alignRight
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_RIGHT_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_RIGHT_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_RIGHT_Down");	
+}
+
+Button.alignTop
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_TOP_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_TOP_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_TOP_Down");	
+}
+
+Button.alignMid
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_MID_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_MID_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_MID_Down");	
+}
+
+Button.alignBottom
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_BOTTOM_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_BOTTOM_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_BOTTOM_Down");	
+}
+
+Button.distLeft
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_LEFT_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_LEFT_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_LEFT_Down");
+}
+
+Button.distCenter
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_CENTER_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_CENTER_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_CENTER_Down");
+}
+
+Button.distRight
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_RIGHT_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_RIGHT_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_RIGHT_Down");
+}
+
+Button.distTop
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_TOP_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_TOP_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_TOP_Down");
+}
+
+Button.distMid
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_MID_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_MID_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_MID_Down");
+}
+
+Button.distBottom
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_BOTTOM_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_BOTTOM_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_BOTTOM_Down");
+}
+
+Button.matchWidth
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="MATCH_W_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="MATCH_W_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="MATCH_W_Down");
+}
+
+Button.matchHeight
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="MATCH_H_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="MATCH_H_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="MATCH_H_Down");
+}
+
+Button.matchSize
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="MATCH_WH_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="MATCH_WH_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="MATCH_WH_Down");
+}
+
+Button.matchToCanvas
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_Down");
+	selectedUpSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_SELECTED_Up");
+	selectedOverSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_SELECTED_Over");
+	selectedDownSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_SELECTED_Down");
+}
+
+
+
+

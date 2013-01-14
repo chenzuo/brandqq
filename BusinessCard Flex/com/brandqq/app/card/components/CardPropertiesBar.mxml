@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ControlBar xmlns:mx="http://www.adobe.com/2006/mxml" 
+	 creationComplete="init()" width="100%">
+
+<mx:Metadata>
+	[Event(name="fontChange",type="com.brandqq.app.card.events.CardTextEvent")]
+	[Event(name="fontSizeChange",type="com.brandqq.app.card.events.CardTextEvent")]
+	[Event(name="textAlignChange",type="com.brandqq.app.card.events.CardTextEvent")]
+	[Event(name="textColorChange",type="com.brandqq.app.card.events.CardTextEvent")]
+	
+	[Event(name="onLogoPropChange",type="com.brandqq.app.card.events.LogoPropertyEvent")]
+</mx:Metadata>
+
+<mx:Script>
+	<![CDATA[
+		import mx.containers.TabNavigator;
+		import com.brandqq.app.card.events.LogoPropertyEvent;
+		import mx.containers.TitleWindow;
+		import mx.events.IndexChangedEvent;
+		import mx.events.SliderEvent;
+		import mx.events.ColorPickerEvent;
+		import mx.managers.PopUpManager;
+		import mx.core.Application;
+		import mx.controls.Alert;
+		import flash.display.DisplayObject;
+		
+		import com.brandqq.lib.controls.TextEditor;
+		import com.brandqq.lib.util.ColorUtil;
+		import com.brandqq.app.card.events.CardTextEvent;
+		import com.brandqq.app.card.events.LogoPropertyEvent;
+		
+		public function set colorList(value:Array):void
+		{
+			if(value==null)
+			{
+				return;
+			}
+			__colorList=new Array(0x000000,0x333333,0x666666,0x999999,0xCCCCCC,0xFFFFFF);
+			for(var i:int=0;i<value.length;i++)
+			{
+				if(__colorList.indexOf(value[i])==-1)
+				{
+					__colorList.push(ColorUtil.toHexString(uint(value[i])));
+				}
+			}
+			CardTextColor.dataProvider=__colorList;
+			CardSymbolColor.dataProvider=__colorList;
+		}
+		
+		public function set monitorTabNavigator(value:CardTabNavigator):void
+		{
+			__monitorTabNavigator=value;
+		}
+		
+		/*
+		初始化
+		*/
+		private function init():void
+		{
+			__initHeight=this.height;
+			__dispatch=true;
+			__colorList=new Array(0x000000,0x333333,0x666666,0x999999,0xCCCCCC,0xFFFFFF);
+			CardTextColor.dataProvider=__colorList;
+			CardSymbolColor.dataProvider=__colorList;
+		}
+				
+		/* 更改字体 */
+		private function onCardTextFontChange(e:Event):void
+		{
+			if(__dispatch)
+			{
+				this.dispatchEvent(new CardTextEvent(CardTextEvent.FONT_CHANGE,CardTextFont.selectedLabel));
+			}
+		}
+		
+		/* 更改字体大小 */
+		private function onCardTextSizeChange(e:SliderEvent):void
+		{
+			if(__dispatch)
+			{
+				this.dispatchEvent(new CardTextEvent(CardTextEvent.FONT_SIZE_CHANGE,CardTextSize.value));
+			}
+			CardTextSize.value=0;
+		}
+		
+		/* 更改对齐方式 */
+		private function onCardTextAlignChange(e:Event):void
+		{
+			if(__dispatch)
+			{
+				this.dispatchEvent(new CardTextEvent(CardTextEvent.TEXT_ALIGN_CHANGE,CardTextAlign.selectedItem.value));
+			}
+		}
+		
+		/* 更改字体颜色 */
+		private function onCardTextColorChange(e:ColorPickerEvent):void
+		{
+			if(__dispatch)
+			{
+				this.dispatchEvent(new CardTextEvent(CardTextEvent.TEXT_COLOR_CHANGE,CardTextColor.selectedColor));
+			}
+		}
+		
+		
+		/* ------------------public methods------------------ */
+		
+		/*  */
+		public function setProperties(textEditor:TextEditor):void
+		{
+			__dispatch=false;
+			var _font:String=textEditor.format.font;
+			//var _fontSize:uint=uint(textEditor.format.size);
+			var _align:String=textEditor.format.align;
+			var _color:uint=textEditor.textColor;
+			
+			CardTextColor.selectedColor=_color;
+			
+			__dispatch=true;
+		}
+		
+		private function ajustLogoProerties():void
+		{
+			if(__monitorTabNavigator==null)
+			{
+				return;
+			}
+			if(__logoPropWindow==null)
+			{
+				__logoPropWindow=PopUpManager.createPopUp(DisplayObject(Application.application),LogoPropertiesWindow,false);
+				__logoPropWindow.addEventListener(LogoPropertyEvent.CHANGE,onLogoPropertyChange);
+			}
+			else
+			{
+				PopUpManager.addPopUp(__logoPropWindow,DisplayObject(Application.application),false);
+			}
+			__logoPropWindow.monitorLogo=__monitorTabNavigator.currentLogo;
+			PopUpManager.centerPopUp(__logoPropWindow);
+		}
+		
+		private function onLogoPropertyChange(e:LogoPropertyEvent):void
+		{
+			if(__monitorTabNavigator==null)
+			{
+				return;
+			}
+			
+			if(__monitorTabNavigator.currentLogo==null)
+			{
+				return;
+			}
+			
+			var ct:ColorTransform=__monitorTabNavigator.currentLogo.transform.colorTransform;
+			if(ct==null)
+			{
+				ct=new ColorTransform();
+			}
+			switch(e.propName)
+			{
+				case "RM":
+					ct.redMultiplier=e.propValue/100;
+					break;
+				case "RO":
+					ct.redOffset=e.propValue;
+					break;
+				case "GM":
+					ct.greenMultiplier=e.propValue/100;
+					break;
+				case "GO":
+					ct.greenOffset=e.propValue;
+					break;
+				case "BM":
+					ct.blueMultiplier=e.propValue/100;
+					break;
+				case "BO":
+					ct.blueOffset=e.propValue;
+					break;
+				case "AM":
+					ct.alphaMultiplier=e.propValue/100;
+					break;
+				case "AO":
+					ct.alphaOffset=e.propValue;
+					break;
+				case "POSX":
+					if(e.lockFaces)
+					{
+						if(__monitorTabNavigator.frontLogo!=null)
+						{
+							__monitorTabNavigator.frontLogo.x=e.propValue;
+						}
+						if(__monitorTabNavigator.backLogo!=null)
+						{
+							__monitorTabNavigator.backLogo.x=e.propValue;
+						}
+					}
+					else
+					{
+						__monitorTabNavigator.currentLogo.x=e.propValue;
+					}
+					return;
+				case "POSY":
+					if(e.lockFaces)
+					{
+						if(__monitorTabNavigator.frontLogo!=null)
+						{
+							__monitorTabNavigator.frontLogo.y=e.propValue;
+						}
+						if(__monitorTabNavigator.backLogo!=null)
+						{
+							__monitorTabNavigator.backLogo.y=e.propValue;
+						}
+					}
+					else
+					{
+						__monitorTabNavigator.currentLogo.y=e.propValue;
+					}
+					return;
+				case "SIZEW":
+				case "SIZEH":
+					setLogoSize(e);
+					return;
+			}
+			if(e.lockFaces)
+			{
+				if(__monitorTabNavigator.frontLogo!=null)
+				{
+					__monitorTabNavigator.frontLogo.transform.colorTransform=ct;
+				}
+				if(__monitorTabNavigator.backLogo!=null)
+				{
+					__monitorTabNavigator.backLogo.transform.colorTransform=ct;
+				}
+			}
+			else
+			{
+				__monitorTabNavigator.currentLogo.transform.colorTransform=ct;
+			}
+		}
+		
+		private function setLogoSize(e:LogoPropertyEvent):void
+		{
+			var _oldRect:Rectangle;
+			if(e.lockFaces)
+			{
+				if(__monitorTabNavigator.frontLogo!=null)
+				{
+					_oldRect=__monitorTabNavigator.frontLogo.getRect(__monitorTabNavigator.frontLogo.parent);
+					if(e.propName=="SIZEW")
+					{
+						__monitorTabNavigator.frontLogo.width=e.propValue;
+						if(e.lockSize)
+						{
+							__monitorTabNavigator.frontLogo.height=e.propValue*_oldRect.height/_oldRect.width;
+						}
+					}
+					else
+					{
+						__monitorTabNavigator.frontLogo.height=e.propValue;
+						if(e.lockSize)
+						{
+							__monitorTabNavigator.frontLogo.width=e.propValue*_oldRect.width/_oldRect.height;
+						}
+					}
+				}
+				if(__monitorTabNavigator.backLogo!=null)
+				{
+					_oldRect=__monitorTabNavigator.backLogo.getRect(__monitorTabNavigator.backLogo.parent);
+					if(e.propName=="SIZEW")
+					{
+						__monitorTabNavigator.backLogo.width=e.propValue;
+						if(e.lockSize)
+						{
+							__monitorTabNavigator.backLogo.height=e.propValue*_oldRect.height/_oldRect.width;
+						}
+					}
+					else
+					{
+						__monitorTabNavigator.backLogo.height=e.propValue;
+						if(e.lockSize)
+						{
+							__monitorTabNavigator.backLogo.width=e.propValue*_oldRect.width/_oldRect.height;
+						}
+					}
+				}
+			}
+			else
+			{
+				_oldRect=__monitorTabNavigator.currentLogo.getRect(__monitorTabNavigator.currentLogo.parent);
+				if(e.propName=="SIZEW")
+				{
+					__monitorTabNavigator.currentLogo.width=e.propValue;
+					if(e.lockSize)
+					{
+						__monitorTabNavigator.currentLogo.height=e.propValue*_oldRect.height/_oldRect.width;
+					}
+				}
+				else
+				{
+					__monitorTabNavigator.currentLogo.height=e.propValue;
+					if(e.lockSize)
+					{
+						__monitorTabNavigator.currentLogo.width=e.propValue*_oldRect.width/_oldRect.height;
+					}
+				}
+			}
+		}
+		
+		[Bindable]
+		private var __colorList:Array;
+		
+		
+		private var __initHeight:Number;
+		private var __dispatch:Boolean;
+		
+		private var __logoPropWindow:LogoPropertiesWindow;
+		private var __monitorTabNavigator:CardTabNavigator;
+	]]>
+</mx:Script>
+	<mx:Label text="字体：" fontWeight="bold"/>
+	<mx:ComboBox id="CardTextFont" labelField="@name"
+		itemRenderer="com.brandqq.app.card.components.FontItemRender"
+		creationComplete="{CardTextFont.dataProvider=BusinessCard.systemFontsData.CardFonts.Font;}"
+		change="onCardTextFontChange(event)"
+/>
+	<!--mx:Label text="文本对齐：" fontWeight="bold"/>
+	<mx:ComboBox id="CardTextAlign" change="onCardTextAlignChange(event)">
+		<mx:dataProvider>
+			<mx:Array>
+				<mx:Object label="居左" value="left" icon="@Embed(source='../../../../../SystemSkin.swf',symbol='AlignLeft_Up')"/>
+				<mx:Object label="居中" value="center" icon="@Embed(source='../../../../../SystemSkin.swf',symbol='AlignCenter_Up')"/>
+				<mx:Object label="居右" value="right" icon="@Embed(source='../../../../../SystemSkin.swf',symbol='AlignRight_Up')"/>
+			</mx:Array>
+		</mx:dataProvider>
+	</mx:ComboBox-->
+	<mx:Label text="文本颜色：" fontWeight="bold"/>
+	<mx:ColorPicker id="CardTextColor" showTextField="false"
+		 change="onCardTextColorChange(event)"
+	/>
+	<mx:VRule height="20" width="10"/>
+	<mx:Label text="背景图案颜色"/>
+	<mx:ColorPicker id="CardSymbolColor" showTextField="false"
+		 change="onCardTextColorChange(event)"
+	/>
+	<mx:VRule height="20" width="10"/>
+	<mx:Button label="调整Logo..." click="ajustLogoProerties()"/>
+</mx:ControlBar>

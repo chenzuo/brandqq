@@ -1,0 +1,665 @@
+html,body {
+	margin:0px;
+	padding:0px;
+	height:100%;
+	min-height:100%;
+	font-size:14px;
+}
+body.frmBody
+{
+	margin:10px;
+}
+ul,p,form{margin:0px;padding:0px;}
+li{line-height:20px;list-style-type:none;}
+h1{font-size:16px;}
+hr{border-top:1px solid #666;height:0px}
+li.hr{line-height:15px;height:15px;background:url(bg_hr.gif) repeat-x;}
+
+div.box1
+{
+	margin:3px 0px;
+	border:1px solid #0099CC;
+	background-color:#FBFEFF;
+}
+div.box2
+{
+	margin:3px 0px;
+	border:1px solid #FFCC00;
+	background-color:#FFFDF4;
+}
+
+
+#TopContainor
+{
+	background-color:#333;
+}
+
+#Menus
+{
+	margin-left:20px;
+}
+
+#Menus td
+{
+	width:100px;
+	height:28px;
+	line-height:28px;
+	color:#333;
+	font-size:14px;
+	background:url(bg_unactiveMenu.gif) no-repeat;
+	cursor:pointer;
+}
+
+#Menus td.active
+{
+	background:url(bg_activeMenu.gif) no-repeat;
+	font-weight:bold;
+}
+
+#LeftContainor
+{
+	overflow:hidden;
+	background:url(bg_leftPage.jpg) right top no-repeat;
+}
+
+#LeftContainor div
+{
+	padding:5px 0px 0px 10px;
+	font-size:12px;
+}
+
+#LeftContainor ul
+{
+	list-style:none;
+	padding:5px 0px 5px 5px;
+}
+
+#LeftContainor li
+{
+	height:25px;
+	line-height:25px;
+	padding-left:10px;
+	cursor:pointer;
+}
+
+#LeftContainor li.active
+{
+	border:1px solid #CCCCCC;
+	border-right:none;
+	margin-right:-1px;
+	background:#FFF url(bg_subMenu.jpg) no-repeat;
+}
+
+
+#MainContainor
+{
+	background-color:#FFF;
+}
+
+#MainFrame
+{
+	background-color:#FFF;
+}
+
+.clear
+{
+	clear:both;
+}
+
+.clearLine
+{
+	clear:both;
+	font-size:1px;
+	line-height:1px;
+	margin-bottom:-1px;
+}
+
+.floatLeft
+{
+	float:left;
+}
+
+.floatRight
+{
+	float:right;
+}
+.alignLeft
+{
+	text-align:left;
+}
+.alignRight
+{
+	text-align:right;
+}
+.alignCenter
+{
+	text-align:center;
+}
+.clrF00
+{
+	color:#F00;
+}
+.pad5
+{
+	padding:5px;
+}
+
+/*grid*/
+table.grid1
+{
+	border:1px solid #DDD;
+}
+
+table.grid1 th
+{
+	background-color:#F3F3F3;
+	height:22px;
+}
+
+table.grid1 td
+{
+	height:22px;
+	border-bottom:1px dotted #DDD;
+}
+
+table.grid2
+{
+	border:1px solid #DDD;
+}
+
+table.grid2 td
+{
+	height:22px;
+}
+
+/*details*/
+table.details
+{
+	border:none;
+}
+
+table.details input
+{
+	border:1px solid #666;
+}
+
+table.details th
+{
+	width:20%;
+	height:22px;
+	text-align:right;
+	font-weight:normal;
+}
+
+td.highLight
+{
+	background-color:#F3F3F3;
+	font-weight:bold;
+}
+
+
+/**/
+input.txt
+{
+	border:1px solid #666;
+}
+input.longtxt
+{
+	width:90%;
+	border:1px solid #666;
+}
+input.diabledtxt
+{
+	border:1px solid #666;
+	background-color:#F3F3F3;
+}
+input.num
+{
+	border:1px solid #666;
+	width:80px;
+}
+input.cmdConfirm
+{
+	background:url(bg_cmds.gif) 0px 0px no-repeat;
+	width:80px;
+	height:25px;
+	border:none;
+	color:#006699;
+}
+input.cmdGeneral
+{
+	background:url(bg_cmds.gif) 0px -25px no-repeat;
+	width:80px;
+	height:25px;
+	border:none;
+	color:#FF9900;
+}
+input.cmdCancle
+{
+	background:url(bg_cmds.gif) 0px -50px no-repeat;
+	width:80px;
+	height:25px;
+	border:none;
+	color:#999999;
+}
+input.cmd
+{
+	border:1px solid #666;
+	color:#333;
+}
+input.unEditable
+{
+	border:none;
+	background-color:Transparent;
+}
+
+input.editable
+{
+	border:1px solid #333;
+	background-color:#FFF;
+}
+
+textarea
+{
+	border:1px solid #666;
+	width:100%;
+}
+
+/**
+ * Tab 
+ */
+.tabContainor
+{
+	width:99%;
+}
+.tabContainor .tabBox
+{
+	position:relative;
+	overflow:hidden;
+	height:23px;
+}
+.tabContainor .tabBox .tabs
+{
+	position:absolute;
+	top:0;
+	left:0;
+	list-style:none;
+	z-index:1;
+}
+.tabContainor .tabBox .tabs li
+{
+	float:left;
+	display:block;
+	cursor:pointer;
+	width:120px;
+	text-align:center;
+	line-height:22px;
+	height:22px;
+	color:#666;
+}
+.tabContainor .tabBox .tabs li.active
+{
+	background:#fff;
+	border-top-style:solid;
+	border-top-width:1px;
+	border-left-style:solid;
+	border-left-width:1px;
+	border-right-style:solid;
+	border-right-width:1px;
+}
+.tabContainor .body .header
+{
+	margin:5px;
+}
+.tabContainor .body
+{
+	clear:both;
+	margin-top:-1px;
+	border-style:solid;
+	border-width:1px;
+	padding:5px;
+}
+.tabContainor .body .footer
+{
+	text-align:center;
+	padding:8px;
+}
+
+/**
+ * Tab ID
+ */
+.grayTab .tabBox .tabs li.active
+{
+	background:url(bg_tags.gif) 0px 0px repeat-x;
+	border-top-color:#999;
+	border-left-color:#999;
+	border-right-color:#999;
+	color:#333;
+	font-weight:bold;
+}
+.grayTab .body
+{
+	border-color:#999;
+}
+
+
+
+/*links*/
+a:link,a:visited
+{
+	color:#06C;
+	text-decoration:none;
+}
+a:hover
+{
+	color:#C00;
+	text-decoration:underline;
+}
+a.whiteLink:link,a.whiteLink:visited
+{
+	color:#FFF;
+	font-size:12px;
+}
+
+/**/
+img.radio
+{
+	width:16px;
+	height:16px;
+	background:url(bg_radio_check.gif) -16px 0px no-repeat;
+}
+img.radio2
+{
+	width:16px;
+	height:16px;
+	background:url(bg_radio_check.gif) -16px -16px no-repeat;
+}
+img.check
+{
+	width:16px;
+	height:16px;
+	background:url(bg_radio_check.gif) 0px 0px no-repeat;
+}
+img.check2
+{
+	width:16px;
+	height:16px;
+	background:url(bg_radio_check.gif) 0px -16px no-repeat;
+}
+
+img.sortUp1
+{
+	width:15px;
+	height:15px;
+	background:url(bg_sortArrow.gif) 0px 0px no-repeat;
+	margin-bottom:-2px;
+	cursor:pointer;
+}
+img.sortUp2
+{
+	width:15px;
+	height:15px;
+	background:url(bg_sortArrow.gif) -15px 0px no-repeat;
+	margin-bottom:-2px;
+	cursor:pointer;
+}
+img.sortDown1
+{
+	width:15px;
+	height:15px;
+	background:url(bg_sortArrow.gif) 0px -15px no-repeat;
+	margin-bottom:-2px;
+	cursor:pointer;
+}
+img.sortDown2
+{
+	width:15px;
+	height:15px;
+	background:url(bg_sortArrow.gif) -15px -15px no-repeat;
+	margin-bottom:-2px;
+	cursor:pointer;
+}
+
+/*scoreLevels*/
+img.scoreLevel_A
+{
+	width:50px;
+	height:20px;
+	background:url(bg_scoreLevels.gif) 0px -60px no-repeat;
+	margin:0px 5px -2px 5px;
+}
+
+img.scoreLevel_B
+{
+	width:50px;
+	height:20px;
+	background:url(bg_scoreLevels.gif) 0px -40px no-repeat;
+	margin:0px 5px -2px 5px;
+}
+
+img.scoreLevel_C
+{
+	width:50px;
+	height:20px;
+	background:url(bg_scoreLevels.gif) 0px -20px no-repeat;
+	margin:0px 5px -2px 5px;
+}
+
+img.scoreLevel_D
+{
+	width:50px;
+	height:20px;
+	background:url(bg_scoreLevels.gif) 0px 0px no-repeat;
+	margin:0px 5px -2px 5px;
+}
+
+img.resultSta_None
+{
+	width:70px;
+	height:11px;
+	background:url(bg_bmce_result_status.gif) 0px 0px no-repeat;
+	margin:0px 5px -2px 5px;
+}
+
+img.resultSta_Cancled
+{
+	width:70px;
+	height:11px;
+	background:url(bg_bmce_result_status.gif) 0px -12px no-repeat;
+	margin:0px 5px -2px 5px;
+}
+
+img.resultSta_Finished
+{
+	width:70px;
+	height:11px;
+	background:url(bg_bmce_result_status.gif) 0px -25px no-repeat;
+	margin:0px 5px -2px 5px;
+}
+
+img.resultSta_Stored
+{
+	width:70px;
+	height:11px;
+	background:url(bg_bmce_result_status.gif) 0px -37px no-repeat;
+	margin:0px 5px -2px 5px;
+}
+
+/*ubbtoolbar*/
+img.ubb_B
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px 0px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_I
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -20px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_U
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -40px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_L
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -60px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_C
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -80px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_R
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -100px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_IMG
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -120px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_SWF
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -140px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_FLV
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -160px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_VIDEO
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -180px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_AUDIO
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -200px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+img.ubb_LINK
+{
+	width:20px;
+	height:20px;
+	background:url(bg_ubbtools.gif) no-repeat;
+	background-position:0px -220px;
+	margin:1px;
+	border:1px solid #999;
+}
+
+/*ResultView*/
+.ResultView
+{
+	padding:0px 5px 5px 5px;
+}
+
+
+.ResultView .result
+{
+	border:1px solid #999;
+	padding:5px;
+	margin-bottom:8px;
+}
+
+.ResultView .chart
+{
+	border:1px solid #FC0;
+	margin-bottom:8px;
+	padding:0px 5px 5px 5px;
+	background:url(bg_box2.gif) repeat-x;
+}
+
+.ResultView .paper
+{
+	border:1px solid #666;
+	margin-bottom:8px;
+	padding:0px 5px 5px 5px;
+	background:url(bg_box1.gif) repeat-x;
+}
+
+.ResultView .module
+{
+	border:1px solid #666;
+	margin-bottom:8px;
+	padding:0px 5px 5px 5px;
+	background:url(bg_box3.gif) repeat-x;
+}
+
+.ResultView .paper h1,.ResultView .module h1,.ResultView .question h1
+{
+	font-size:14px;
+	font-weight:bold;
+	line-height:30px;
+}
+
+
+.ResultView div ul li
+{
+	font-size:14px;
+	line-height:25px;
+}
+.ResultView div ul li.checked
+{
+	font-weight:bold;
+	color:#F00;
+}
+

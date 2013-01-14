@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CardTemplates>
+  <!--模板风格-->
+  <Styles>
+    <Style name="全部" code="" />
+    <Style name="常规" code="S01" />
+    <Style name="活泼" code="S02" />
+  </Styles>
+  <!--模板-->
+  <Temps>
+    <Temp style="S01" guid="18C685CBC3A1116AF8CDBC259D25ED3A" name="标准A型" back="1" />
+    <Temp style="S01" guid="83BB90EAE488852BC94CBD6B3616AD0B" name="标准B型" back="1" />
+    <Temp style="S01" guid="1D846C1D775775390565BDC937D3D9E8" name="标准C型" back="1" />
+    <Temp style="S02" guid="E892F1792105CA7FCA3DC1243924E71E" name="标准D型" back="1" />
+    <Temp style="S01" guid="45AC38F1ACA11F8A8ECDC14DA298356E" name="标准E型" back="1" />
+    <Temp style="S01" guid="A36246A79ABF3DD51342C2A76ADA7CC7" name="标准F型" back="1" />
+    <Temp style="S01" guid="6E036893A37D77F8E35DC3061AFB8CF4" name="标准G型" back="1" />
+    <Temp style="S01" guid="75745638D1C672441CA7C7483C45E646" name="标准H型" back="1" />
+    <Temp style="S02" guid="33BC30A8BA56AA5C82EDC7C79F63115C" name="活泼A型" back="0" />
+    <Temp style="S01" guid="D8AABA9E176272CF47B7C7FB14781A68" name="活泼B型（竖）" back="1" />
+    <Temp style="S01" guid="36CFDAD2A218F42C2C17C82237A51F34" name="标准I型" back="1" />
+  </Temps>
+</CardTemplates>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Colors>
+	<Color name="快乐的" tip="快乐的，好玩的，有活力的" from="0xFF0000" to="0xFF9600" />
+	<Color name="可信赖的" tip="可信赖的" from="0xFF6D00" to="0xFFCF00" />
+	<Color name="友好的" tip="友好的，热情的" from="0xFFA600" to="0xFFCF00" />
+	<Color name="可靠体贴的" tip="可靠体贴的" from="0x637D08" to="0xB5E310" />
+	<Color name="朋友和家庭导向的" tip="朋友和家庭导向的" from="0xCEFF00" to="0x18FF00" />
+	<Color name="关爱呵护的" tip="关爱呵护的" from="0x0092FF" to="0x00FF94" />
+	<Color name="温和敏感的" tip="安静的，温和的，敏感的" from="0x007DFF" to="0x00EFFF" />
+	<Color name="沉着的" tip="沉着的，有条不紊的，内敛的，细心的" from="0x007DFF" to="0x3200FF" />
+	<Color name="有把握的" tip="有把握的，自信的，有优越感的" from="0x4A00FF" to="0xC600FF" />
+	<Color name="浪漫时髦的" tip="浪漫的，时髦的" from="0xAD00FF" to="0xFF00CE" />
+	<Color name="可爱的女子气的" tip="可爱的，女子气的" from="0xFF00DE" to="0xFF0063" />
+	<Color name="冒险的" tip="冒险的，大胆的，率真的，冲动的" from="0xFF006B" to="0xFF5900" />
+	<Color name="社交的" tip="社交的" from="0x007DFF" to="0x00EFFF" />
+	<Color name="权威的" tip="权威的，受尊重的" from="0x6B007B" to="0x003C73" />
+	<Color name="领导者" tip="领导者" from="0xE7005A" to="0x964100" />
+	<Color name="成熟老练的" tip="成熟老练的" from="0xBD00BD" to="0x6B006B" />
+</Colors>

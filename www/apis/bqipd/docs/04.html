@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Proxy代理程序示例代码 - 互联网推广诊断工具API - BrandQQ APIs</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<a href="/"><img src="/skin/logo_s.gif" alt="返回brandQQ首页" style="border:none" /></a>
+
+<div class="idx"><a href="./">返回</a></div>
+
+<h1>Proxy代理程序示例代码</h1>
+
+<h2>ASP示例代码<a name="1"></a></h2>
+
+<blockquote>
+<pre>
+&lt;%@LANGUAGE="VBScript" CODEPAGE="936"%&gt;
+&lt;%
+Option Explicit
+
+Dim domain
+Dim keywords
+
+Dim xmlHttp
+Dim postData
+
+domain=Request("domain")
+keywords=Request("keywords")
+
+If domain="" OR keywords="" Then
+    Response.End
+End If
+
+Set xmlHttp=Server.CreateObject("Microsoft.XMLHTTP")    'MSXML2.XMLHTTP
+postData = "ajaxaction=bqipd&u="&domain&"&q="+keywords
+xmlHttp.Open "POST","http://www.brandqq.com/AjaxPostResponse.aspx",false
+
+xmlHttp.SetRequestHeader "Content-Type","application/x-www-form-urlencoded"
+xmlHttp.Send(postData)
+
+Response.Charset="GB2312"
+Response.Write xmlHttp.responseText
+Response.End
+%&gt;
+</pre>
+</blockquote>
+
+<h2>ASP.NET示例代码(c#)<a name="2"></a></h2>
+<blockquote>
+<pre>
+&lt;%@ Page Language="C#" %&gt;
+&lt;%@ Import Namespace="System.Net" %&gt;
+&lt;%@ Import Namespace="System.IO" %&gt;
+
+&lt;script runat="server"&gt;
+    void Page_Load(object s, EventArgs e)
+    {
+        if (Request["domain"] == null || Request["keywords"] == null)
+        {
+            return;
+        }
+
+        string domain = Request["domain"].Trim();
+        string keywords = Request["keywords"].Trim();
+
+
+        WebRequest request = WebRequest.Create("http://www.brandqq.com/AjaxPostResponse.aspx");
+        request.Method = "POST";
+        request.ContentType = "application/x-www-form-urlencoded";
+        
+        byte[] data = Encoding.UTF8.GetBytes("AjaxAction=bqipd&u=" + domain + "&q=" + keywords);
+
+        Stream dataStream = request.GetRequestStream();
+        dataStream.Write(data, 0, data.Length);
+        dataStream.Close();
+        
+
+        WebResponse response = request.GetResponse();
+
+        StreamReader reader = new StreamReader(response.GetResponseStream());
+        string xml = reader.ReadToEnd();
+        reader.Close();
+        
+        Response.ContentEncoding = Encoding.UTF8;
+        Response.ContentType = "text/xml";
+        Response.Write(xml);
+        Response.End();
+    }
+&lt;/script&gt;
+</pre>
+</blockquote>
+
+
+</body>
+</html>

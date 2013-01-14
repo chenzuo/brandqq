@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" 
+	creationComplete="init()" showCloseButton="true"
+	title="当前用户信息" styleName="userWindow" 
+	titleIcon="@Embed(source='../../../../../SystemSkin.swf',symbol='UserIcon_Active')"
+	close="onClose()" width="350">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			import com.brandqq.user.User;
+			
+			private function init():void
+			{
+				EmailLabel.text=User.current.email;
+				NameLabel.text=User.current.name==""?"&lt;未设置&gt;":User.current.name;
+				if(User.current.comName!="")
+				{
+					ComRow.visible=true;
+					CompanyLabel.text=User.current.comName;
+				}
+			}
+			
+			private function onClose():void
+			{
+				PopUpManager.removePopUp(this);
+			}
+		]]>
+	</mx:Script>
+	<mx:HBox width="100%" verticalAlign="middle">
+		<mx:Label text="邮件地址：" fontWeight="bold"/>
+		<mx:Label text="..." id="EmailLabel"/>
+	</mx:HBox>
+	<mx:HBox width="100%" verticalAlign="middle">
+		<mx:Label text="用户名称：" fontWeight="bold"/>
+		<mx:Label text="..." id="NameLabel"/>
+	</mx:HBox>
+	<mx:HBox id="ComRow" width="100%" verticalAlign="middle" visible="false">
+		<mx:Label text="公司名称：" fontWeight="bold"/>
+		<mx:Label text="..." id="CompanyLabel"/>
+	</mx:HBox>
+	<mx:ControlBar horizontalAlign="right">
+		<mx:LinkButton label="修改资料"/>
+		<mx:Spacer width="100%"/>
+		<mx:Button label="确定"/>
+	</mx:ControlBar>
+	
+</mx:TitleWindow>

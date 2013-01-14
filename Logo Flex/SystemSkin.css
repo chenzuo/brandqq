@@ -1,0 +1,300 @@
+/* CSS file */
+Application
+{
+	font-family:"宋体";
+	font-size:12px;
+}
+ControlBar
+{
+	paddingTop:5px;
+	paddingBottom:5px;
+}
+Panel
+{
+	paddingTop:5px;
+	paddingLeft:5px;
+	paddingBottom:5px;
+	paddingRight:5px;
+}
+Panel.editor
+{
+	backgroundColor:#333333;
+	backgroundAlpha:1;
+	horizontalAlign:center;
+	verticalAlign:middle;
+}
+
+Panel.busiCard
+{
+	backgroundColor:#ffffff;
+	backgroundAlpha:1;
+	borderColor:#ff9900;
+	borderAlpha:1;
+}
+VBox.thumbnail
+{
+	paddingTop:5px;
+	paddingLeft:5px;
+	paddingBottom:5px;
+	paddingRight:5px;
+}
+
+Button
+{
+	cornerRadius:0;
+}
+
+Button.alignLeft
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_LEFT_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_LEFT_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_LEFT_DOWN");
+}
+
+Button.alignCenter
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_CENTER_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_CENTER_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_CENTER_DOWN");	
+}
+
+Button.alignRight
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_RIGHT_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_RIGHT_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_RIGHT_DOWN");	
+}
+
+Button.alignTop
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_TOP_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_TOP_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_TOP_DOWN");	
+}
+
+Button.alignMid
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_MID_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_MID_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_MID_DOWN");	
+}
+
+Button.alignBottom
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_BOTTOM_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_BOTTOM_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ALIGN_BOTTOM_DOWN");	
+}
+
+Button.distLeft
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_LEFT_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_LEFT_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_LEFT_DOWN");
+}
+
+Button.distCenter
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_CENTER_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_CENTER_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_CENTER_DOWN");
+}
+
+Button.distRight
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_RIGHT_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_RIGHT_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_RIGHT_DOWN");
+}
+
+Button.distTop
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_TOP_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_TOP_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_TOP_DOWN");
+}
+
+Button.distMid
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_MID_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_MID_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_MID_DOWN");
+}
+
+Button.distBottom
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="DIST_BOTTOM_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="DIST_BOTTOM_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="DIST_BOTTOM_DOWN");
+}
+
+Button.matchWidth
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="MATCH_W_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="MATCH_W_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="MATCH_W_DOWN");
+}
+
+Button.matchHeight
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="MATCH_H_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="MATCH_H_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="MATCH_H_DOWN");
+}
+
+Button.matchSize
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="MATCH_WH_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="MATCH_WH_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="MATCH_WH_DOWN");
+}
+ 
+Button.matchToCanvas
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_UP");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_OVER");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_DOWN");
+	selectedUpSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_SELECTED_Up");
+	selectedOverSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_SELECTED_OVER");
+	selectedDownSkin:Embed(source="SystemSkin.swf", symbol="MATCH_CANVAS_SELECTED_DOWN");
+}
+
+Button.step1
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="StepButton1_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="StepButton1_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="StepButton1_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="StepButton1_Disabled");
+	width:80;
+	height:34;
+}
+Button.step2
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="StepButton2_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="StepButton2_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="StepButton2_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="StepButton2_Disabled");
+	width:80;
+	height:34;
+}
+Button.step3
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="StepButton3_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="StepButton3_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="StepButton3_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="StepButton3_Disabled");
+	width:80;
+	height:34;
+}
+Button.step4
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="StepButton4_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="StepButton4_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="StepButton4_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="StepButton4_Disabled");
+	width:80;
+}
+Button.step5
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="StepButton5_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="StepButton5_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="StepButton5_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="StepButton5_Disabled");
+	width:80;
+	height:34;
+}
+
+Button.styleBold
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="Bold_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="Bold_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="Bold_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="Bold_Disabled");
+	selectedUpSkin:Embed(source="SystemSkin.swf", symbol="Bold_SelectedUp");
+	selectedOverSkin:Embed(source="SystemSkin.swf", symbol="Bold_SelectedOver");
+	selectedDownSkin:Embed(source="SystemSkin.swf", symbol="Bold_SelectedDown");
+}
+
+Button.styleItalic
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="Italic_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="Italic_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="Italic_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="Italic_Disabled");
+	selectedUpSkin:Embed(source="SystemSkin.swf", symbol="Italic_SelectedUp");
+	selectedOverSkin:Embed(source="SystemSkin.swf", symbol="Italic_SelectedOver");
+	selectedDownSkin:Embed(source="SystemSkin.swf", symbol="Italic_SelectedDown");
+}
+Button.aligns
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="Align_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="Align_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="Align_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="Align_Disabled");
+}
+Button.zoomin
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ZoomIn_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ZoomIn_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ZoomIn_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="ZoomIn_Disabled");
+}
+Button.zoomout
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ZoomOut_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ZoomOut_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ZoomOut_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="ZoomOut_Disabled");
+}
+Button.clockwise
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="ClockWise_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="ClockWise_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="ClockWise_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="ClockWise_Disabled");
+}
+Button.anticlockwise
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="AntiClockWise_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="AntiClockWise_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="AntiClockWise_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="AntiClockWise_Disabled");
+}
+
+Button.close
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="CloseButton_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="CloseButton_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="CloseButton_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="CloseButton_Disabled");
+}
+Button.steps
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="StepButton_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="StepButton_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="StepButton_Down");
+	disabledSkin:Embed(source="SystemSkin.swf", symbol="StepButton_Disabled");
+}
+
+TitleWindow.active
+{
+	borderColor:#FF9900;
+	borderAlpha:1;
+}
+
+.userWindow
+{
+	borderColor:#EEEEEE;
+	borderAlpha:1;
+	backgroundColor:#EEEEEE;
+	backgroundAlpha:1;
+}
+.userStatusButtonActive
+{
+	icon:Embed(source="SystemSkin.swf", symbol="UserIcon_Active");
+}
+
+.userStatusButtonUnActive
+{
+	icon:Embed(source="SystemSkin.swf", symbol="UserIcon_UnActive");
+}

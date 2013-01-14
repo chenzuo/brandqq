@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="100%" height="100%" 
+	title="保存Logo " xmlns:qqLibLogo="com.brandqq.lib.logo.*">
+	
+	<mx:Metadata>
+		[Event(name="newLogo",type="com.brandqq.app.logo.SystemEvent")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import flash.profiler.showRedrawRegions;
+			import flash.net.URLLoader;
+			import mx.controls.Alert;
+			
+			import com.brandqq.IO.FileEnum;
+			import com.brandqq.IO.FileWriter;
+			import com.brandqq.user.User;
+			import com.brandqq.user.UserGuid;
+			import com.brandqq.Resources.Requests;
+			import com.brandqq.lib.events.DataLoadEvent;
+			import com.brandqq.lib.util.NetUtil;
+			import com.brandqq.lib.logo.LogoFile;
+			import com.brandqq.lib.util.StringUtil;
+			import com.brandqq.app.logo.SystemEvent;
+			
+			public function rendGraphic(file:LogoFile):void
+			{
+				Logo.logoFile=file;
+				SaveLogoButton.enabled=true;
+				BusiCardPanel.visible=false;
+			}
+			
+			private function saveLogo():void
+			{
+				if(StringUtil.trim(LogoTitle.text)=="")
+				{
+					LogoTitle.setFocus();
+					Message.text="请输入Logo名称！";
+					Message.setStyle("color",0xFF0000);
+					return;
+				}
+				
+				if(!User.loginStatus)
+				{
+					Message.text="您目前处于未登录状态，请登录！";
+					Message.setStyle("color",0xFF0000);
+					return;
+				}
+				
+				if(__savedLogoGuid=="")
+				{
+					__savedLogoGuid=StringUtil.newGuid;
+				}
+				
+				Logo.logoFile.title=LogoTitle.text;
+				Logo.logoFile.guid=__savedLogoGuid;
+				Logo.logoFile.uid=User.current.uid;
+				Logo.logoFile.date=StringUtil.currentDateString;
+				
+				Message.text="正在保存，请稍候......";
+				Message.setStyle("color",0x009900);
+				
+				var _writer:FileWriter=new FileWriter(Logo.logoFile);
+				_writer.addEventListener(DataLoadEvent.ON_LOADED,function(e:DataLoadEvent):void
+					{
+						Message.text="Logo: "+Logo.logoFile.title+" 已成功保存！";
+						Message.setStyle("color",0x009900);
+						BusiCardPanel.visible=true;
+						SaveLogoButton.enabled=false;
+						NewButton.enabled=true;
+					}
+				);
+				_writer.addEventListener(DataLoadEvent.ON_ERROR,function(e:DataLoadEvent):void
+					{
+						Message.text="Logo: "+Logo.logoFile.title+" 保存失败！";
+						Message.setStyle("color",0xFF0000);
+					}
+				);
+				_writer.save();
+			}
+			
+			private function createNewLogo():void
+			{
+				__savedLogoGuid="";
+				this.dispatchEvent(new SystemEvent(SystemEvent.NEWLOGO,"newLogo"));
+			}
+			
+			private function createBusinessCard():void
+			{
+				if(__savedLogoGuid=="")
+				{
+					Alert.show("请先保存当前编辑的Logo!");
+					return;
+				}
+				
+				var _loader:URLLoader=new URLLoader();
+				_loader.addEventListener(Event.COMPLETE,function(e:Event):void
+				{
+					NetUtil.getUrl("/flexLib/Businesscard.swf");
+					CardProgress.label="正在导向名片设计...";
+				});
+				CardButton.enabled=false;
+				NewButton.enabled=false;
+				CardProgress.visible=true;
+				CardProgress.label="正在更新数据...";
+				_loader.load(Requests.userUpdateGuidRequest(new UserGuid(UserGuid.LOGO,__savedLogoGuid)));
+			}
+			
+			private var __savedLogoGuid:String="";
+		]]>
+	</mx:Script>
+	 
+	<mx:HBox width="100%" height="100%">
+		<mx:VBox width="200" height="100%" verticalAlign="top" horizontalAlign="center">
+			<mx:Label text="预览"/>
+			<qqLibLogo:LogoGraphic id="Logo"/>
+		</mx:VBox>
+		
+		<mx:VBox width="100%" height="100%">
+			<mx:Label text="Logo名称："/>
+			<mx:TextInput width="60%" maxChars="30" id="LogoTitle"/>
+			<mx:Label text="加入您对Logo的说明："/>
+			<mx:TextArea width="80%" height="50" maxChars="200" wordWrap="true" id="LogoDescription"/>
+			<mx:HBox width="100%" verticalAlign="middle">
+				<mx:Button id="SaveLogoButton" label="保存Logo" click="saveLogo()"/>
+				<mx:Label fontWeight="bold" id="Message"/>
+			</mx:HBox>
+			</mx:VBox>
+	</mx:HBox>
+	<mx:Panel id="BusiCardPanel" width="100%" layout="vertical"
+		showEffect="BusiCardPanelShowEffect"
+		title="接下来：开始创作名片..." styleName="busiCard" 
+		dropShadowEnabled="false" horizontalAlign="center">
+		<mx:Image source="/flexLib/BusinessCardSteps.swf"/>
+		<mx:ControlBar horizontalAlign="right">
+			<mx:ProgressBar labelPlacement="left" indeterminate="true" id="CardProgress" visible="false"/>
+			<mx:Button label="开始创作名片" id="CardButton" click="createBusinessCard()"/>
+		</mx:ControlBar>
+	</mx:Panel>
+	<mx:ControlBar horizontalAlign="right">
+		<mx:Label text="希望重新创作一个Logo？点击这里"/>
+		<mx:Button label="重新创作一个Logo" id="NewButton" enabled="false" click="createNewLogo()"/>
+	</mx:ControlBar>
+	
+	<mx:Fade id="BusiCardPanelShowEffect" alphaFrom="0" alphaTo="100" duration="300"/>
+</mx:Panel>

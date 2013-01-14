@@ -1,0 +1,6 @@
+categoryIcons	分类图标
+fontsIcon	字体图标
+Logos		完成的logo
+LogoSamples	行业样例
+LogoUploads	上传的logo
+symbols		图形元素

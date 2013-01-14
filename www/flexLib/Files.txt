@@ -1,0 +1,24 @@
+Path&File			RW		Remark
+-------------------------------------------------------------------
+Files				RW		名片和Logo文件，(RW)
+Files\Cards					名片文件
+Files\Logos					Logo文件
+
+Glyphs\LogoSymbols		R		Logo图形轮廓
+
+Thumbnails\Cards		RW		名片缩略图
+Thumbnails\Cards\F				名片缩略图(正面)
+Thumbnails\Cards\B				名片缩略图(背面)
+Thumbnails\CardTemps\F				名片模板缩略图(正面)
+Thumbnails\CardTemps\B				名片模板缩略图(背面)
+Thumbnails\LogoCategories	R		Logo分类图标
+Thumbnails\Logos		RW		Logo缩略图
+Thumbnails\LogoSymbols		R		Logo图形缩略图
+Thumbnails\SysFonts		R		系统字体图标
+
+Xmls\CardTemplates.xml				名片模板列表
+Xmls\LogoSymbolCategories.xml			Logo图形分类列表
+Xmls\SysColors.xml				系统颜色
+Xmls\SysFonts.xml				系统字体
+Xmls\SysIndustries.xml				系统行业分类
+Xmls\Logo_Cate_(*).xml				Logo图形子分类

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+常用邮件格式模板
+-->
+<MailTemplates>
+  <!--
+  用户注册邮件：
+  参数：
+  {0} 电子邮件地址
+  {1} 登录密码
+  -->
+  <Template name="Register" html="true">
+    <title><![CDATA[欢迎您加入BrandQQ]]></title>
+    <body><![CDATA[欢迎您加入BrandQQ,您的登录帐号：{0}\n\n登录密码：{1}\n\n登录到BrandQQ.com http://www.brandqq.com \n\n-------------------------------------------\n\n迈迪品牌管理 http://www.foresight.net.cn]]></body>
+  </Template>
+  
+  <!--
+  找回密码的提示邮件：
+  参数：
+  {0} 电子邮件地址
+  {1} Guid
+  -->
+  <Template name="ForegetPass" html="true">
+    <title><![CDATA[您在BrandQQ的密码提示]]></title>
+    <body><![CDATA[请点击下方的链接,以便重新设置您的登录密码\n\n如果您不能点击链接,请复制下方的地址到您的网页浏览器地址栏中进行访问!\n\nhttp://www.brandqq.com/resetpwd.aspx?email={0}&guid={1}\n\n(注:上述链接地址只能有效使用一次,第二次重置密码时,请从BrandQQ.com获取新的提示邮件\n\n)]]></body>
+  </Template>
+
+  <!--
+  修改密码的提示邮件：
+  参数：
+  {0} 时间
+  {1} Pass
+  {2} Email
+  -->
+  <Template name="ResetPass" html="true">
+    <title><![CDATA[您更新了在BrandQQ的登录密码!]]></title>
+    <body><![CDATA[您于{0}更新了在BrandQQ的登录密码。\n\n新密码是：{1}\n\n您的登录帐号是：{2}\n\nhttp://www.brandQQ.com]]></body>
+  </Template>
+
+  <!--
+  测试完成通知邮件：
+  参数：
+  -->
+  <Template name="BMCETestFinish" html="true">
+    <title><![CDATA[]]></title>
+    <body><![CDATA[]]></body>
+  </Template>
+  
+  <!--
+  测试结果分享邮件：
+  参数：
+  {0} 名字
+  {1} 邮件地址
+  {2} 标志串
+  {3} 留言
+  -->
+  <Template name="BMCEResultShare" html="true">
+    <title><![CDATA[{0}与您分享BrandQQ的品牌管理能力测试结果!]]></title>
+    <body><![CDATA[您好：\n\n您的朋友 {0} 参加了一次BrandQQ的品牌管理能力测试,并将测试的结果与您分享。\n\n分享链接：http://www.brandqq.com/bmce/share/?{2}\n\n以下是他(她)给您的留言：\n{3}他(她)还特别嘱咐您，要是回复他(她)的话，请回复到：{1}\n\n欢迎访问：http://www.brandQQ.com \n\n]]></body>
+  </Template>
+  
+  
+</MailTemplates>

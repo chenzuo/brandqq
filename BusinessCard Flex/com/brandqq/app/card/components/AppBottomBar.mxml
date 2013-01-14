@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ControlBar xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+
+	<mx:Metadata>
+		[Event(name="onSave",type="com.brandqq.app.card.events.AppStepEvent")]
+	</mx:Metadata>
+
+	<mx:Script>
+		<![CDATA[
+			import mx.containers.Panel;
+			import mx.containers.ViewStack;
+			import com.brandqq.app.card.events.AppStepEvent;
+			
+			private function setView():void
+			{
+				switch(__monitorViewStack.selectedIndex)
+				{
+					case 0://选择模板
+						Button1.visible=true;
+						Button2.visible=false;
+						Button3.visible=false;
+						Button4.visible=false;
+						Button5.visible=false;
+						this.setChildIndex(Button1,this.numChildren-1);
+						break;
+					case 1://编辑
+						Button1.visible=false;
+						Button2.visible=true;
+						Button3.visible=true;
+						Button4.visible=false;
+						Button5.visible=false;
+						this.setChildIndex(Button3,this.numChildren-1);
+						this.setChildIndex(Button2,this.numChildren-2);
+						break;
+					case 2://保存
+						Button1.visible=false;
+						Button2.visible=false;
+						Button3.visible=false;
+						Button4.visible=true;
+						Button5.visible=true;
+						this.setChildIndex(Button5,this.numChildren-1);
+						this.setChildIndex(Button4,this.numChildren-2);
+						break;
+				}
+			}
+			
+			public function set monitorViewStack(value:ViewStack):void
+			{
+				__monitorViewStack=value;
+			}
+			
+			public function set monitorPanel(value:Panel):void
+			{
+				__monitorPanel=value;
+			}
+			
+			private function stepsButtonClick(index:uint):void
+			{
+				switch(index)
+				{
+					case 0://开始编辑
+						__monitorViewStack.selectedIndex=1;
+						break;
+					case 1://选择模板
+						__monitorViewStack.selectedIndex=0;
+						break;
+					case 2://预览/保存
+						__monitorViewStack.selectedIndex=2;
+						break;
+					case 3://返回编辑
+						__monitorViewStack.selectedIndex=1;
+						break;
+					case 4://保存
+						this.dispatchEvent(new AppStepEvent(AppStepEvent.SAVE));
+						break;
+				}
+				setView();
+			}
+			
+			private var __monitorViewStack:ViewStack;
+			private var __monitorPanel:Panel;
+		]]>
+	</mx:Script>
+		
+
+	<mx:Button id="SwitchLeftPanelButton" styleName="switchLeftPanelButton"
+			toggle="true" selected="true"
+			click="{
+						if(SwitchLeftPanelButton.selected)
+						{
+							__monitorPanel.width=200;
+							__monitorPanel.visible=true;
+						}
+						else
+						{
+							__monitorPanel.width=0;
+							__monitorPanel.visible=false;
+						}
+					}"
+	/>
+	<mx:Spacer width="100%"/>
+	<mx:Button id="Button2" label="选择模板" click="stepsButtonClick(1)" visible="false"/>
+	<mx:Button id="Button3" label="预览/保存名片" click="stepsButtonClick(2)" visible="false"/>
+	<mx:Button id="Button4" label="返回编辑" click="stepsButtonClick(3)" visible="false"/>
+	<mx:Button id="Button5" label="保存名片" click="stepsButtonClick(4)" visible="false"/>
+	<mx:Button id="Button1" label="开始编辑" click="stepsButtonClick(0)"/>
+</mx:ControlBar>

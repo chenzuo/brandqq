@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
+	horizontalAlign="center" verticalAlign="middle" verticalGap="10" backgroundColor="0x333333"
+	creationComplete="init()" autoLayout="true">
+	
+	<mx:Metadata>
+		[Event(name="onTextRending",type="com.brandqq.app.card.events.AppStepEvent")]
+		[Event(name="onTextRended",type="com.brandqq.app.card.events.AppStepEvent")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.brandqq.lib.graphic.Thumbnail;
+			import com.brandqq.lib.graphic.Glyph;
+			import mx.controls.Label;
+			import mx.managers.CursorManager;
+			import mx.controls.Alert;
+			import com.brandqq.IO.FileReader;
+			import com.brandqq.lib.card.*;
+			import com.brandqq.lib.logo.*;
+			import com.brandqq.lib.controls.SuperCanvas;
+			import com.brandqq.lib.graphic.IVector;
+			import com.brandqq.lib.graphic.Symbol;
+			import com.brandqq.lib.graphic.Text;
+			import com.brandqq.lib.events.DataLoadEvent;
+			import com.brandqq.lib.util.StringUtil;
+			import com.brandqq.lib.util.PNGEncoder;
+			import com.brandqq.Resources.Requests;
+			import com.brandqq.app.card.events.AppStepEvent;
+			
+			public function get cardFile():CardFile
+			{
+				return __cardFile;
+			}
+			
+			public function updateThumbnails():void
+			{
+				if(__cardFile==null)
+				{
+					return;
+				}
+				if(__cardFile.frontFace==null)
+				{
+					return;
+				}
+				__cardFile.frontFace.thumbnail=new Thumbnail(getFaceThumbnail(__frontFaceContainer,__cardFile.frontFace.bgColor));
+				
+				if(__cardFile.backFace!=null)
+				{
+					__cardFile.backFace.thumbnail=new Thumbnail(getFaceThumbnail(__backFaceContainer,__cardFile.backFace.bgColor));
+				}
+			}
+			
+			public function zoomPreview():void
+			{
+				if(__frontCanvas==null)
+				{
+					return;
+				}
+				var _scale:Number;
+				switch(BusinessCard.CardPreviewZoomFactor)
+				{
+					case 2:
+						_scale=1.5;
+						break;
+					case 3:
+						_scale=2;
+						break;
+					default:
+						_scale=1;
+						break;
+				}
+				
+				__frontCanvas.scaleX=__frontCanvas.scaleY=_scale;
+				if(__backCanvas!=null)
+				{
+					__backCanvas.scaleX=__backCanvas.scaleY=_scale;
+				}
+			}
+			
+			public function rendFile(file:CardFile):void
+			{
+				this.removeAllChildren();
+				CursorManager.setBusyCursor();
+				this.dispatchEvent(new AppStepEvent(AppStepEvent.TEXT_RENDING));
+				
+				__cardFile=file;
+				__waitingLabel=new Label();
+				__waitingLabel.text="准备渲染文字......";
+				__waitingLabel.setStyle("color",0xffffff);
+				addChild(__waitingLabel);
+				
+				__textGlyphIndex=0;
+				__allTexts=new Array();
+				
+				for each(var objFT:Text in __cardFile.frontFace.texts)
+				{
+					if(StringUtil.trim(objFT.string)!="" && BusinessCard.RendedTextList.indexOf(objFT)==-1)
+					{
+						__allTexts.push(objFT);
+					}
+				}
+				
+				if(__cardFile.backFace!=null)
+				{
+					for each(var objBT:Text in __cardFile.backFace.texts)
+					{
+						if(StringUtil.trim(objBT.string)!="" && BusinessCard.RendedTextList.indexOf(objBT)==-1)
+						{
+							__allTexts.push(objBT);
+						}
+					}
+				}
+				
+				loadTextGlyph();
+			}
+			
+			
+			private function loadTextGlyph():void
+			{
+				if(__textGlyphIndex>=__allTexts.length)
+				{
+					rend();
+					return;
+				}
+				
+				var objText:Text=Text(__allTexts[__textGlyphIndex]);
+				//Alert.show("objText:"+objText.toString()); 
+				__reader=new FileReader(Requests.textGlyphRequest(objText.string,objText.font,objText.fontSize,objText.style));
+				__reader.addEventListener(DataLoadEvent.ON_OPEN,function(e:DataLoadEvent):void
+					{
+						__waitingLabel.text="渲染文字："+objText.string+"......["+(__textGlyphIndex+1)+" of "+__allTexts.length+"]";
+					}
+				);
+				__reader.addEventListener(DataLoadEvent.ON_LOADED,function(e:DataLoadEvent):void
+					{
+						try
+						{
+							objText.glyph=new Glyph(__reader.fileBytes);
+							BusinessCard.RendedTextList.push(objText);
+						}catch(err:Error)
+						{
+							//Alert.show("objText.glyph:"+err);
+						}
+						finally
+						{
+							__textGlyphIndex++;
+							loadTextGlyph();
+						}
+					}
+				);
+				__reader.addEventListener(DataLoadEvent.ON_ERROR,function(e:DataLoadEvent):void
+					{
+						//Alert.show(e+'');
+						__textGlyphIndex++;
+						loadTextGlyph();
+					}
+				);
+				__reader.read();
+			}
+			
+			private function rend():void
+			{
+				this.removeAllChildren();
+				try{
+				var newSymbol:Symbol;
+				__frontCanvas=new SuperCanvas();
+				__frontCanvas.toolTip="正面预览";
+				__frontCanvas.setStyle("backgroundColor",__cardFile.frontFace.bgColor);
+				__frontCanvas.width=__cardFile.width;
+				__frontCanvas.height=__cardFile.height;
+				
+				__frontFaceContainer=new CardFaceContainer();
+				//add elements
+				for each(var objFS:Symbol in __cardFile.frontFace.symbols)
+				{
+					newSymbol=Symbol.createFromBytes(objFS.getBytes());
+					newSymbol.rend();
+					__frontFaceContainer.addChild(newSymbol);
+				}
+				
+				for each(var objFT:Text in __cardFile.frontFace.texts)
+				{
+					objFT.rend();
+					objFT.x=objFT.getAlignedRect().x;
+					objFT.y=objFT.getAlignedRect().y;
+					__frontFaceContainer.addChild(objFT);
+				}
+				
+				if(__cardFile.frontFace.hasLogo)
+				{
+					var objFrontLogo:DisplayObject=__frontFaceContainer.addChild(new LogoGraphic(__cardFile.logoFile));
+					objFrontLogo.x=__cardFile.frontFace.logoRect.x;
+					objFrontLogo.y=__cardFile.frontFace.logoRect.y;
+				}
+				
+				__frontCanvas.addChild(__frontFaceContainer);
+				addChild(__frontCanvas);
+				
+				if(__cardFile.backFace!=null)
+				{
+					__backCanvas=new SuperCanvas();
+					__backCanvas.toolTip="背面预览";
+					__backCanvas.setStyle("backgroundColor",__cardFile.backFace.bgColor);
+					__backCanvas.width=__cardFile.width;
+					__backCanvas.height=__cardFile.height;
+					
+					__backFaceContainer=new CardFaceContainer();
+					
+					for each(var objBS:Symbol in __cardFile.backFace.symbols)
+					{
+						newSymbol=Symbol.createFromBytes(objBS.getBytes());
+						newSymbol.rend();
+						__backFaceContainer.addChild(newSymbol);
+					}
+					
+					for each(var objBT:Text in __cardFile.backFace.texts)
+					{
+						objBT.rend();
+						__backFaceContainer.addChild(objBT);
+						objBT.x=objBT.getAlignedRect().x;
+						objBT.y=objBT.getAlignedRect().y;
+					}
+					
+					if(__cardFile.backFace.hasLogo)
+					{
+						var objBackLogo:DisplayObject=__backFaceContainer.addChild(new LogoGraphic(__cardFile.logoFile));
+						objBackLogo.x=__cardFile.backFace.logoRect.x;
+						objBackLogo.y=__cardFile.backFace.logoRect.y;
+					}
+					
+					__backCanvas.addChild(__backFaceContainer);
+					addChild(__backCanvas);
+					
+				}
+				zoomPreview();
+				CursorManager.removeBusyCursor();
+				this.dispatchEvent(new AppStepEvent(AppStepEvent.TEXT_RENDED));
+				}catch(Err:Error){Alert.show(Err+"");}
+			}
+			
+			private function getFaceThumbnail(face:CardFaceContainer,bgColor:uint):ByteArray
+			{
+				var bitmapData:BitmapData=new BitmapData(__cardFile.width,__cardFile.height,false,bgColor);
+				var drawObj:DisplayObject;
+				var i:int;
+				
+				for(i=0;i<face.numChildren;i++)
+				{
+					if(face.getChildAt(i) is IVector)
+					{
+						drawObj=face.getChildAt(i);
+						bitmapData.draw(drawObj,drawObj.transform.matrix,drawObj.transform.colorTransform);
+					}
+				}
+				var bytes:ByteArray=PNGEncoder.encode(bitmapData);
+				bitmapData.dispose();
+				return bytes;
+			}
+			
+			private function init():void
+			{
+				this.addEventListener(MouseEvent.MOUSE_DOWN,onMouseEvent);
+				__rendedTextList=new Array();
+			}
+			
+			private function onMouseEvent(e:MouseEvent):void
+			{
+				return;
+				switch(e.type)
+				{
+					case MouseEvent.MOUSE_DOWN:
+						this.addEventListener(MouseEvent.MOUSE_UP,onMouseEvent);
+						this.addEventListener(MouseEvent.MOUSE_MOVE,onMouseEvent);
+						this.useHandCursor=true;
+						break;
+					case MouseEvent.MOUSE_UP:
+						this.removeEventListener(MouseEvent.MOUSE_MOVE,onMouseEvent);
+						this.removeEventListener(MouseEvent.MOUSE_UP,onMouseEvent);
+						this.useHandCursor=false;
+						break;
+					case MouseEvent.MOUSE_MOVE:
+						this.horizontalScrollPosition=this.mouseX;
+						this.verticalScrollPosition=this.mouseY;
+						break;
+				}
+			}
+			
+			private var __cardFile:CardFile;
+			private var __frontCanvas:SuperCanvas;
+			private var __backCanvas:SuperCanvas;
+			private var __frontFaceContainer:CardFaceContainer;
+			private var __backFaceContainer:CardFaceContainer;
+			
+			private var __waitingLabel:Label;
+			private var __reader:FileReader;
+			private var __allTexts:Array;
+			private var __textGlyphIndex:uint;
+			
+		]]>
+	</mx:Script>
+	
+</mx:VBox>

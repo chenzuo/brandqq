@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
+	xmlns:qqLib="com.brandqq.lib.controls.*" xmlns:qqLibLogo="com.brandqq.lib.logo.*" 
+	creationComplete="init()">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.brandqq.lib.graphic.IVector;
+			import com.brandqq.lib.events.SelectorContainerEvent;
+			import com.brandqq.lib.graphic.Text;
+			import com.brandqq.lib.events.ColourPickerEvent;
+			import com.brandqq.lib.events.DataLoadEvent;
+			import com.brandqq.lib.graphic.Symbol;
+			import com.brandqq.lib.graphic.Glyph;
+			import com.brandqq.lib.util.StringUtil;
+			import com.brandqq.IO.FileReader;
+			import com.brandqq.Resources.Requests;
+			import com.brandqq.app.logo.components.LogoAlignWindowEvent;
+			
+			import mx.managers.PopUpManager;
+			import mx.core.IFlexDisplayObject;
+			import mx.events.FlexEvent;
+			import mx.controls.Alert;
+			
+			private function init():void
+			{
+				LogoContainer.dispatchEvent(new SelectorContainerEvent(SelectorContainerEvent.ITEMS_UNSELECTED));
+			}
+			
+			private function onLogoColorPickerChange(e:ColourPickerEvent):void
+			{
+				if(LogoContainer.selectedItem==null)
+				{
+					return;
+				}
+				Symbol(LogoContainer.selectedItem).setColor(e.color); 
+			}
+			
+			private function onUseNamedColorsChange(e:Event):void
+			{
+				if(UseNamedColors.selected)
+				{
+					if(NamedColorList.selectedIndex==-1)
+					{
+						NamedColorList.selectedIndex=0;
+						return;
+					}
+					LogoColorPicker.colors=[uint(NamedColorList.selectedItem.@from),uint(NamedColorList.selectedItem.@to)];
+				}
+				else
+				{
+					LogoColorPicker.reset();
+				} 
+			}
+			
+			private function onNamedColorListItemChange(e:Event):void
+			{
+				LogoColorPicker.colors=[uint(NamedColorList.selectedItem.@from),uint(NamedColorList.selectedItem.@to)];
+				UseNamedColors.selected=true;
+			}
+			
+			public function addSymbol(symbolId:String):void
+			{
+				LogoContainer.addSymbol(symbolId);
+			}
+			
+			private function addText():void
+			{
+				if(LogoText.text=="")
+				{
+					return;	
+				}
+				
+				if(FontList.selectedIndex<0)
+				{
+					FontList.selectedIndex=0;
+				}
+				
+				var str:String=LogoText.text; 
+				var style:uint=0;
+				if(TStyle_B.selected)
+				{
+					style=0x1;
+				}
+				if(TStyle_I.selected)
+				{
+					style=0x2;
+				}
+				if(TStyle_B.selected && TStyle_I.selected)
+				{
+					style=0x3;
+				} 
+				var fontName:String=FontList.selectedItem.@name;
+				
+				LogoContainer.addText(str,fontName,20,style);
+			}
+			
+			private function onLogoContainerEvent(e:DataLoadEvent):void
+			{
+				if(e.type==DataLoadEvent.ON_OPEN)
+				{
+					this.enabled=false; 
+				}
+				else if(e.type==DataLoadEvent.ON_LOADED)
+				{
+					this.enabled=true;
+				}
+			}
+			
+			private function onLogoContainerItemSelected(e:SelectorContainerEvent):void
+			{
+				if(e.type==SelectorContainerEvent.ITEMS_SELECTED)
+				{
+					if(e.isMultiSelect)
+					{
+						TextPanel.enabled=false;
+						ZoomInButton.enabled=false;
+						ZoomOutButton.enabled=false;
+						ClockWiseButton.enabled=false;
+						AntiClockWiseButton.enabled=false;
+						AlignButton.enabled=true;
+					}
+					else
+					{
+						TextPanel.enabled=true;
+						ZoomInButton.enabled=true;
+						ZoomOutButton.enabled=true;
+						ClockWiseButton.enabled=true;
+						AntiClockWiseButton.enabled=true;
+						AlignButton.enabled=true;
+						
+						if(e.selectedItems[0] is Text)
+						{
+							var obj:Text=e.selectedItems[0] as Text;
+							LogoText.text=obj.string;
+							TStyle_B.selected=(obj.style==1 || obj.style==3);
+							TStyle_I.selected=(obj.style==2 || obj.style==3);
+							for each(var f:Object in FontList.dataProvider)
+							{
+								if(f.name==obj.font)
+								{
+									FontList.selectedItem=f;
+								}
+							}
+						}
+					} 
+				}
+				else
+				{
+					TextPanel.enabled=true;
+					ZoomInButton.enabled=false;
+					ZoomOutButton.enabled=false;
+					ClockWiseButton.enabled=false;
+					AntiClockWiseButton.enabled=false;
+					AlignButton.enabled=false;
+				}
+			}
+			
+			private function onButtonsDown(e:FlexEvent):void
+			{
+				
+			}
+			
+			private function onAlignButtonClick(e:MouseEvent):void
+			{
+				if(__alignWindow==null)
+				{
+					__alignWindow=PopUpManager.createPopUp(EditorPanel,LogoAlignWindow,false) as LogoAlignWindow;
+					__alignWindow.addEventListener(LogoAlignWindowEvent.CHANGE,onLogoAlignWindowEvent);
+				}
+				else
+				{
+					PopUpManager.addPopUp(__alignWindow,EditorPanel,false);
+				}
+				PopUpManager.centerPopUp(__alignWindow);
+			}
+			
+			private function onLogoAlignWindowEvent(e:LogoAlignWindowEvent):void
+			{
+				switch(e.paramValue)
+				{
+					case "alignLeft":
+						LogoContainer.alignElements("left",e.isMatchCanvas);
+						break;
+					case "alignCenter":
+						LogoContainer.alignElements("center",e.isMatchCanvas);
+						break;
+					case "alignRight":
+						LogoContainer.alignElements("right",e.isMatchCanvas);
+						break;
+					case "alignTop":
+						LogoContainer.alignElements("top",e.isMatchCanvas);
+						break;
+					case "alignMid":
+						LogoContainer.alignElements("middle",e.isMatchCanvas);
+						break;
+					case "alignBottom":
+						LogoContainer.alignElements("bottom",e.isMatchCanvas);
+						break;
+					case "distLeft":
+						LogoContainer.distributeElements("left",e.isMatchCanvas);
+						break;
+					case "distCenter":
+						LogoContainer.distributeElements("center",e.isMatchCanvas);
+						break;
+					case "distRight":
+						LogoContainer.distributeElements("right",e.isMatchCanvas);
+						break;
+					case "distTop":
+						LogoContainer.distributeElements("top",e.isMatchCanvas);
+						break;
+					case "distMid":
+						LogoContainer.distributeElements("middle",e.isMatchCanvas);
+						break;
+					case "distBottom":
+						LogoContainer.distributeElements("bottom",e.isMatchCanvas);
+						break;
+					case "matchWidth":
+						LogoContainer.matchElementsSize("width",e.isMatchCanvas);
+						break;
+					case "matchHeight":
+						LogoContainer.matchElementsSize("height",e.isMatchCanvas);
+						break;
+					case "matchSize":
+						LogoContainer.matchElementsSize("size",e.isMatchCanvas);
+						break;
+				}
+			}
+			
+			private var __alignWindow:LogoAlignWindow;
+		]]>
+	</mx:Script>
+	
+	<mx:Panel width="100%" height="100%" layout="vertical" title="设置Logo文字" styleName="editor" id="EditorPanel">
+		<qqLib:SuperCanvas id="LogoSuperCanvas"
+			width="{LogoSys.CANVAS_WIDTH}" 
+			height="{LogoSys.CANVAS_HEIGHT}">
+			<qqLibLogo:LogoContainer id="LogoContainer" hitArea="{LogoSuperCanvas}"
+				onOpen="onLogoContainerEvent(event)" 
+				onLoaded="onLogoContainerEvent(event)"
+				onItemsSelected="onLogoContainerItemSelected(event)"
+				onItemsUnSelected="onLogoContainerItemSelected(event)"/>
+		</qqLib:SuperCanvas>
+		<mx:ControlBar>
+			<mx:CheckBox id="ShowGrid" label="显示网格" change="{LogoSuperCanvas.showGrid=ShowGrid.selected}"/>
+			<mx:Label text="画布颜色" />
+			<mx:ColorPicker id="CanvasColors" change="{LogoSuperCanvas.backgroundColor=CanvasColors.selectedColor}"/>
+			<mx:Spacer width="100%"/>
+			<mx:Button styleName="zoomin" id="ZoomInButton" toolTip="放大选择的对象" buttonDown="onButtonsDown(event)"/>
+			<mx:Button styleName="zoomout" id="ZoomOutButton" toolTip="缩小选择的对象" buttonDown="onButtonsDown(event)"/>
+			<mx:Button styleName="clockwise" id="ClockWiseButton" toolTip="顺时针旋转选择的对象" buttonDown="onButtonsDown(event)"/>
+			<mx:Button styleName="anticlockwise" id="AntiClockWiseButton" toolTip="逆时针旋转选择的对象" buttonDown="onButtonsDown(event)"/>
+			<mx:Button styleName="aligns" id="AlignButton" toolTip="对齐和分布" click="onAlignButtonClick(event)"/>
+		</mx:ControlBar>
+	</mx:Panel>
+	
+	<mx:ViewStack id="EditorPanels" height="100%">
+		<mx:Panel width="220" height="100%" layout="vertical" title="文字属性" id="TextPanel">
+			<mx:Label text="在此输入文字" fontWeight="bold"/>
+			<mx:TextInput width="100%" id="LogoText" />
+			<mx:HBox width="100%" verticalAlign="middle">
+				<mx:Button id="TStyle_B" styleName="styleBold" toggle="true" width="20" height="20"/>
+				<mx:Button fontStyle="italic" id="TStyle_I" styleName="styleItalic" toggle="true" width="20" height="20"/>
+				<mx:Spacer width="100%"/>
+				<mx:Button label="加字" width="40" height="22" click="addText()"/>
+			</mx:HBox>
+			<mx:Label text="选择字体" fontWeight="bold"/>
+			<mx:List width="100%" height="100%" id="FontList" labelField="@name"
+				itemRenderer="com.brandqq.app.logo.components.FontListItemRender"
+				creationComplete="{FontList.dataProvider=LogoSys.systemFontsData.LogoFonts.Font}">
+			</mx:List>
+			<mx:ControlBar horizontalAlign="right">
+				<mx:Button label="下一步：调整布局和颜色" click="{EditorPanels.selectedIndex=1}" width="150" height="22"/>
+			</mx:ControlBar>
+		</mx:Panel>
+		
+		<mx:Panel id="ColorPanel" width="220" height="100%" title="颜色和布局">
+			<!-- 拾色器 -->  
+			<qqLib:ColourPicker id="LogoColorPicker" 
+				width="100%" height="150" onColorChange="onLogoColorPickerChange(event)"/>
+				
+			<mx:CheckBox id="UseNamedColors" label="使用品牌个性配色" change="onUseNamedColorsChange(event)"/>
+			<mx:List width="100%" height="100%" 
+				id="NamedColorList" itemRenderer="com.brandqq.app.logo.components.NamedColorItemRender"
+				creationComplete="{NamedColorList.dataProvider=LogoSys.systemNamedColorsData.Color}" 
+				change="onNamedColorListItemChange(event)">
+			</mx:List>
+			
+			<mx:ControlBar horizontalAlign="right">
+				<mx:Button label="上一步：设置文字" click="{EditorPanels.selectedIndex=0}" width="100" height="22"/>
+			</mx:ControlBar>
+		</mx:Panel>
+	</mx:ViewStack>
+	
+</mx:HBox>

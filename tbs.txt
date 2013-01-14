@@ -1,0 +1,50 @@
+
+CREATE TABLE [dbo].[LogoRecords] (
+	[Id] [int] IDENTITY (1, 1) NOT NULL ,
+	[Guid] [varchar] (32) COLLATE Chinese_PRC_CI_AS NULL ,
+	[UserId] [int] NULL ,
+	[CreateDatetime] [datetime] NULL ,
+	[UpdateDatetime] [datetime] NULL ,
+	[Score] [int] NULL ,
+	[ScoreTimes] [int] NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[LogoSamples] (
+	[Id] [int] IDENTITY (1, 1) NOT NULL ,
+	[Industry] [char] (6) COLLATE Chinese_PRC_CI_AS NULL ,
+	[Title] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[FileName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[LogoUploads] (
+	[Id] [int] IDENTITY (1, 1) NOT NULL ,
+	[UserId] [int] NULL ,
+	[FileName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[UploadDatetime] [datetime] NULL ,
+	[Score] [int] NULL ,
+	[ScoreTimes] [int] NULL 
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[LogoRecords] WITH NOCHECK ADD 
+	CONSTRAINT [PK_LogoRecords] PRIMARY KEY  CLUSTERED 
+	(
+		[Id]
+	)  ON [PRIMARY] 
+GO
+
+ALTER TABLE [dbo].[LogoSamples] WITH NOCHECK ADD 
+	CONSTRAINT [PK_LogoSamples] PRIMARY KEY  CLUSTERED 
+	(
+		[Id]
+	)  ON [PRIMARY] 
+GO
+
+ALTER TABLE [dbo].[LogoUploads] WITH NOCHECK ADD 
+	CONSTRAINT [PK_LogoUploads] PRIMARY KEY  CLUSTERED 
+	(
+		[Id]
+	)  ON [PRIMARY] 
+GO

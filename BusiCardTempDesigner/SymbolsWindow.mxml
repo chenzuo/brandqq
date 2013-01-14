@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="vertical" width="600" height="550" title="选择要导入的图形" 
+	showCloseButton="true" close="{PopUpManager.removePopUp(this)}" creationComplete="init()">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.brandqq.lib.events.DataLoadEvent;
+			import mx.managers.PopUpManager;
+			import com.brandqq.IO.XmlReader;
+			import com.brandqq.Resources.Requests;
+			import mx.controls.Alert;
+			
+			[Event(name="onItemSelected",type="ListWindowEvent")]
+			
+			private function init():void
+			{
+				Progress.visible=false;
+				if(BusiCardTempDesigner.cardTemplateSymbolsData==null)
+				{
+					reader=new XmlReader(Requests.cardTempSymbolsRequest());
+					reader.addEventListener(DataLoadEvent.ON_OPEN,onLoadEvent);
+					reader.addEventListener(DataLoadEvent.ON_LOADED,onLoadEvent);
+					reader.read();
+					this.showCloseButton=false;
+					ConfirmButton.enabled=false;
+				}
+				else
+				{
+					SymbolStyles.dataProvider=BusiCardTempDesigner.cardTemplateSymbolsData.Styles.Style;
+					SymbolStyles.selectedIndex=0;
+					SymbolsList.dataProvider=BusiCardTempDesigner.cardTemplateSymbolsData.Symbols.(@code=SymbolStyles.selectedItem.@code).Symbol;
+				}
+			}
+			
+			private function onLoadEvent(e:DataLoadEvent):void
+			{
+				if(e.type==DataLoadEvent.ON_OPEN)
+				{
+					Progress.visible=true;
+				} 
+				else 
+				{
+					BusiCardTempDesigner.cardTemplateSymbolsData=reader.getData();
+					SymbolStyles.dataProvider=BusiCardTempDesigner.cardTemplateSymbolsData.Styles.Style;
+					SymbolStyles.selectedIndex=0;
+					SymbolsList.dataProvider=BusiCardTempDesigner.cardTemplateSymbolsData.Symbols.(@code=SymbolStyles.selectedItem.@code).Symbol;
+					ConfirmButton.enabled=true;
+					this.showCloseButton=true;
+					Progress.visible=false;
+				}
+			}
+			
+			private function onItemSelected():void
+			{
+				if(SymbolsList.selectedItem!=null)
+				{
+					dispatchEvent(new ListWindowEvent(ListWindowEvent.ITEM_SELECTED,SymbolsList.selectedItem.@id));
+					PopUpManager.removePopUp(this);
+				}
+				else
+				{
+					PopUpManager.removePopUp(this);
+				}
+			}
+			
+			private var reader:XmlReader;
+		]]>
+	</mx:Script>
+	
+	<mx:TileList width="100%" height="100%" id="SymbolsList"
+		 itemRenderer="SymbolRender">
+	</mx:TileList>
+	<mx:ControlBar horizontalAlign="right" paddingBottom="5" paddingTop="5">
+		<mx:ProgressBar indeterminate="true" labelPlacement="left" id="Progress"/>
+		<mx:Spacer width="100%"/>
+		<mx:Label text="分类："/>
+		<mx:ComboBox id="SymbolStyles" labelField="@name" 
+			change="{SymbolsList.dataProvider=BusiCardTempDesigner.cardTemplateSymbolsData.Symbols.(@code=SymbolStyles.selectedItem.@code).Symbol}"></mx:ComboBox>
+		<mx:Button label="确定" id="ConfirmButton" click="onItemSelected()"/>
+	</mx:ControlBar>
+	
+</mx:TitleWindow>

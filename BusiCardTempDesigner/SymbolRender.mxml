@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Image xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="160" height="100" scaleContent="false"
+	source="{Requests.cardTempSymbolThumbnailRequest(data.@id)}" horizontalAlign="center" verticalAlign="middle">
+	 <mx:Script>
+	 	<![CDATA[
+	 		import com.brandqq.Resources.Requests;
+	 	]]>
+	 </mx:Script>
+</mx:Image>

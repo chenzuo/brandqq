@@ -1,0 +1,94 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E057EF1D-5C25-4C9E-8234-C91EF093108C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BrandQQ.Logo</RootNamespace>
+    <AssemblyName>BrandQQ.Logo</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>LOGOSNK.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\www\Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BrandQQ.Util, Version=1.0.0.0, Culture=neutral, PublicKeyToken=de4d50155d2a285c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\www\Bin\BrandQQ.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FontGlyph\CurvePath.cs" />
+    <Compile Include="FontGlyph\Glyph.cs" />
+    <Compile Include="FontGlyph\GlyphPath.cs" />
+    <Compile Include="FontGlyph\IGlyphPath.cs" />
+    <Compile Include="FontGlyph\LinePath.cs" />
+    <Compile Include="FontGlyph\PathType.cs" />
+    <Compile Include="FontGlyph\StartPath.cs" />
+    <Compile Include="LogoAction.cs" />
+    <Compile Include="LogoBase.cs" />
+    <Compile Include="LogoCompareType.cs" />
+    <Compile Include="LogoImageType.cs" />
+    <Compile Include="LogoImitation.cs" />
+    <Compile Include="LogoSymbol.cs" />
+    <Compile Include="LogoType.cs" />
+    <Compile Include="LogoUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FlexService.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SymbolGlyph\GlyphData.cs" />
+    <Compile Include="SymbolGlyph\IGlyph.cs" />
+    <Compile Include="SymbolGlyph\SwfGlyph.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Membership\Membership.csproj">
+      <Project>{DD3C4632-70AD-4D5B-A1DD-E90E9460B7CF}</Project>
+      <Name>Membership</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LOGOSNK.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

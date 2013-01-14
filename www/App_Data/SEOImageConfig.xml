@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SEOImage>
+  <!--网站Icon存取路径-->
+  <SiteIconPath>F:\BrandQQ\www\App_Data\SEOImageSiteIcons\</SiteIconPath>
+  <!--默认ICON-->
+  <DefaultIcon>F:\BrandQQ\www\App_Data\SEOImageSiteIcons\default.png</DefaultIcon>
+  
+  <!--Icon下载超时(秒)-->
+  <DownIconTimeout>5</DownIconTimeout>
+  
+  <!--SEO图片样式-->
+  <!--
+    基本样式，name="default"不可修改
+  -->
+  <Style name="default" title="基本" query="PRA" image="F:\BrandQQ\www\App_Data\SEOBaseImages\default.png" width="242" height="242">
+    <ImageMap name="domain" x="7" y="29" color="255,0,0" font="Arial" size="14" style="B" />
+    <ImageMap name="ico" x="10" y="7" color="0,0,0" font="Arial" size="12" style="" />
+    <ImageMap name="date" x="174" y="6" color="0,204,255" font="Arial" size="12" style="" />
+
+    <ImageMap name="pr" x="33" y="58" color="0,153,0" font="Arial" size="12" style="" />
+    <ImageMap name="prt" x="96" y="54" color="0,153,0" font="Arial" size="12" style="B" />
+    <ImageMap name="google" x="32" y="94" color="255,153,0" font="Arial" size="12" style="U" />
+    <ImageMap name="baidu" x="32" y="115" color="0,102,204" font="Arial" size="12" style="U" />
+    <ImageMap name="yahoo" x="32" y="136" color="255,0,0" font="Arial" size="12" style="U" />
+    <ImageMap name="alx" x="32" y="176" color="51,51,51" font="Arial" size="12" style="U" />
+    <ImageMap name="linkin" x="32" y="217" color="0,102,255" font="Arial" size="12" style="U" />
+    <ImageMap name="speed" x="0" y="0" color="0" font="Arial" size="12" style="U" />
+  </Style>
+
+  <Style name="pra1" title="样式2" query="PR" image="F:\BrandQQ\www\App_Data\SEOBaseImages\pr_yellow.png" width="242" height="160">
+    <ImageMap name="domain" x="7" y="29" color="255,0,0" font="Arial" size="14" style="B" />
+    <ImageMap name="ico" x="10" y="7" color="0,0,0" font="Arial" size="12" style="" />
+    <ImageMap name="date" x="174" y="6" color="0,204,255" font="Arial" size="12" style="" />
+
+    <ImageMap name="pr" x="33" y="58" color="0,153,0" font="Arial" size="12" style="" />
+    <ImageMap name="prt" x="96" y="54" color="0,153,0" font="Arial" size="12" style="B" />
+    <ImageMap name="google" x="32" y="94" color="255,153,0" font="Arial" size="12" style="U" />
+    <ImageMap name="baidu" x="32" y="115" color="0,102,204" font="Arial" size="12" style="U" />
+    <ImageMap name="yahoo" x="32" y="136" color="255,0,0" font="Arial" size="12" style="U" />
+    <ImageMap name="alx" x="32" y="176" color="51,51,51" font="Arial" size="12" style="U" />
+    <ImageMap name="linkin" x="32" y="217" color="0,102,255" font="Arial" size="12" style="U" />
+    <ImageMap name="speed" x="0" y="0" color="0" font="Arial" size="12" style="U" />
+  </Style>
+
+  <Style name="p1" title="样式3" query="P" image="F:\BrandQQ\www\App_Data\SEOBaseImages\pagerank.png" width="135" height="76">
+    <ImageMap name="domain" x="7" y="29" color="255,0,0" font="Arial" size="12" style="" />
+    <ImageMap name="ico" x="7" y="7" color="0,0,0" font="Arial" size="12" style="" />
+    <ImageMap name="date" x="174" y="6" color="0,204,255" font="Arial" size="12" style="" />
+
+    <ImageMap name="pr" x="33" y="58" color="0,153,0" font="Arial" size="12" style="" />
+    <ImageMap name="prt" x="96" y="54" color="0,153,0" font="Arial" size="12" style="B" />
+    <ImageMap name="google" x="32" y="94" color="255,153,0" font="Arial" size="12" style="U" />
+    <ImageMap name="baidu" x="32" y="115" color="0,102,204" font="Arial" size="12" style="U" />
+    <ImageMap name="yahoo" x="32" y="136" color="255,0,0" font="Arial" size="12" style="U" />
+    <ImageMap name="alx" x="32" y="176" color="51,51,51" font="Arial" size="12" style="U" />
+    <ImageMap name="linkin" x="32" y="217" color="0,102,255" font="Arial" size="12" style="U" />
+    <ImageMap name="speed" x="0" y="0" color="0" font="Arial" size="12" style="U" />
+  </Style>
+  
+</SEOImage>

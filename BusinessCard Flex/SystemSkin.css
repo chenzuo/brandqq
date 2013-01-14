@@ -1,0 +1,103 @@
+/* CSS file */
+Application
+{
+	font-family:"宋体";
+	font-size:12;
+}
+Panel
+{
+	paddingTop:5px;	
+	paddingLeft:5px;	
+	paddingBottom:5px;	
+	paddingRight:5px;	
+}
+ControlBar
+{
+	paddingTop:3px;		
+	paddingBottom:3px;
+}
+VBox
+{
+	horizontalAlign:center;
+	paddingTop:5px;	
+	paddingLeft:5px;	
+	paddingBottom:5px;	
+	paddingRight:5px;
+}
+ComboBox
+{
+	cornerRadius:0;
+}
+TabNavigator
+{
+	paddingTop:5px;	
+	paddingLeft:5px;	
+	paddingBottom:5px;	
+	paddingRight:5px;
+}
+Button
+{
+	cornerRadius:0;
+}
+.cardHBox
+{
+	horizontalAlign:center;
+	verticalAlign:middle;
+	backgroundColor:#333333;
+	paddingTop:5px;	
+	paddingLeft:5px;	
+	paddingBottom:5px;	
+	paddingRight:5px;
+}
+.thumbnailImage
+{
+	brokenImageSkin:Embed(source="SystemSkin.swf", symbol="Error_Image");
+}
+.switchLeftPanelButton
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="SwitchH_Up");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="SwitchH_Over");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="SwitchH_Down");	
+	selectedDownSkin: Embed(source="SystemSkin.swf", symbol="SwitchH_Selected_Down");
+	selectedOverSkin: Embed(source="SystemSkin.swf", symbol="SwitchH_Selected_Over");
+	selectedUpSkin: Embed(source="SystemSkin.swf", symbol="SwitchH_Selected_Up");
+}
+.userWindow
+{
+	borderColor:#EEEEEE;
+	borderAlpha:1;
+	backgroundColor:#EEEEEE;
+	backgroundAlpha:1;
+}
+.userStatusButtonActive
+{
+	icon:Embed(source="SystemSkin.swf", symbol="UserIcon_Active");
+}
+
+.userStatusButtonUnActive
+{
+	icon:Embed(source="SystemSkin.swf", symbol="UserIcon_UnActive");
+}
+
+.cardPreviewButton
+{
+	icon:Embed(source="SystemSkin.swf", symbol="Preview");
+}
+
+.cardSaveButton
+{
+	icon:Embed(source="SystemSkin.swf", symbol="Save");
+}
+
+.cardFaceButton1
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="CardFace1_UpSkin");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="CardFace1_OverSkin");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="CardFace1_DownSkin");	
+}
+.cardFaceButton2
+{
+	upSkin:Embed(source="SystemSkin.swf", symbol="CardFace2_UpSkin");	
+	overSkin:Embed(source="SystemSkin.swf", symbol="CardFace2_OverSkin");	
+	downSkin:Embed(source="SystemSkin.swf", symbol="CardFace2_DownSkin");	
+}

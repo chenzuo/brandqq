@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" Async="true" EnableViewState="false" EnableSessionState="False" Inherits="BrandQQ.Logo.FlexService" %>

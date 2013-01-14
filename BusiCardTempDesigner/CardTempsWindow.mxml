@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" width="400" height="350" title="打开现有模板" 
+	showCloseButton="true" 
+	creationComplete="init()" close="{PopUpManager.removePopUp(this);}">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			import flash.events.Event;
+			
+			[Event(name="onItemSelected",type="ListWindowEvent")]
+			
+			private function init():void
+			{
+				TempList.dataProvider=BusiCardTempDesigner.templatesData.Temps.Temp;
+				TempList.addEventListener(Event.CHANGE,function(e:Event):void
+				{
+					if(TempList.selectedIndex>=0)
+					{
+						ConfirmButton.enabled=true;
+					}
+					else
+					{
+						ConfirmButton.enabled=false;
+					}
+				});
+			}
+			
+			private function onSelected():void
+			{
+				this.dispatchEvent(new ListWindowEvent(ListWindowEvent.ITEM_SELECTED,
+									TempList.selectedItem.@guid,
+									[TempList.selectedItem.@style,TempList.selectedItem.@name]));
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:TileList id="TempList" 
+		allowMultipleSelection="false" 
+		itemRenderer="CardTempItemRender" horizontalScrollPolicy="off" variableRowHeight="true" columnCount="1" direction="horizontal" left="5" top="5" right="5" bottom="5">
+	</mx:TileList>
+	
+	<mx:ControlBar horizontalAlign="right" x="0" y="306">
+		<mx:Button id="ConfirmButton" label="打开" enabled="false" click="onSelected()"/>
+	</mx:ControlBar>
+	
+</mx:TitleWindow>

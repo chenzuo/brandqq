@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TabNavigator xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" 
+	resizeToContent="true" creationComplete="init()" height="100%">
+	
+	<mx:Metadata>
+		[Event(name="elementSelected",type="com.brandqq.app.card.events.CardElementEvent")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.brandqq.lib.logo.LogoFile;
+			import com.brandqq.lib.logo.LogoGraphic;
+			import mx.containers.HBox;
+			import mx.containers.Panel;
+			import mx.managers.CursorManager;
+			import mx.controls.Alert;
+			
+			import com.brandqq.IO.FileEnum;
+			import com.brandqq.IO.FileReader;
+			import com.brandqq.lib.events.PopUpEvent;
+			import com.brandqq.lib.events.DataLoadEvent;
+			import com.brandqq.lib.events.TextEditorEvent;
+			import com.brandqq.lib.controls.SuperCanvas;
+			import com.brandqq.lib.controls.TextEditor;
+			import com.brandqq.lib.card.*;
+			import com.brandqq.lib.graphic.Symbol;
+			import com.brandqq.lib.graphic.Text;
+			import com.brandqq.Resources.Requests;
+			import com.brandqq.app.card.events.CardElementEvent;
+			import com.brandqq.app.card.events.CardTextEvent;
+			
+			private function init():void
+			{
+			 	 
+			}
+			
+			public function set logoFile(value:LogoFile):void
+			{
+				__logoFile=value;
+				__cardFile.logoFile=value;
+				if(__frontLogo!=null)
+				{
+					__frontLogo.logoFile=value;
+				}
+				if(__backLogo!=null)
+				{
+					__backLogo.logoFile=value;
+				}
+			}
+			
+			public function get frontLogo():LogoGraphic
+			{
+				return __frontLogo;
+			}
+			
+			public function get backLogo():LogoGraphic
+			{
+				return __backLogo;
+			}
+			
+			public function get currentLogo():LogoGraphic
+			{
+				if(this.selectedIndex==0)
+				{
+					return __frontLogo;
+				}
+				return __backLogo;
+			}
+			
+			public function get tempGuid():String
+			{
+				return this.__tempGuid;
+			}
+			public function set tempGuid(value:String):void
+			{
+				if(this.__tempGuid!=value)
+				{
+					this.__tempGuid=value;
+					__reader=new FileReader(Requests.openFileRequest(FileEnum.CARD_TEMP,this.__tempGuid));
+					__reader.addEventListener(DataLoadEvent.ON_OPEN,onReadFileEventHandler);
+					__reader.addEventListener(DataLoadEvent.ON_LOADING,onReadFileEventHandler);
+					__reader.addEventListener(DataLoadEvent.ON_LOADED,onReadFileEventHandler);
+					__reader.addEventListener(DataLoadEvent.ON_ERROR,onReadFileEventHandler);
+					__reader.read();
+					CursorManager.setBusyCursor();
+				}
+			}
+			
+			public function get cardFile():CardFile
+			{
+				return __cardFile;
+			}
+			
+			public function setTextProperty(propEventType:String,value:*):void
+			{
+				var i:int;
+				var objEditor:TextEditor;
+				var fSize:uint;
+
+				if(__frontFaceContainer!=null)
+				{
+					for(i=0;i<__frontFaceContainer.numChildren;i++)
+					{
+						if(__frontFaceContainer.getChildAt(i) is TextEditor)
+						{
+							objEditor=TextEditor(__frontFaceContainer.getChildAt(i));
+							switch(propEventType)
+							{
+								case CardTextEvent.FONT_CHANGE:
+									objEditor.format.font=String(value);
+									break;
+								case CardTextEvent.FONT_SIZE_CHANGE:
+									fSize=uint(objEditor.format.size)+uint(value);
+									if(fSize<CardFace.MIN_FONTSIZE)
+									{
+										fSize=CardFace.MIN_FONTSIZE;
+									}
+									else if(fSize>CardFace.MAX_FONTSIZE)
+									{
+										fSize=CardFace.MAX_FONTSIZE;
+									}
+									objEditor.format.size=fSize;
+									break;
+								case CardTextEvent.TEXT_ALIGN_CHANGE:
+									objEditor.format.align=String(value);
+									break;
+								case CardTextEvent.TEXT_COLOR_CHANGE:
+									objEditor.format.color=uint(value);
+									break;
+							}
+							objEditor.setTextFormat(objEditor.format);
+						}
+					}
+				}
+				
+				if(__backFaceContainer!=null)
+				{
+					for(i=0;i<__backFaceContainer.numChildren;i++)
+					{
+						if(__backFaceContainer.getChildAt(i) is TextEditor)
+						{
+							objEditor=TextEditor(__backFaceContainer.getChildAt(i));
+							switch(propEventType)
+							{
+								case CardTextEvent.FONT_CHANGE:
+									objEditor.format.font=String(value);
+									break;
+								case CardTextEvent.FONT_SIZE_CHANGE:
+									fSize=uint(objEditor.format.size)+uint(value);
+									if(fSize<CardFace.MIN_FONTSIZE)
+									{
+										fSize=CardFace.MIN_FONTSIZE;
+									}
+									else if(fSize>CardFace.MAX_FONTSIZE)
+									{
+										fSize=CardFace.MAX_FONTSIZE;
+									}
+									objEditor.format.size=fSize;
+									break;
+								case CardTextEvent.TEXT_ALIGN_CHANGE:
+									objEditor.format.align=String(value);
+									break;
+								case CardTextEvent.TEXT_COLOR_CHANGE:
+									objEditor.format.color=uint(value);
+									break;
+							}
+							objEditor.setTextFormat(objEditor.format);
+						}
+					}
+				}
+				
+			}
+			
+			private function onReadFileEventHandler(e:DataLoadEvent):void
+			{
+				switch(e.type)
+				{
+					case DataLoadEvent.ON_OPEN:
+						Panel(this.parent).enabled=false;
+						Panel(this.parent).title="正在加载名片模板...";
+						break;
+						
+					case DataLoadEvent.ON_ERROR:
+						Panel(this.parent).enabled=true;
+						Panel(this.parent).title="加载名片模板错误...";
+						CursorManager.removeBusyCursor();
+						break;
+						
+					case DataLoadEvent.ON_LOADED:
+						__cardFile=new CardFile();
+						__cardFile.setFileBytes(__reader.fileBytes);
+						
+						rendCardFaces();
+						
+						Panel(this.parent).enabled=true;
+						Panel(this.parent).title="编辑我的名片";
+						break;
+				}
+			}
+			
+			private function rendCardFaces():void
+			{
+				/*if(__cardFile.width>__cardFile.height)
+				{
+					BusinessCard(this.parentApplication).LeftPanel.width=0;
+					BusinessCard(this.parentApplication).LeftPanel.visible=false;
+					BusinessCard(this.parentApplication).BusinessCardBottomBar.SwitchLeftPanelButton.selected=false;
+				}*/
+				
+				this.removeAllChildren();
+				
+				var i:int;
+				var textEditor:TextEditor;
+				
+				__frontHBox=new HBox();
+				__frontHBox.percentWidth=100;
+				__frontHBox.percentHeight=100;
+				__frontHBox.label=__cardFile.name + "[正面]";
+				__frontHBox.styleName="cardHBox";
+				
+				__frontCanvas=new SuperCanvas();
+				__frontCanvas.setStyle("backgroundColor",__cardFile.frontFace.bgColor);
+				__frontCanvas.width=__cardFile.width*__SCALEFACTOR;
+				__frontCanvas.height=__cardFile.height*__SCALEFACTOR;
+				
+				__frontFaceContainer=new CardFaceContainer();
+				
+				//add elements
+				for each(var objFS:Symbol in __cardFile.frontFace.symbols)
+				{
+					objFS.rend();
+					__frontFaceContainer.addChild(objFS);
+					//objFS.depth=__frontFaceContainer.getChildIndex(objFS);
+				}
+				
+				for each(var objFT:Text in __cardFile.frontFace.texts)
+				{
+					textEditor=new TextEditor(objFT);
+					__frontFaceContainer.addChild(textEditor);
+					//objFT.depth=__frontFaceContainer.getChildIndex(textEditor);
+					textEditor.addEventListener(TextEditorEvent.ON_SELECTED,onTextEditorEvent);
+					textEditor.addEventListener(TextEditorEvent.ON_CHANGE,onTextEditorEvent);
+				}
+				
+				if(__cardFile.frontFace.hasLogo)
+				{
+					__frontLogo=new LogoGraphic(__logoFile);
+					__frontLogo.x=__cardFile.frontFace.logoRect.x;
+					__frontLogo.y=__cardFile.frontFace.logoRect.y;
+					__frontLogo.width=__cardFile.frontFace.logoRect.width;
+					__frontLogo.height=__cardFile.frontFace.logoRect.height;
+					__frontLogo.transform.colorTransform==new ColorTransform();
+					__frontFaceContainer.addChild(__frontLogo);
+				}
+				
+				//呈现FrontFace
+				__frontCanvas.addChild(__frontFaceContainer);
+				__frontHBox.addChild(__frontCanvas);
+				addChild(__frontHBox);
+				
+				if(__cardFile.backFace!=null)
+				{
+					__backHBox=new HBox();
+					__backHBox.label=__cardFile.name + "[背面]";
+					__backHBox.percentWidth=100;
+					__backHBox.percentHeight=100;
+					__backHBox.styleName="cardHBox";
+					
+					
+					__backCanvas=new SuperCanvas();
+					__backCanvas.setStyle("backgroundColor",__cardFile.backFace.bgColor);
+					__backCanvas.width=__cardFile.width*__SCALEFACTOR;
+					__backCanvas.height=__cardFile.height*__SCALEFACTOR;
+					
+					
+					__backFaceContainer=new CardFaceContainer();
+					
+					for each(var objBS:Symbol in __cardFile.backFace.symbols)
+					{
+						objBS.rend();
+						__backFaceContainer.addChild(objBS);
+						//objBS.depth=__backFaceContainer.getChildIndex(objBS);
+					}
+					
+					for each(var objBT:Text in __cardFile.backFace.texts)
+					{
+						textEditor=new TextEditor(objBT);
+						__backFaceContainer.addChild(textEditor);
+						//objBT.depth=__backFaceContainer.getChildIndex(objBT);
+						textEditor.addEventListener(TextEditorEvent.ON_SELECTED,onTextEditorEvent);
+						textEditor.addEventListener(TextEditorEvent.ON_CHANGE,onTextEditorEvent);
+					}
+					
+					if(__cardFile.backFace.hasLogo)
+					{
+						__backLogo=new LogoGraphic(__logoFile);
+						__backLogo.x=__cardFile.backFace.logoRect.x;
+						__backLogo.y=__cardFile.backFace.logoRect.y;
+						__backLogo.width=__cardFile.backFace.logoRect.width;
+						__backLogo.height=__cardFile.backFace.logoRect.height;
+						__backLogo.transform.colorTransform=new ColorTransform();
+						__backFaceContainer.addChild(__backLogo);
+					}
+					//呈现BackFace
+					__backHBox.addChild(__backCanvas);
+					__backCanvas.addChild(__backFaceContainer);
+					addChild(__backHBox);
+				}
+				CursorManager.removeBusyCursor();
+			}
+			
+			
+			
+			//当textEditor获得焦点时触发
+			private function onTextEditorEvent(e:TextEditorEvent):void
+			{
+				if(e.type==TextEditorEvent.ON_SELECTED)
+				{
+					this.dispatchEvent(new CardElementEvent(CardElementEvent.ELEMENT_SELECTED,e.textEditor));
+				}
+				else if(e.type==TextEditorEvent.ON_CHANGE)
+				{
+					var idx:int;
+					idx=BusinessCard.RendedTextList.indexOf(e.textEditor.getTextObject());
+					if(idx>=0)
+					{
+						BusinessCard.RendedTextList.splice(idx,1);
+					}
+				}
+			}
+			
+			
+			private var __tempGuid:String="";
+			private var __cardFile:CardFile;
+			private var __reader:FileReader;
+			
+			[Bindable]
+			private var __logoFile:LogoFile;
+			
+			private var __frontHBox:HBox;
+			private var __backHBox:HBox;
+			private var __frontCanvas:SuperCanvas;
+			private var __backCanvas:SuperCanvas;
+			private var __frontFaceContainer:CardFaceContainer;
+			private var __backFaceContainer:CardFaceContainer;
+			
+			private var __frontLogo:LogoGraphic;
+			private var __backLogo:LogoGraphic;
+			
+			private const __SCALEFACTOR:Number=1;//72/300;
+			
+		]]>
+	</mx:Script>
+		
+</mx:TabNavigator>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+表示一个Logo数据结构
+guid GUID
+uid UserId
+-->
+<Logo guid="" uid="">
+  <!--Logo标题-->
+  <Title><![CDATA[]]></Title>
+  <!--Logo备注信息-->
+  <Remark><![CDATA[]]></Remark>
+
+  <!--图形集合-->
+  <Symbols>
+    <!--
+    表示一个图形
+    id 索引值
+    rect 相对于画布的矩形范围
+    depth 深度
+    -->
+    <Symbol id="" rect="" depth=""/>
+  </Symbols>
+
+  <!--文字集合-->
+  <Texts>
+    <!--
+      表示一个文字串
+      id 索引值
+      rect 相对于画布的矩形范围
+      gap 文字水平间距(px)
+      depth 深度
+      -->
+    <Text id=""  font="" size="" style="" rect="" gap="" depth="">
+      <!--
+      文字串中的一个单字
+      id 索引值
+      size 单字矩形的宽度和高度
+      -->
+      <T><![CDATA[]]></T>
+      <Char id=""><![CDATA[]]></Char>
+    </Text>
+  </Texts>
+
+  <Glyphs>
+      <!--
+		    表示一个图形或文字的轮廓
+		    id 相关的图形或单字索引值
+		    fc 轮廓的填充颜色
+		    b 标记轮廓有无线条
+		    bc 线条颜色
+		    size 轮廓的宽度和高度
+		    -->
+    <Glyph id="" fc="" b="" bc="" size="">
+      <!--
+		      表示轮廓的一个线段
+		      t 线段类型。0-起点，1-直线，2-曲线
+		      p 点坐标。
+			    t=0或1 表示起点或直线终点
+			    t=2&&Glyph.type=1  表示(图形)二次贝塞尔曲线的控制点和终点
+			    t=2&&Glyph.type=2  表示(文字)三次贝塞尔曲线的两个控制点和两个端点
+		      -->
+      <S t="" p="" />
+    </Glyph>
+  </Glyphs>
+</Logo>

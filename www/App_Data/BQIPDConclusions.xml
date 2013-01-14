@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+标记：
+$BQIPD_M$  考察模块(仅限<Addition>节点)
+$DOMAIN$ 域名
+$KEYWORDS$ 关键字
+$SCORES$
+$PAGERANK$ pagerank值
+$RECORDS$ 收录平均数
+$ALEXA$ Alexa排名
+$LINKIN$ 反向链接数
+比较规则：min<=结果值<max 
+-->
+<BQIPD>
+  <General>
+    <Conclusion min="85" max="101">
+      <Base><![CDATA[<p style="text-align:center;padding:10px;"><img src="http://www.brandqq.com/bqipd/img.aspx?$SCORES$" alt="诊断结果图表" /></p>整体而言，该网站的网络推广工作非常优秀，在网络上的表现也非常出色。]]></Base>
+      <Addition><![CDATA[但必须注意到，该网站的网络推广在<b>$BQIPD_M$</b>方面还稍有缺憾，网络表现还有优化的空间。]]></Addition>
+    </Conclusion>
+
+    <Conclusion min="65" max="85">
+      <Base><![CDATA[<p style="text-align:center;padding:10px;"><img src="http://www.brandqq.com/bqipd/img.aspx?$SCORES$" alt="诊断结果图表" /></p>整体而言，该网站的网络推广工作已经取得了不错的基础，和出色的网站比起来还差那么一点点。]]></Base>
+      <Addition><![CDATA[尤其是在其中的<b>$BQIPD_M$</b>方面，如果能得到改善，应该能有更好的网络表现。]]></Addition>
+    </Conclusion>
+
+    <Conclusion min="25" max="65">
+      <Base><![CDATA[<p style="text-align:center;padding:10px;"><img src="http://www.brandqq.com/bqipd/img.aspx?$SCORES$" alt="诊断结果图表" /></p>该网站的网络推广已经做了不少的工作，但是效果还是不够理想，需要仔细分析一下到底机会在哪里。]]></Base>
+      <Addition><![CDATA[譬如说该网站在<b>$BQIPD_M$</b>方面做的就很好，如果其他几个方面也能方法对路，网络推广的效果应该会大不同的。]]></Addition>
+    </Conclusion>
+
+    <Conclusion min="0" max="25">
+      <Base><![CDATA[<p style="text-align:center;padding:10px;"><img src="http://www.brandqq.com/bqipd/img.aspx?$SCORES$" alt="诊断结果图表" /></p>整体而言，该网站的网络推广工作还刚刚起步，网络上的表现还比较弱。要么是过于保守、要么是缺乏方法，总之可以提高的空间很大。]]></Base>
+      <Addition><![CDATA[可喜的是，该网站在<b>$BQIPD_M$</b>方面的表现还不错，如果能对网络推广的要素关注得更全面一些，改变起来也是很快的。]]></Addition>
+    </Conclusion>
+  </General>
+
+  <Pagerank>
+    <Conclusion min="50" max="101">
+      <![CDATA[能在Pagerank上取得这样的成绩(PR=<b>$PAGERANK$</b>)说明该网站在网络推广上很有功底，了解Google Pagerank的规则，且能坚持如一。]]>
+    </Conclusion>
+    <Conclusion min="30" max="50">
+      <![CDATA[Pagerank能达到现在的水平(PR=<b>$PAGERANK$</b>)已经很很不错了，当然一般情况下越往后面越难，如果能仔细分析Pagerank的规则并加以利用，还是可以再提高的，至少加1分是有希望的。多建立外部链接是一个有效手段，但要注意链接的网站Pagerank尽量比当前网站高，至少要相当。]]>
+    </Conclusion>
+    <Conclusion min="11" max="30">
+      <![CDATA[Pagerank已经取得了基本的分数(PR=<b>$PAGERANK$</b>)，但稍加努力应该可以至少提高1分，时间是一个因素，同时还是要关注与外部网站的链接
+      多建立外部链接是一个有效手段，尤其是那些pagerank比你的网站高的网站链接会帮助比较大。<br/>
+       <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/pagerank-3.html" target="_blank">关于如何提高Pagerank？</a></li>
+      </ul>]]>
+    </Conclusion>
+    <Conclusion min="0" max="11">
+      <![CDATA[从Pagerank上(PR=<b>$PAGERANK$</b>)就可以看出来，该网站还没有好好地推广，当然时间不够也可能是一个因素，马上就行动，提高Pagerank应该是当务之急，会更有利于你的网站被人搜到。多建立外部链接是一个有效手段，当然如果链接的网站内容与你的网站内容有相关性那就更好了。<br/>
+      <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/pagerank.html" target="_blank">了解Pagerank</a></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/pagerank-4.html" target="_blank">链接引用的重要性</a></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/pagerank-3.html" target="_blank">关于如何提高Pagerank？</a></li>
+      </ul>]]>
+    </Conclusion>
+  </Pagerank>
+
+  <Records>
+    <Conclusion min="85" max="101">
+      <![CDATA[该网站的页面数量(<b>$RECORDS$</b>)非常大，内容比较丰富，并且能在主流搜索引擎上得到很好地体现。]]>
+    </Conclusion>
+
+    <Conclusion min="65" max="85">
+      <![CDATA[该网站的页面还可以再丰富一些，注意保持更新的频次和节奏，应该可以取得更好的效果。
+      在提高页面数量的同时，还要特别关注那些收录你的网站页面偏少的搜索引擎，有的放矢去改善效率会更高。]]>
+    </Conclusion>
+
+    <Conclusion min="25" max="65">
+      <![CDATA[该网站的页面数量(<b>$RECORDS$</b>)还不够多，或者还没有被主流搜索引擎很好地收录，建议分析一下主流搜索引擎的页面收录习惯，以提升网站的表现,
+      建议先把页面的数量抓起来，并特别关注那些收录你的网站页面特别少的搜索引擎，看看能不能做一些改善。<br/>
+      <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/records.html" target="_blank">如何让搜索引擎收录我的网站？</a></li>
+      </ul>
+      ]]>
+    </Conclusion>
+
+    <Conclusion min="0" max="25">
+      <![CDATA[该网站的公开页面数量(<b>$RECORDS$</b>)太少了，搜索引擎找不到你，用户也就不容易找到你。要马上提高，加快更新！勤快一点效果就大不一样，如果没有原创的内容也可以考虑转载一些内容相关度高的网上内容，或者多邀请用户来参与，总之有很多机会去提高。<br/>
+      <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/records.html" target="_blank">如何让搜索引擎收录我的网站？</a></li>
+      </ul>
+      ]]>
+    </Conclusion>
+  </Records>
+
+  <KeywordRank>
+    <Conclusion min="85" max="101">
+      <![CDATA[针对所选定的<a href="http://www.brandqq.com/bqipd/seopages/keywords.html" target="_blank">关键字</a>(<b>$KEYWORDS$</b>)，该网站在主流搜索引擎上的关键字表现非常出色，基本上可以很快地被用户搜索到。]]>
+  </Conclusion>
+
+  <Conclusion min="65" max="85">
+    <![CDATA[针对所选定的<a href="http://www.brandqq.com/bqipd/seopages/keywords.html" target="_blank">关键字</a>(<b>$KEYWORDS$</b>)，该网站在主流搜索引擎上的关键字表现还不错，基本上在翻几页的情况下就可以找到。
+    ]]>
+  </Conclusion>
+
+  <Conclusion min="25" max="65">
+    <![CDATA[针对所选定的<a href="http://www.brandqq.com/bqipd/seopages/keywords.html" target="_blank">关键字</a>(<b>$KEYWORDS$</b>)，该网站在主流搜索引擎上的关键字表现还不够理想，可能会错失一些被用户发现的机会。
+    <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/keywords-1.html" target="_blank">网站关键字密度</a></li>
+	    <li><a href="http://www.brandqq.com/bqipd/seopages/keywords-2.html" target="_blank">如何设置与选择网站关键字？</a></li>
+	    <li><a href="http://www.brandqq.com/bqipd/seopages/keywords-3.html" target="_blank">如何突出关键词？</a></li>
+      </ul>]]>
+</Conclusion>
+
+<Conclusion min="0" max="25">
+  <![CDATA[针对所选定的<a href="http://www.brandqq.com/bqipd/seopages/keywords.html" target="_blank">关键字</a>(<b>$KEYWORDS$</b>)，该网站在主流搜索引擎上的关键字表现比较差，用户想通过搜索找到该网站的机会比较小，或许要考虑其他的一些辅助手段来帮助用户。
+  <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/keywords-1.html" target="_blank">网站关键字密度</a></li>
+	    <li><a href="http://www.brandqq.com/bqipd/seopages/keywords-2.html" target="_blank">如何设置与选择网站关键字？</a></li>
+	    <li><a href="http://www.brandqq.com/bqipd/seopages/keywords-3.html" target="_blank">如何突出关键词？</a></li>
+      </ul>]]>
+    </Conclusion>
+  </KeywordRank>
+
+  <KeywordLen>
+    <Conclusion min="9" max="100">
+      <![CDATA[需要关注一下，是不是关键字有点太长了？关心一下用户的搜索习惯也是值得的。
+      <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/keywords-2.html" target="_blank">如何设置与选择网站关键字？</a></li>
+      </ul>]]>
+    </Conclusion>
+    <Conclusion min="0" max="3">
+      <![CDATA[需要关注一下，是不是关键字有点太笼统了？有些时候专注一下、缩小关键字的范围也是一个不错的选择。<br/>
+      <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/keywords-2.html" target="_blank">如何设置与选择网站关键字？</a></li>
+      </ul>
+      ]]>
+    </Conclusion>
+  </KeywordLen>
+
+  <Alexa>
+    <Conclusion min="85" max="101">
+      <![CDATA[能在Alexa排名上取得这样的成绩(<b>$ALEXA$</b>)是非常不错的，综合该网站的覆盖面(reach)和用户的粘性来看，该网站有比较好的用户基础。]]>
+    </Conclusion>
+
+    <Conclusion min="65" max="85">
+      <![CDATA[网站的排名能跨进10几万的水平也是很不容易的，当然挺进10万以内需要更多的努力，着力提高网站的覆盖面(reach)和用户的粘性都是有效的手段。]]>
+    </Conclusion>
+
+    <Conclusion min="25" max="65">
+      <![CDATA[网站的排名徘徊在几十万的水平是一个小平台，应该说也是取得了一个不错的基础，但是网站排名不进则退，需要加快内容更新并扩大用户的覆盖面。]]>
+    </Conclusion>
+
+    <Conclusion min="1" max="25">
+      <![CDATA[抓紧努力吧，现在网站至少还有排名(<b>$ALEXA$</b>)，千万不要任其自然；至少先让更多的人来访问你的网站，当然让每个用户访问你的页面数越多越好，以内容也很重要。]]>
+    </Conclusion>
+    <Conclusion min="0" max="1">
+      <![CDATA[网站目前还没有排名数据，当然，这可能和时间有关。让更多的人来访问你的网站，每个用户访问你的页面数越多越好，同时，网站内容也很重要。]]>
+    </Conclusion>
+  </Alexa>
+
+  <LinkIn>
+    <Conclusion min="85" max="101">
+      <![CDATA[可以看出该网站的人缘不错，有这么多高质量的链接(<b>$LINKIN$</b>)说明该网站很受欢迎，被引用的机会非常多。
+      ]]>
+    </Conclusion>
+
+    <Conclusion min="65" max="85">
+      <![CDATA[该网站的外部链接数(<b>$LINKIN$</b>)比较丰富，说明该网站比较受欢迎，被引用的机会比较多；当然还可以进一步加强链接的数量和质量，优化网站的表现。外部链接受两个因素的影响，一方面是网站内容的质量和权威性，另一方面是网站主动推广、广泛与其它网站合作产生的效果，从这两个方面下手都可以帮助网站进一步提升这一方面的表现。
+]]>
+    </Conclusion>
+
+    <Conclusion min="25" max="65">
+      <![CDATA[该网站的外部链接数(<b>$LINKIN$</b>)已经有了初步的基础，说明该网站已经得到了其他网站的部分关注和认同。以此为基础还可以进一步改善链接数的状况，进而显著提高整个网站的表现。外部链接受两个因素的影响，一方面是网站内容的质量和权威性，另一方面是网站主动推广、广泛与其它网站合作产生的效果，从这两个方面下手都可以帮助你的网站进一步提升这一方面的表现。虽然买链接也是一种手段，但并不被主流搜索引擎所认同。
+    <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/linin-2.html">怎样增加反向链接？</a></li>
+	    <li><a href="http://www.brandqq.com/bqipd/seopages/linin-3.html">链接诱饵：怎样获得反向链接</a></li>
+      </ul>
+    ]]>
+    </Conclusion>
+
+    <Conclusion min="0" max="25">
+      <![CDATA[该网站的外部链接数(<b>$LINKIN$</b>)太少了，说明该网站还没有被其他网站很好地关注，当然这也会影响网站在其他方面的综合表现。可以肯定的是，这里面存在很大的改进和提高的机会。外部链接受两个因素的影响，一方面是网站内容的质量和权威性，另一方面是网站主动推广、广泛与其它网站合作产生的效果，从这两个方面下手都可以帮助你的网站进一步提升这一方面的表现。除了埋头做自己的东西之外，也要关注与其它网站的合作，“交换链接”就是一个最快而有效的手段，只要行动起来马上就会有改观。
+      <ul>
+      <li><b>推荐链接：</b></li>
+      <li><a href="http://www.brandqq.com/bqipd/seopages/linin-2.html">怎样增加反向链接？</a></li>
+	    <li><a href="http://www.brandqq.com/bqipd/seopages/linin-3.html">链接诱饵：怎样获得反向链接</a></li>
+      </ul>
+]]>
+    </Conclusion>
+  </LinkIn>
+
+  <!--输出格式定义
+  Score：{0},General：{1},Pagerank:{2},Records:{3},Keyword:{4},Alexa:{5},LinkIn:{6}-->
+  <OutputFormat>
+    <![CDATA[<p style="font-size:18px;font-family:Arial black;color:#ff0000;">本次诊断综合得分：{0}</p>
+    <p>{1}</p>
+    <p>{2}</p>
+    <p>{3}</p>
+    <p>{4}</p>
+    <p>{5}</p>
+    <p>{6}</p>]]>
+  </OutputFormat>
+</BQIPD>

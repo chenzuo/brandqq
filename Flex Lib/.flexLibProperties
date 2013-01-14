@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+  <includeClasses>
+    <classEntry path="com.brandqq.lib.controls.ColourPicker"/>
+    <classEntry path="com.brandqq.lib.controls.Selector"/>
+    <classEntry path="com.brandqq.lib.logo.LogoFile"/>
+    <classEntry path="com.brandqq.lib.graphic.RGB"/>
+    <classEntry path="com.brandqq.lib.util.StringUtil"/>
+    <classEntry path="com.brandqq.lib.graphic.IVector"/>
+    <classEntry path="com.brandqq.lib.controls.PopUpBox"/>
+    <classEntry path="com.brandqq.lib.graphic.QuadraticBezier"/>
+    <classEntry path="com.brandqq.lib.controls.SelectorHandlerMouseEvent"/>
+    <classEntry path="com.brandqq.lib.graphic.ISegment"/>
+    <classEntry path="com.brandqq.lib.controls.PopUpAlert"/>
+    <classEntry path="com.brandqq.lib.card.CardFace"/>
+    <classEntry path="com.brandqq.lib.graphic.Symbol"/>
+    <classEntry path="com.brandqq.Resources.Requests"/>
+    <classEntry path="com.brandqq.IO.FileReader"/>
+    <classEntry path="com.brandqq.lib.util.NetUtil"/>
+    <classEntry path="com.brandqq.lib.events.ColourPickerEvent"/>
+    <classEntry path="com.brandqq.IO.IFile"/>
+    <classEntry path="com.brandqq.lib.controls.TextEditor"/>
+    <classEntry path="com.brandqq.user.UserConfig"/>
+    <classEntry path="com.brandqq.lib.events.DataLoadEvent"/>
+    <classEntry path="com.brandqq.lib.graphic.Text"/>
+    <classEntry path="com.brandqq.lib.graphic.StartPoint"/>
+    <classEntry path="com.brandqq.lib.graphic.CubicBezier"/>
+    <classEntry path="com.brandqq.lib.events.PopUpEvent"/>
+    <classEntry path="com.brandqq.lib.util.MatrixTransformer"/>
+    <classEntry path="com.brandqq.lib.logo.LogoGraphic"/>
+    <classEntry path="com.brandqq.lib.controls.CanvasGridSize"/>
+    <classEntry path="com.brandqq.IO.XmlReader"/>
+    <classEntry path="com.brandqq.user.UserGuid"/>
+    <classEntry path="com.brandqq.lib.events.TextEditorEvent"/>
+    <classEntry path="com.brandqq.lib.controls.SelectorHandler"/>
+    <classEntry path="com.brandqq.lib.graphic.Glyph"/>
+    <classEntry path="com.brandqq.IO.IByte"/>
+    <classEntry path="com.brandqq.lib.card.CardFile"/>
+    <classEntry path="com.brandqq.IO.FileWriter"/>
+    <classEntry path="com.brandqq.lib.graphic.VectorRendMode"/>
+    <classEntry path="com.brandqq.lib.graphic.Thumbnail"/>
+    <classEntry path="com.brandqq.lib.events.RenderEvent"/>
+    <classEntry path="com.brandqq.lib.graphic.RGBA"/>
+    <classEntry path="com.brandqq.lib.controls.SelectorMouseEvent"/>
+    <classEntry path="com.brandqq.lib.logo.LogoContainer"/>
+    <classEntry path="com.brandqq.lib.controls.PopUpBoxType"/>
+    <classEntry path="com.brandqq.lib.util.ColorUtil"/>
+    <classEntry path="com.brandqq.lib.card.CardTempFile"/>
+    <classEntry path="com.brandqq.lib.graphic.SymbolCollection"/>
+    <classEntry path="com.brandqq.Resources.Cursors"/>
+    <classEntry path="com.brandqq.lib.card.CardFaceContainer"/>
+    <classEntry path="com.brandqq.IO.FileEnum"/>
+    <classEntry path="com.brandqq.lib.graphic.Line"/>
+    <classEntry path="com.brandqq.lib.controls.SuperCanvas"/>
+    <classEntry path="com.brandqq.lib.graphic.TextDecoration"/>
+    <classEntry path="com.brandqq.lib.graphic.TextCollection"/>
+    <classEntry path="com.brandqq.lib.events.FileEvent"/>
+    <classEntry path="com.brandqq.lib.util.PNGEncoder"/>
+    <classEntry path="com.brandqq.user.User"/>
+    <classEntry path="com.brandqq.lib.controls.SelectorStyle"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

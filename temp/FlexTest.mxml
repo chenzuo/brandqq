@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()" width="800" height="600">
+
+	<mx:Script>
+		<![CDATA[
+			import mx.core.Container;
+			private function init():void
+			{
+				var con:Container=new Container();
+				var sp:Sprite=new Sprite();
+				sp.graphics.beginFill(0,0);
+				sp.graphics.drawRect(0,0,100,100);
+				con.addChild(sp);
+				addChild(con);
+			}
+			
+		]]> 
+	</mx:Script>
+	
+</mx:Application>

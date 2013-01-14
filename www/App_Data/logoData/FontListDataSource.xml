@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Fonts>
+	<Font name="黑体" lang="cn" code="CN001" size="32" />
+	<Font name="隶书" lang="cn" code="CN002" size="32" />
+	<Font name="长城粗行楷体" lang="cn" code="CN003" size="32" />
+	<Font name="长城粗圆体" lang="cn" code="CN004" size="32" />
+	<Font name="长城大黑体" lang="cn" code="CN005" size="32" />
+	<Font name="长城美黑体" lang="cn" code="CN006" size="32" />
+	<Font name="长城特粗黑体" lang="cn" code="CN007" size="32" />
+	<Font name="长城特粗宋体" lang="cn" code="CN008" size="32" />
+	<Font name="长城特粗圆体" lang="cn" code="CN009" size="32" />
+	<Font name="长城新魏碑体" lang="cn" code="CN010" size="32" />
+	<Font name="长城行楷体" lang="cn" code="CN011" size="32" />
+	<Font name="长城中行书体" lang="cn" code="CN012" size="32" />
+	<Font name="创艺简标宋" lang="cn" code="CN013" size="32" />
+	<Font name="创艺简细圆" lang="cn" code="CN014" size="32" />
+	<Font name="方正彩云简体" lang="cn" code="CN015" size="32" />
+	<Font name="方正粗倩简体" lang="cn" code="CN016" size="32" />
+	<Font name="方正粗宋简体" lang="cn" code="CN017" size="32" />
+	<Font name="方正华隶简体" lang="cn" code="CN018" size="32" />
+	<Font name="方正黄草简体" lang="cn" code="CN019" size="32" />
+	<Font name="方正隶二简体" lang="cn" code="CN020" size="32" />
+	<Font name="方正胖娃简体" lang="cn" code="CN021" size="32" />
+	<Font name="方正平和简体" lang="cn" code="CN022" size="32" />
+	<Font name="方正少儿简体" lang="cn" code="CN023" size="32" />
+	<Font name="方正瘦金书简体" lang="cn" code="CN024" size="32" />
+	<Font name="方正行楷简体" lang="cn" code="CN025" size="32" />
+	<Font name="方正稚艺简体" lang="cn" code="CN026" size="32" />
+	<Font name="方正综艺简体" lang="cn" code="CN027" size="32" />
+	<Font name="汉鼎简新艺体" lang="cn" code="CN028" size="32" />
+
+	<Font name="4YEOstamp" lang="en" code="EN001" size="32" />
+	<Font name="Abduction" lang="en" code="EN002" size="32" />
+	<Font name="AF PEPSI" lang="en" code="EN003" size="32" />
+	<Font name="Aladdin" lang="en" code="EN004" size="32" />
+	<Font name="Amazone BT" lang="en" code="EN005" size="32" />
+	<Font name="Anklepants" lang="en" code="EN006" size="32" />
+	<Font name="Arnold Boecklin" lang="en" code="EN007" size="32" />
+	<Font name="Balloon XBd BT" lang="en" code="EN008" size="32" />
+	<Font name="Bauhaus Hv BT" lang="en" code="EN009" size="32" />
+	<Font name="Bauhaus Md BT" lang="en" code="EN010" size="32" />
+	<Font name="Bremen Bd BT" lang="en" code="EN011" size="32" />
+	<Font name="Busorama Md BT" lang="en" code="EN012" size="32" />
+	<Font name="Broadway BT" lang="en" code="EN013" size="32" />
+	<Font name="Cancun" lang="en" code="EN014" size="32" />
+	<Font name="Century725 Blk BT" lang="en" code="EN015" size="32" />
+	<Font name="CloisterBlack BT" lang="en" code="EN016" size="32" />
+	<Font name="Cooper BlkItHd BT" lang="en" code="EN017" size="32" />
+	<Font name="Crazy Creatures " lang="en" code="EN018" size="32" />
+	<Font name="EngraversGothic BT" lang="en" code="EN019" size="32" />
+</Fonts>

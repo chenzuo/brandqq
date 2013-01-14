@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="20" 
+	verticalAlign="middle" paddingLeft="5" creationComplete="init()">
+	
+	<mx:Script>
+		<![CDATA[
+			import flash.display.GradientType;
+			import flash.display.SpreadMethod;
+			import flash.geom.Matrix;
+			
+			private function init():void
+			{
+				this.toolTip=data.@tip;
+				var clrs:Array=[uint(data.@from),uint(data.@to)];
+				var alphas:Array=[1,1];
+				var ratios:Array = [0x00,0xFF];
+	 			var matrix:Matrix = new Matrix();
+				matrix.createGradientBox(ColorRender.width, ColorRender.height, 0, 0, 0);
+				
+				ColorRender.graphics.clear();
+				ColorRender.graphics.lineStyle(1,0,1,true,"none");
+				ColorRender.graphics.beginGradientFill(GradientType.LINEAR,
+													clrs,alphas,ratios,matrix,SpreadMethod.REFLECT);
+				ColorRender.graphics.drawRect(0,0,ColorRender.width,ColorRender.height);
+				ColorRender.graphics.endFill();
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Canvas id="ColorRender" width="50" height="16">
+	</mx:Canvas>
+	<mx:Label id="ColorName" text="{data.@name}" truncateToFit="true"/>
+	
+</mx:HBox>

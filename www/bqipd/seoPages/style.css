@@ -1,0 +1,26 @@
+/* CSS Document */
+p
+{
+	text-indent:2em;
+	line-height:160%;
+}
+
+h3
+{
+	text-indent:2em;
+	line-height:180%;
+}
+
+blockquote
+{
+	border:1px solid #666;
+	background:#F5F5F5;
+	padding:5px;
+	line-height:150%;
+}
+
+div.idx
+{
+	text-align:right;
+	padding:10px;
+}

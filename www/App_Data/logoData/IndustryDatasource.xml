@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Industries>
+<node label="所有行业" code="0">
+	<node code="100000" label="消费品">
+		<node code="100100" label="日化"/>
+		<node code="100200" label="食品饮料" />
+		<node code="100300" label="医药保健" />
+		<node code="100400" label="家电" />
+		<node code="100500" label="电脑数码与消费电子"/>
+		<node code="100600" label="交通工具(乘用车、摩托车、自行车等)" />
+		<node code="100700" label="服装" />
+		<node code="100800" label="家居装修装饰品"/>
+		<node code="100900" label="办公用品"/>
+		<node code="101000" label="饰品礼品"/>
+		<node code="101100" label="玩具"/>
+		<node code="101200" label="运动/休闲/户外装备器械"/>
+		<node code="101300" label="房地产"/>
+		<node code="101400" label="其他"/>
+	</node>
+
+	<node code="110000" label="工业品">
+		<node code="110100" label="IT/通信设备"/>
+		<node code="110200" label="机械设备"/>
+		<node code="110300" label="电子元器件"/>
+		<node code="110400" label="五金工具"/>
+		<node code="110500" label="电工电气"/>
+		<node code="110600" label="灯具照明"/>
+		<node code="110700" label="汽车(商用车及汽车配件)"/>
+		<node code="110800" label="交通运输工具(不含汽车)"/>
+		<node code="110900" label="安防设备"/>
+		<node code="111000" label="包装(纸质、玻璃、金属、塑料等)"/>
+		<node code="111100" label="仪器仪表"/>
+		<node code="111200" label="印刷"/>
+		<node code="111300" label="环保设备设施"/>
+		<node code="111400" label="纸(工业、包装)"/>
+		<node code="111500" label="其他"/>
+	</node>
+
+	<node code="120000" label="原材料">
+		<node code="120100" label="化工原料"/>
+		<node code="120200" label="冶金矿产(钢材、有色、矿产)"/>
+		<node code="120300" label="橡胶塑料"/>
+		<node code="120400" label="纺织皮革"/>
+		<node code="120500" label="精细化学品(胶粘剂、涂料、颜料)"/>
+		<node code="120600" label="农业"/>
+		<node code="120700" label="医药医用材料"/>
+		<node code="120800" label="建筑建材"/>
+		<node code="120900" label="能源(石油、天然气、煤炭)"/>
+		<node code="121000" label="再生材料废料"/>
+		<node code="121100" label="其他"/>
+	</node>
+
+	<node code="130000" label="服务业">
+		<node code="130100" label="金融(银行、证券、保险、期货等)"/>
+		<node code="130200" label="电信"/>
+		<node code="130300" label="餐饮业"/>
+		<node code="130400" label="旅游业(旅行社、景点等)"/>
+		<node code="130500" label="宾馆酒店"/>
+		<node code="130600" label="娱乐服务业"/>
+		<node code="130700" label="批发、零售业"/>
+		<node code="130800" label="交通运输服务(航空、铁路、公路等)"/>
+		<node code="130900" label="仓储物流"/>
+		<node code="131000" label="专业服务(咨询、律师、广告等)"/>
+		<node code="131100" label="教育培训(学校等)"/>
+		<node code="131200" label="传播文化(出版、声像、广播影视)"/>
+		<node code="131300" label="公共事业(水、电、煤)"/>
+		<node code="131400" label="卫生保健服务(医院等)"/>
+		<node code="131500" label="其他"/>
+	</node>
+</node>
+</Industries>

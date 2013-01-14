@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" Inherits="BrandQQ.WebControls.PaperTestResponse" %>

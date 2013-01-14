@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ApplicationControlBar xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" 
+	cornerRadius="0" dock="true" creationComplete="init()">
+	
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.core.IFlexDisplayObject;
+			import mx.core.Application;
+			import mx.containers.Panel;
+			import mx.managers.PopUpManager;
+			import mx.events.CloseEvent;
+			import flash.display.DisplayObject;
+			import flash.net.URLLoader;
+			import flash.events.Event;
+			
+			import com.brandqq.user.User;
+			import com.brandqq.IO.XmlReader;
+			import com.brandqq.Resources.Requests;
+			import com.brandqq.lib.util.NetUtil;
+			
+			private function init():void
+			{
+				
+			}
+			
+			private function onUserStatusButtonClick(e:MouseEvent):void
+			{
+				var pop:IFlexDisplayObject;
+				if(User.loginStatus)
+				{
+					//显示用户信息
+					pop=PopUpManager.createPopUp(DisplayObject(Application.application),UserInfoWindow,false);
+					PopUpManager.centerPopUp(pop);
+				}
+				else
+				{
+					//显示登录窗口
+					pop=PopUpManager.createPopUp(DisplayObject(Application.application),UserLoginWindow,true);
+					PopUpManager.centerPopUp(pop);
+					Panel(pop).addEventListener(CloseEvent.CLOSE,function(e:CloseEvent):void
+					{
+						refresh();
+					});
+				}
+			}
+			
+			public function refresh():void
+			{
+				if(User.loginStatus)
+				{
+					UserStatusButton.styleName="userStatusButtonActive";
+					UserStatusButton.label=User.nameLabel;
+					QuitButton.visible=true;
+					QuitButton.width=60;
+				}
+				else
+				{
+					UserStatusButton.styleName="userStatusButtonUnActive";
+					UserStatusButton.label="登录";
+					QuitButton.width=0;
+					QuitButton.visible=false;
+				}
+			}
+			
+			public function logout():void
+			{
+				var loader:URLLoader=new URLLoader();
+				loader.addEventListener(Event.OPEN,function(e:Event):void
+					{
+						QuitButton.enabled=false;
+					}
+				);
+				loader.addEventListener(Event.COMPLETE,function(e:Event):void
+					{
+						NetUtil.getUrl("/");
+					}
+				);
+				loader.load(Requests.userLogoutRequest());
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Image source="@Embed(source='../../../../../SystemSkin.swf',symbol='Logo_BusiCard')"/>
+	<mx:Spacer width="100%"/>
+	<mx:Button label="登录" id="UserStatusButton" styleName="userStatusButtonUnActive" 
+		click="onUserStatusButtonClick(event)"/>
+	<mx:Button id="QuitButton" label="退出" click="logout()" width="0" visible="false"/>
+	
+</mx:ApplicationControlBar>

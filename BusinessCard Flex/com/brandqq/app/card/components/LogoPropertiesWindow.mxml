@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="horizontal" 
+	title="调整Logo属性" 
+	showCloseButton="true" backgroundAlpha=".9" 
+	borderColor="#000000" close="onClose()" dropShadowEnabled="false">
+	
+	<mx:Metadata>
+		[Event(name="onLogoPropChange",type="com.brandqq.app.card.events.LogoPropertyEvent")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.brandqq.app.card.events.LogoPropertyEvent;
+			import com.brandqq.lib.logo.LogoGraphic;
+			import mx.managers.PopUpManager;
+			import mx.events.NumericStepperEvent;
+			import mx.controls.Alert;
+			
+			public function set monitorLogo(value:LogoGraphic):void
+			{
+				__monitorLogo=value;
+				if(__monitorLogo!=null)
+				{
+					var ct:ColorTransform=__monitorLogo.transform.colorTransform;
+					if(ct==null)
+					{
+						ct=new ColorTransform();
+					}
+					RM.value=ct.redMultiplier*100;
+					RO.value=ct.redOffset;
+					GM.value=ct.greenMultiplier*100;
+					GO.value=ct.greenOffset;
+					BM.value=ct.blueMultiplier*100;
+					BO.value=ct.blueOffset;
+					AM.value=ct.alphaMultiplier*100;
+					AO.value=ct.alphaOffset;
+					
+					var rect:Rectangle=__monitorLogo.getRect(__monitorLogo.parent);
+					POSX.value=rect.x;
+					POSX.maximum=int(__monitorLogo.parent.width-rect.width);
+					POSY.value=rect.y;
+					POSY.maximum=int(__monitorLogo.parent.height-rect.height);
+					SIZEW.value=rect.width;
+					SIZEW.maximum=int(__monitorLogo.parent.width*.5);
+					SIZEH.value=rect.height;
+					SIZEH.maximum=int(__monitorLogo.parent.height*.5);
+				}
+			}
+			
+			private function onClose():void
+			{
+				PopUpManager.removePopUp(this);
+			}
+			
+			private function onColorPropertiesChange(e:NumericStepperEvent):void
+			{
+				this.dispatchEvent(new LogoPropertyEvent(LogoPropertyEvent.CHANGE,
+														NumericStepper(e.target).id,
+														NumericStepper(e.target).value,
+														false,LockFaces.selected));
+			}
+			
+			private function onPosPropertiesChange(e:NumericStepperEvent):void
+			{
+				this.dispatchEvent(new LogoPropertyEvent(LogoPropertyEvent.CHANGE,
+														NumericStepper(e.target).id,
+														NumericStepper(e.target).value,
+														false,LockFaces.selected));
+			}
+			
+			private function onSizePropertiesChange(e:NumericStepperEvent):void
+			{
+				this.dispatchEvent(new LogoPropertyEvent(LogoPropertyEvent.CHANGE,
+														NumericStepper(e.target).id,
+														NumericStepper(e.target).value,
+														LockSize.selected,LockFaces.selected));
+			}
+			
+			private var __monitorLogo:LogoGraphic;
+		]]>
+	</mx:Script>
+	<mx:VBox height="100%" horizontalAlign="left">
+		<mx:Label text="颜色" fontWeight="bold" color="#808080"/>
+		<mx:HBox width="100%" verticalAlign="middle">
+			<mx:Label text="红=(" textAlign="right" width="50"/>
+			<mx:NumericStepper minimum="-100" maximum="100" id="RM" change="onColorPropertiesChange(event)"/>
+			<mx:Label text="×R)＋"/>
+			<mx:NumericStepper minimum="-255" maximum="255" id="RO" change="onColorPropertiesChange(event)"/>
+		</mx:HBox>
+		<mx:HBox width="100%" verticalAlign="middle">
+			<mx:Label text="绿=(" textAlign="right" width="50"/>
+			<mx:NumericStepper minimum="-100" maximum="100" id="GM" change="onColorPropertiesChange(event)"/>
+			<mx:Label text="×G)＋"/>
+			<mx:NumericStepper minimum="-255" maximum="255" id="GO" change="onColorPropertiesChange(event)"/>
+		</mx:HBox>
+		<mx:HBox width="100%" verticalAlign="middle">
+			<mx:Label text="蓝=(" textAlign="right" width="50"/>
+			<mx:NumericStepper minimum="-100" maximum="100" id="BM" change="onColorPropertiesChange(event)"/>
+			<mx:Label text="×B)＋"/>
+			<mx:NumericStepper minimum="-255" maximum="255" id="BO" change="onColorPropertiesChange(event)"/>
+		</mx:HBox>
+		<mx:HBox width="100%" verticalAlign="middle">
+			<mx:Label text="Alpha=(" width="50" textAlign="right"/>
+			<mx:NumericStepper minimum="0" maximum="100" id="AM" change="onColorPropertiesChange(event)"/>
+			<mx:Label text="×A)＋"/>
+			<mx:NumericStepper minimum="-255" maximum="255" id="AO" change="onColorPropertiesChange(event)"/>
+		</mx:HBox>
+	</mx:VBox>
+	<mx:VBox height="100%" horizontalAlign="left">
+		<mx:Label text="位置/尺寸" fontWeight="bold" color="#808080"/>
+		<mx:HBox width="100%" verticalAlign="middle">
+			<mx:Label text="水平="/>
+			<mx:NumericStepper id="POSX" change="onPosPropertiesChange(event)" minimum="0" />
+			<mx:Label text="垂直="/>
+			<mx:NumericStepper id="POSY" change="onPosPropertiesChange(event)" minimum="0" />
+		</mx:HBox>
+		<mx:HBox width="100%" verticalAlign="middle">
+			<mx:Label text="宽度="/>
+			<mx:NumericStepper id="SIZEW" change="onSizePropertiesChange(event)" minimum="50" />
+			<mx:Label text="高度="/>
+			<mx:NumericStepper id="SIZEH" change="onSizePropertiesChange(event)" minimum="50" />
+		</mx:HBox>
+		<mx:HBox>
+			<mx:CheckBox label="锁定比例" selected="true" id="LockSize"/>
+		</mx:HBox>
+		<mx:CheckBox label="名片正反面同步" selected="true" id="LockFaces"/>
+	</mx:VBox>
+	
+</mx:TitleWindow>

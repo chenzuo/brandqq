@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+BMI报告下载配置
+id:年+季+版本(B-摘要版;F-完整版)
+login:是否要求登录用户才能下载
+check:是否要求认证用户才能下载
+file:文件名
+title:标题
+-->
+<Downloads>
+  <Item id="200704B" login="false" check="false" mime="application/pdf" downloads="0">
+    <file><![CDATA[中国企业品牌管理能力白皮书-品牌管理指数-第1期 摘要版.pdf]]></file>
+    <title><![CDATA[中国企业品牌管理能力白皮书-品牌管理指数-第1期 摘要版.pdf]]></title>
+  </Item>
+  <Item id="200704F" login="true" check="true" mime="application/pdf" downloads="0">
+    <file><![CDATA[中国企业品牌管理能力白皮书-品牌管理指数-第1期 完整版.pdf]]></file>
+    <title><![CDATA[中国企业品牌管理能力白皮书-品牌管理指数-第1期 完整版.pdf]]></title>
+  </Item>
+</Downloads>

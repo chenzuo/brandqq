@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>Test</title>
+  <script src="BQIPDAPI.js"></script>
+	<script>
+	function doTest(oForm)
+	{
+		var oResult=document.getElementById("RESULT");
+		oResult.innerHTML="Quering,please wait...";
+		var query=new BQIPDQuery(oForm.u.value,oForm.k.value,function(result)
+			{
+				oResult.innerHTML=result.getHtml();
+			}
+		);
+		query.Run();
+		return false;
+	}
+	</script>
+ </head>
+
+ <body>
+  <form onsubmit="return doTest(this)">
+	域名：<input name="u" type="text"><br/>
+	关键字：<input name="k" type="text"><br/>
+	<input type="submit" value="Test">
+  </form>
+
+	<div id="RESULT"></div>
+
+ </body>
+</html>

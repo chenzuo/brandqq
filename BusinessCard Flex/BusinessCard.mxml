@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="vertical" 
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+	creationComplete="init()" 
+	xmlns:qq="com.brandqq.app.card.components.*" 
+	minWidth="800" minHeight="600" xmlns:qqLib="com.brandqq.lib.logo.*">
+	
+	<mx:Style source="SystemSkin.css"/>
+	<mx:Script source="BusinessCard.as"/>
+	
+	<qq:AppTopBar id="BusinessCardTopBar"/>
+	  
+	<mx:HBox id="BusinessCardBody" width="100%" height="100%" 
+		paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5" horizontalGap="3"
+		>
+		<!--左栏-->
+		<mx:Panel id="LeftPanel" 
+			width="200" height="100%" 
+			layout="vertical"  
+			title="我的Logo" horizontalAlign="center" 
+			horizontalScrollPolicy="off" verticalScrollPolicy="off" 
+			clipContent="true">
+			<qqLib:LogoGraphic id="CurrentLogo" width="160" height="120" />
+			<mx:Button id="CurrentLogoButton" label="编辑" enabled="false"/>
+			<qq:LogoList id="UserLogoList" change="onUserLogoListItemChange()"/>
+			<mx:ControlBar horizontalAlign="center">
+				<mx:Button label="上传Logo" enabled="false"/>
+			</mx:ControlBar>
+		</mx:Panel>
+		
+		<!--右栏-->
+		<mx:ViewStack id="ViewStack" height="100%" width="100%" change="onViewStackIndexChange(event)">
+			
+			<!--模板选择-->
+			<mx:Panel id="TempsListPanel" 
+				height="100%" 
+				layout="vertical" 
+				title="选择设计模板" 
+				status="从下列模板中选择一款最适合您的"
+				titleIcon="@Embed(source='SystemSkin.swf',symbol='Step1')" 
+				horizontalScrollPolicy="off" verticalScrollPolicy="off">
+				<qq:CardTempsList id="CardTempsList" width="100%" height="100%"
+					itemDoubleClick="{BusinessCardBottomBar.Button1.dispatchEvent(new MouseEvent(MouseEvent.CLICK))}"/>
+				<mx:ControlBar horizontalAlign="right">
+					<mx:Label text="模板风格："/>
+					<mx:ComboBox id="CardTempsStyle" labelField="@name"></mx:ComboBox>
+				</mx:ControlBar>
+			</mx:Panel>
+			 
+			<!--名片编辑-->
+			<mx:Panel id="CardEditPanel" width="100%" height="100%" 
+				title="编辑我的名片" layout="vertical" backgroundAlpha="1.0"
+				titleIcon="@Embed(source='SystemSkin.swf',symbol='Step2')" backgroundColor="0xffffff">
+				
+				<!--名片容器-->
+				<qq:CardTabNavigator id="CardFacesTabNavigator"
+					elementSelected="onCardElementSelected(event)"
+				/>
+				
+				<!--属性设置面板-->
+				<qq:CardPropertiesBar id="CardSettingBar" monitorTabNavigator="{CardFacesTabNavigator}"
+					fontChange="onCardTextEvent(event)"
+					fontSizeChange="onCardTextEvent(event)"
+					textAlignChange="onCardTextEvent(event)"
+					textColorChange="onCardTextEvent(event)"
+				/>
+				
+			</mx:Panel>
+			
+			<!--效果预览-->
+			<mx:Panel id="CardPreviewPanel" 
+				width="100%" height="100%" 
+				title="预览和保存" layout="vertical" 
+				titleIcon="@Embed(source='SystemSkin.swf',symbol='Step3')">
+				<qq:CardPreviewVBox id="CardPreviewPanelBox"
+					 onTextRending="{CardPreviewPanel.enabled=false;BusinessCardBottomBar.enabled=false;}" 
+					 onTextRended="{CardPreviewPanel.enabled=true;BusinessCardBottomBar.enabled=true;}"
+				/>
+				<mx:ControlBar>
+					<mx:Label text="名片标题："/>
+					<mx:TextInput id="CardTitle" text="{__cardDefaultTitle}" maxChars="50" width="250"/>
+					<mx:ProgressBar id="SaveCardProgressBar" label="" labelPlacement="left" 
+						indeterminate="true" width="150" visible="false"/>
+					<mx:Spacer width="100%"/>
+					<mx:Label text="比例："/>
+					<mx:ComboBox id="PreviewScale" width="100" 
+						change="{
+								BusinessCard.CardPreviewZoomFactor=uint(PreviewScale.selectedItem.value);
+								CardPreviewPanelBox.zoomPreview();
+								}">
+						<mx:dataProvider>
+							<mx:Array>
+								<mx:Object label="25%" value="1"/>
+								<mx:Object label="50%" value="2"/>
+								<mx:Object label="100%" value="3"/>
+							</mx:Array>
+						</mx:dataProvider>
+					</mx:ComboBox>
+				</mx:ControlBar>
+			</mx:Panel>
+			
+		</mx:ViewStack>
+		
+	</mx:HBox>
+	
+	<qq:AppBottomBar id="BusinessCardBottomBar" 
+		monitorViewStack="{this.ViewStack}" monitorPanel="{this.LeftPanel}"
+		onSave="SaveCardFile()" />
+</mx:Application>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Fonts>
+	<!--logo 系统使用的字体-->
+	<LogoFonts>
+		<Font name="Arial" lang="en" code="en01" />
+		<Font name="Arial Black" lang="en" code="en02" />
+		<Font name="Tahoma" lang="en" code="en03" />
+		<Font name="Times New Roman" lang="en" code="en04" />
+		<Font name="4YEOstamp" lang="en" code="en05" />
+		<Font name="Abduction" lang="en" code="en06" />
+		<Font name="AF PEPSI" lang="en" code="en07" />
+		<Font name="Aladdin" lang="en" code="en08" />
+		<Font name="Amazone BT" lang="en" code="en09" />
+		<Font name="Anklepants" lang="en" code="en10" />
+		<Font name="Arnold Boecklin" lang="en" code="en11" />
+		<Font name="Balloon XBd BT" lang="en" code="en12" />
+		<Font name="Bauhaus Hv BT" lang="en" code="en13" />
+		<Font name="Bauhaus Md BT" lang="en" code="en14" />
+		<Font name="Bremen Bd BT" lang="en" code="en15" />
+		<Font name="Busorama Md BT" lang="en" code="en16" />
+		<Font name="Broadway BT" lang="en" code="en17" />
+		<Font name="Cancun" lang="en" code="en18" />
+		<Font name="Century725 Blk BT" lang="en" code="en19" />
+		<Font name="CloisterBlack BT" lang="en" code="en20" />
+		<Font name="Cooper BlkItHd BT" lang="en" code="en21" />
+		<Font name="Crazy Creatures " lang="en" code="en22" />
+		<Font name="EngraversGothic BT" lang="en" code="en23" />
+
+		<Font name="宋体" lang="cn" code="cn01" />
+		<Font name="黑体" lang="cn" code="cn02" />
+		<Font name="楷体" lang="cn" code="cn03" />
+		<Font name="幼圆" lang="cn" code="cn04" />
+		<Font name="隶书" lang="cn" code="cn05" />
+		<Font name="长城粗行楷体" lang="cn" code="cn06" />
+		<Font name="长城粗圆体" lang="cn" code="cn07" />
+		<Font name="长城大黑体" lang="cn" code="cn08" />
+		<Font name="长城特粗黑体" lang="cn" code="cn09" />
+		<Font name="长城特粗宋体" lang="cn" code="cn10" />
+		<Font name="长城新魏碑体" lang="cn" code="cn11" />
+		<Font name="长城中行书体" lang="cn" code="cn12" />
+		<Font name="创艺简细圆" lang="cn" code="cn13" />
+		<Font name="方正彩云简体" lang="cn" code="cn14" />
+		<Font name="方正粗倩简体" lang="cn" code="cn15" />
+		<Font name="方正粗宋简体" lang="cn" code="cn16" />
+		<Font name="方正华隶简体" lang="cn" code="cn17" />
+		<Font name="方正黄草简体" lang="cn" code="cn18" />
+		<Font name="方正隶二简体" lang="cn" code="cn19" />
+		<Font name="方正胖娃简体" lang="cn" code="cn20" />
+		<Font name="方正平和简体" lang="cn" code="cn21" />
+		<Font name="方正少儿简体" lang="cn" code="cn22" />
+		<Font name="方正瘦金书简体" lang="cn" code="cn23" />
+		<Font name="方正稚艺简体" lang="cn" code="cn24" />
+		<Font name="方正综艺简体" lang="cn" code="cn25" />
+		<Font name="汉鼎简新艺体" lang="cn" code="cn26" />
+	</LogoFonts>
+	
+	<!--business card 系统使用的字体-->
+	<CardFonts>
+		<Font name="Arial" lang="en" code="en01" />
+		<Font name="Arial Black" lang="en" code="en02" />
+		<Font name="Tahoma" lang="en" code="en03" />
+		<Font name="Times New Roman" lang="en" code="en04" />
+		<Font name="宋体" lang="cn" code="cn01" />
+		<Font name="黑体" lang="cn" code="cn02" />
+		<Font name="楷体" lang="cn" code="cn03" />
+		<Font name="幼圆" lang="cn" code="cn04" />
+	</CardFonts>
+</Fonts>

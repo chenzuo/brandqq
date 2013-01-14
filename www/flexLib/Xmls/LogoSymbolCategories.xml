@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Categories>
+	<Category parent="0">
+		<Child title="自然现象" code="100"/>
+		<Child title="人物" code="101"/>
+		<Child title="动物" code="102"/>
+		<Child title="植物" code="103"/>
+		<Child title="建筑、风景" code="104"/>
+		<Child title="生活用品" code="105"/>
+		<Child title="文、娱、体用品" code="106"/>
+		<Child title="工、农用品" code="107"/>
+		<Child title="交通工具" code="108"/>
+		<Child title="几何图形" code="109"/>
+		<Child title="数字字母" code="110"/>
+		<Child title="中国元素" code="111"/>
+		<Child title="超现实幻想" code="112"/>
+	</Category>
+
+	<Category parent="100">
+		<Child title="地球" code="100100"/>
+		<Child title="气候" code="100101"/>
+		<Child title="太空" code="100102"/>
+		<Child title="天体" code="100103"/>
+		<Child title="星星" code="100104"/>
+		<Child title="山川、河流" code="100105"/>
+		<Child title="海洋" code="100106"/>
+		<Child title="日月" code="100107"/>
+		<Child title="水、火、冰" code="100108"/>
+		<Child title="闪电" code="100109"/>
+	</Category>
+	
+	<Category parent="101">
+		<Child title="器官、局部" code="101100"/>
+		<Child title="小孩" code="101101"/>
+		<Child title="男人" code="101102"/>
+		<Child title="女人" code="101103"/>
+		<Child title="行为" code="101105"/>
+		<Child title="群体" code="101106"/>
+		<Child title="种族" code="101107"/>
+		<Child title="其他" code="101999"/>
+	</Category>
+
+	<Category parent="102">
+		<Child title="鸟类" code="102100"/>
+		<Child title="野兽" code="102101"/>
+		<Child title="鹰、隼" code="102102"/>
+		<Child title="海洋生物" code="102103"/>
+		<Child title="昆虫" code="102104"/>
+		<Child title="畜类" code="102105"/>
+		<Child title="禽类" code="102106"/>
+		<Child title="猫、狗" code="102107"/>
+		<Child title="蛇、鼠、鱼、蛙" code="102108"/>
+		<Child title="其他" code="102999"/>
+	</Category>
+
+	<Category parent="103">
+		<Child title="花" code="103100"/>
+		<Child title="草" code="103101"/>
+		<Child title="树木" code="103102"/>
+		<Child title="枝叶" code="103103"/>
+		<Child title="瓜、果、蔬菜" code="103104"/>
+		<Child title="玫瑰" code="103105"/>
+		<Child title="其他" code="103999"/>
+	</Category>
+
+	<Category parent="104">
+		<Child title="自然风景" code="104100"/>
+		<Child title="著名建筑" code="104101"/>
+		<Child title="房屋" code="104102"/>
+		<Child title="雕塑" code="104103"/>
+		<Child title="桥梁" code="104104"/>
+		<Child title="其他" code="104999"/>
+	</Category>
+
+	<Category parent="105">
+		<Child title="钟表、眼镜" code="105100"/>
+		<Child title="餐饮器具" code="105101"/>
+		<Child title="常用工具" code="105102"/>
+		<Child title="衡器、量具" code="105103"/>
+		<Child title="货币相关" code="105104"/>
+		<Child title="家居家具" code="105105"/>
+		<Child title="通信、数码" code="105106"/>
+		<Child title="衣着服饰" code="105107"/>
+		<Child title="箱、包" code="105108"/>
+		<Child title="锁、匙" code="105109"/>
+		<Child title="其他" code="105999"/>
+	</Category>
+
+	<Category parent="106">
+		<Child title="书本纸张" code="106100"/>
+		<Child title="文具" code="106101"/>
+		<Child title="体育用品" code="106102"/>
+		<Child title="办公用品" code="106103"/>
+		<Child title="其他" code="106999"/>
+	</Category>
+
+	<Category parent="107">
+		<Child title="工业用品" code="107100"/>
+		<Child title="农业用品" code="107101"/>
+		<Child title="其他" code="107999"/>
+	</Category>
+
+	<Category parent="108">
+		<Child title="道路" code="108100"/>
+		<Child title="船舶" code="108101"/>
+	</Category>
+
+	<Category parent="109">
+		<Child title="花边修饰" code="109100"/>
+		<Child title="装饰图案" code="109101"/>
+		<Child title="图腾印记" code="109102"/>
+		<Child title="其他" code="109999"/>
+	</Category>
+
+	<Category parent="110">
+		<Child title="A" code="110100"/>
+		<Child title="B" code="110101"/>
+		<Child title="C" code="110102"/>
+		<Child title="D" code="110103"/>
+		<Child title="E" code="110104"/>
+		<Child title="F" code="110105"/>
+		<Child title="G" code="110106"/>
+		<Child title="H" code="110107"/>
+		<Child title="I" code="110108"/>
+		<Child title="J" code="110109"/>
+		<Child title="K" code="110110"/>
+		<Child title="L" code="110111"/>
+		<Child title="M" code="110112"/>
+		<Child title="N" code="110113"/>
+		<Child title="O" code="110114"/>
+		<Child title="P" code="110115"/>
+		<Child title="Q" code="110116"/>
+		<Child title="R" code="110117"/>
+		<Child title="S" code="110118"/>
+		<Child title="T" code="110119"/>
+		<Child title="U" code="110120"/>
+		<Child title="V" code="110121"/>
+		<Child title="W" code="110122"/>
+		<Child title="X" code="110123"/>
+		<Child title="Y" code="110124"/>
+		<Child title="Z" code="110125"/>
+		<Child title="0" code="110126"/>
+		<Child title="1" code="110127"/>
+		<Child title="2" code="110128"/>
+		<Child title="3" code="110129"/>
+		<Child title="4" code="110130"/>
+		<Child title="5" code="110131"/>
+		<Child title="6" code="110132"/>
+		<Child title="7" code="110133"/>
+		<Child title="8" code="110134"/>
+		<Child title="9" code="110135"/>
+		<Child title="$" code="110136"/>
+		<Child title="%" code="110137"/>
+	</Category>
+
+	<Category parent="111">
+		<Child title="龙、凤" code="111100"/>
+		<Child title="熊猫" code="111101"/>
+	</Category>
+
+	<Category parent="112">
+		<Child title="神话角色" code="112100"/>
+	</Category>
+</Categories>

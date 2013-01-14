@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.brandqq.Resources.Requests;
+			
+			private function init():void
+			{
+				
+			}
+		]]>
+	</mx:Script>
+	<mx:HBox borderStyle="solid">
+		<mx:Image width="120" height="90" id="LogoThumbnail" styleName="thumbnailImage"
+			source="{Requests.logoThumbnailRequest(data.Guid)}"
+			verticalAlign="middle" horizontalAlign="center" scaleContent="false" />
+	</mx:HBox>
+	<mx:Label id="LogoTitle" text="{data.Title}" fontWeight="bold"/>
+	
+</mx:VBox>

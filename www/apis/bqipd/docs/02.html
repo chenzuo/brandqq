@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>发送Ajax请求到您的代理程序 - 互联网推广诊断工具API - BrandQQ APIs</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<a href="/"><img src="/skin/logo_s.gif" alt="返回brandQQ首页" style="border:none" /></a>
+
+<div class="idx"><a href="./">返回</a></div>
+
+<h1>发送Ajax请求到您的代理程序</h1>
+
+<h3>准备工作</h3>
+
+<p>
+<ul>
+<li>1、修改<strong>BQIPDAPI.js</strong>的第<strong>11</strong>行，将<strong>PROXY_URL</strong>变量值修改成您服务器上的正确位置。</li>
+<li>2、您应当在应用页面中引用BQIPDAPI.js文件，以便调用其中的方法。</li>
+</ul>
+</p>
+
+<h3>构建请求</h3>
+<blockquote>
+<pre>
+	var myUrl="www.mydomain.com";
+	var myKey="Keyword1";
+	var query=new BQIPDQuery(myUrl,myKey,function(result)
+        {
+			/*some handle here*/
+        }
+    );
+</pre>
+</blockquote>
+
+<p>这样就构建了一个请求！</p>
+
+<h3>发送请求</h3>
+<p>您只要调用BQIPDQuery的Run()方法，就可以实现请求的发送。</p>
+<blockquote>
+<pre>
+	var myUrl="www.mydomain.com";
+	var myKey="Keyword1";
+	var query=new BQIPDQuery(myUrl,myKey,function(result)
+        {
+			/*some handle here*/
+        }
+    );
+	<strong>query.Run();</strong>
+</pre>
+</blockquote>
+</body>
+</html>

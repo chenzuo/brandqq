@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<categories>
+  <Category name="自然现象" code="100">
+    <Category name="地球" code="100100"/>
+    <Category name="气候" code="100101"/>
+    <Category name="太空" code="100102"/>
+    <Category name="天体" code="100103"/>
+	<Category name="星星" code="100104"/>
+	<Category name="山川、河流" code="100105"/>
+	<Category name="海洋" code="100106"/>
+	<Category name="日月" code="100107"/>
+	<Category name="水、火、冰" code="100108"/>
+	<Category name="闪电" code="100109"/>
+  </Category>
+  <Category name="人物" code="101">
+    <Category name="器官、局部" code="101100"/>
+    <Category name="小孩" code="101101"/>
+    <Category name="男人" code="101102"/>
+    <Category name="女人" code="101103"/>
+	<Category name="行为" code="101105"/>
+	<Category name="群体" code="101106"/>
+	<Category name="种族" code="101107"/>
+	<Category name="其他" code="101999"/>
+  </Category>  
+  <Category name="动物" code="102">
+    <Category name="鸟类" code="102100"/>
+    <Category name="野兽" code="102101"/>
+	<Category name="鹰、隼" code="102102"/>
+    <Category name="海洋生物" code="102103"/>
+    <Category name="昆虫" code="102104"/>
+    <Category name="畜类" code="102105"/>
+    <Category name="禽类" code="102106"/>
+	<Category name="猫、狗" code="102107"/>
+	<Category name="蛇、鼠、鱼、蛙" code="102108"/>
+	<Category name="其他" code="102999"/>
+  </Category>
+<Category name="植物" code="103">
+    <Category name="花" code="103100"/>
+    <Category name="草" code="103101"/>
+	<Category name="树木" code="103102"/>
+    <Category name="枝叶" code="103103"/>
+    <Category name="瓜、果、蔬菜" code="103104"/>
+    <Category name="玫瑰" code="103105"/>
+	<Category name="其他" code="103999"/>
+  </Category>
+
+<Category name="建筑、风景" code="104">
+    <Category name="自然风景" code="104100"/>
+	<Category name="著名建筑" code="104101"/>
+	<Category name="房屋" code="104102"/>
+	<Category name="雕塑" code="104103"/>
+	<Category name="桥梁" code="104104"/>
+	<Category name="其他" code="104999"/>
+  </Category>
+
+  <Category name="生活用品" code="105">
+    <Category name="钟表、眼镜" code="105100"/>
+    <Category name="餐饮器具" code="105101"/>
+    <Category name="常用工具" code="105102"/>
+    <Category name="衡器、量具" code="105103"/>
+	<Category name="货币相关" code="105104"/>
+	<Category name="家居家具" code="105105"/>
+	<Category name="通信、数码" code="105106"/>
+	<Category name="衣着服饰" code="105107"/>
+	<Category name="箱、包" code="105108"/>
+	<Category name="锁、匙" code="105109"/>
+	<Category name="其他" code="105999"/>
+  </Category>
+  <Category name="文、娱、体用品" code="106">
+	<Category name="书本纸张" code="106100"/>
+	<Category name="文具" code="106101"/>
+	<Category name="体育用品" code="106102"/>
+	<Category name="办公用品" code="106103"/>
+	<Category name="其他" code="106999"/>
+  </Category>
+  <Category name="工、农用品" code="107">
+    <Category name="工业用品" code="107100"/>
+    <Category name="农业用品" code="107101"/>
+    <Category name="其他" code="107999"/>
+  </Category>
+  <Category name="交通工具" code="108">
+    <Category name="道路" code="108100"/>
+    <Category name="船舶" code="108101"/>
+  </Category>
+  <Category name="几何图形" code="109">
+    <Category name="花边修饰" code="109100"/>
+    <Category name="装饰图案" code="109101"/>
+    <Category name="图腾印记" code="109102"/>
+	<Category name="其他" code="109999"/>
+  </Category>
+  <Category name="数字字母" code="110">
+    <Category name="A" code="110100"/>
+	<Category name="B" code="110101"/>
+	<Category name="C" code="110102"/>
+	<Category name="D" code="110103"/>
+	<Category name="E" code="110104"/>
+	<Category name="F" code="110105"/>
+	<Category name="G" code="110106"/>
+	<Category name="H" code="110107"/>
+	<Category name="I" code="110108"/>
+	<Category name="J" code="110109"/>
+	<Category name="K" code="110110"/>
+	<Category name="L" code="110111"/>
+	<Category name="M" code="110112"/>
+	<Category name="N" code="110113"/>
+	<Category name="O" code="110114"/>
+	<Category name="P" code="110115"/>
+	<Category name="Q" code="110116"/>
+	<Category name="R" code="110117"/>
+	<Category name="S" code="110118"/>
+	<Category name="T" code="110119"/>
+	<Category name="U" code="110120"/>
+	<Category name="V" code="110121"/>
+	<Category name="W" code="110122"/>
+	<Category name="X" code="110123"/>
+	<Category name="Y" code="110124"/>
+	<Category name="Z" code="110125"/>
+	<Category name="0" code="110126"/>
+	<Category name="1" code="110127"/>
+	<Category name="2" code="110128"/>
+	<Category name="3" code="110129"/>
+	<Category name="4" code="110130"/>
+	<Category name="5" code="110131"/>
+	<Category name="6" code="110132"/>
+	<Category name="7" code="110133"/>
+	<Category name="8" code="110134"/>
+	<Category name="9" code="110135"/>
+	<Category name="$" code="110136"/>
+	<Category name="%" code="110137"/>
+  </Category>
+  <Category name="中国元素" code="111">
+    <Category name="龙、凤" code="111100"/>
+	<Category name="熊猫" code="111101"/>
+  </Category>
+	<Category name="超现实幻想" code="112">
+    <Category name="神话角色" code="112100"/>
+  </Category>
+</categories>
